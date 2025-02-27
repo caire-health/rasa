@@ -88,7 +88,6 @@ select = [ "D", "E", "F", "W", "RUF",]
 
 [tool.poetry.dependencies]
 python = ">=3.10, <3.11"
-rasa-sdk = "^3.8"
 boto3 = "^1.26"
 requests = "^2.23"
 matplotlib = "^3.1"
@@ -112,6 +111,7 @@ colorhash = "^2.0"
 jsonschema = "^4.23"
 packaging = "^21"
 pytz = "^2024.2"
+rasa-sdk = "^3.8"
 colorclass = "^2.2"
 terminaltables = "^3.1"
 sanic = "^21.12"
