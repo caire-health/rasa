@@ -162,7 +162,6 @@ pydantic = { version = "<1.10.10", optional = true, extras = ["dotenv"] }
 filelock = "^3"
 huggingface-hub = "^0.25.0"
 safetensors = "^0"
-
 [[tool.poetry.dependencies.tensorflow-io-gcs-filesystem]]
 version = "^0.37"
 markers = "sys_platform == 'win32'"
