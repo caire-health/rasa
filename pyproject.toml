@@ -88,7 +88,7 @@ select = [ "D", "E", "F", "W", "RUF",]
 
 [tool.poetry.dependencies]
 python = ">=3.10, <3.11"
-rasa-sdk = "*"
+rasa-sdk = "^3.8"
 boto3 = "^1.26"
 requests = "^2.23"
 matplotlib = "^3.1"
