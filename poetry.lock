@@ -11,6 +11,11 @@ files = [
     {file = "absl_py-2.1.0-py3-none-any.whl", hash = "sha256:526a04eadab8b4ee719ce68f204172ead1027549089702d99b9059f129ff1308"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "aio-pika"
 version = "8.2.3"
@@ -29,6 +34,11 @@ yarl = "*"
 [package.extras]
 develop = ["aiomisc (>=16.0,<17.0)", "coverage (!=4.3)", "coveralls", "nox", "pyflakes (<2.5)", "pylava", "pytest", "pytest-cov", "shortuuid", "sphinx", "sphinx-autobuild", "timeout-decorator", "tox (>=2.4)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "aiofiles"
 version = "23.1.0"
@@ -39,6 +49,11 @@ files = [
     {file = "aiofiles-23.1.0-py3-none-any.whl", hash = "sha256:9312414ae06472eb6f1d163f555e466a23aed1c8f60c30cccf7121dba2e53eb2"},
     {file = "aiofiles-23.1.0.tar.gz", hash = "sha256:edd247df9a19e0db16534d4baaf536d6609a43e1de5401d7a4c1c148753a1635"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "aiogram"
@@ -59,6 +74,11 @@ certifi = ">=2020.6.20"
 [package.extras]
 fast = ["ujson (>=1.35)", "uvloop (>=0.14.0,<0.15.0)"]
 proxy = ["aiohttp-socks (>=0.5.3,<0.6.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "aiohttp"
@@ -156,6 +176,11 @@ yarl = ">=1.0,<2.0"
 [package.extras]
 speedups = ["Brotli", "aiodns", "brotlicffi"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "aiohttp-retry"
 version = "2.8.3"
@@ -170,6 +195,11 @@ files = [
 [package.dependencies]
 aiohttp = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "aioresponses"
 version = "0.7.6"
@@ -183,6 +213,11 @@ files = [
 
 [package.dependencies]
 aiohttp = ">=3.3.0,<4.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "aiormq"
@@ -202,6 +237,11 @@ yarl = "*"
 [package.extras]
 develop = ["aiomisc (>=16.0,<17.0)", "coverage (!=4.3)", "coveralls", "pylava", "pytest", "pytest-cov", "tox (>=2.4)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "aiosignal"
 version = "1.3.1"
@@ -215,6 +255,11 @@ files = [
 
 [package.dependencies]
 frozenlist = ">=1.1.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "analytics-python"
@@ -237,6 +282,11 @@ six = ">=1.5"
 [package.extras]
 test = ["flake8 (==3.7.9)", "mock (==2.0.0)", "pylint (==1.9.3)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "anyio"
 version = "3.7.1"
@@ -257,6 +307,11 @@ sniffio = ">=1.1"
 doc = ["Sphinx", "packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme (>=1.2.2)", "sphinxcontrib-jquery"]
 test = ["anyio[trio]", "coverage[toml] (>=4.5)", "hypothesis (>=4.0)", "mock (>=4)", "psutil (>=5.9)", "pytest (>=7.0)", "pytest-mock (>=3.6.1)", "trustme", "uvloop (>=0.17)"]
 trio = ["trio (<0.22)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "apscheduler"
@@ -285,6 +340,11 @@ tornado = ["tornado (>=4.3)"]
 twisted = ["twisted"]
 zookeeper = ["kazoo"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "astunparse"
 version = "1.6.3"
@@ -300,6 +360,11 @@ files = [
 six = ">=1.6.1,<2.0"
 wheel = ">=0.23.0,<1.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "async-generator"
 version = "1.10"
@@ -311,6 +376,11 @@ files = [
     {file = "async_generator-1.10.tar.gz", hash = "sha256:6ebb3d106c12920aaae42ccb6f787ef5eefdcdd166ea3d628fa8476abe712144"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "async-timeout"
 version = "4.0.3"
@@ -321,6 +391,11 @@ files = [
     {file = "async-timeout-4.0.3.tar.gz", hash = "sha256:4640d96be84d82d02ed59ea2b7105a0f7b33abe8703703cd0ab0bf87c427522f"},
     {file = "async_timeout-4.0.3-py3-none-any.whl", hash = "sha256:7405140ff1230c310e51dc27b3145b9092d659ce68ff733fb0cefe3ee42be028"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "attrs"
@@ -341,6 +416,11 @@ docs = ["cogapp", "furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphi
 tests = ["cloudpickle", "hypothesis", "mypy (>=1.11.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
 tests-mypy = ["mypy (>=1.11.1)", "pytest-mypy-plugins"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "azure-core"
 version = "1.29.1"
@@ -359,6 +439,11 @@ typing-extensions = ">=4.3.0"
 
 [package.extras]
 aio = ["aiohttp (>=3.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "azure-storage-blob"
@@ -380,6 +465,11 @@ typing-extensions = ">=4.3.0"
 [package.extras]
 aio = ["azure-core[aio] (>=1.28.0,<2.0.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "babel"
 version = "2.9.1"
@@ -394,6 +484,11 @@ files = [
 [package.dependencies]
 pytz = ">=2015.7"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "backoff"
 version = "1.10.0"
@@ -404,6 +499,11 @@ files = [
     {file = "backoff-1.10.0-py2.py3-none-any.whl", hash = "sha256:5e73e2cbe780e1915a204799dba0a01896f45f4385e636bcca7a0614d879d0cd"},
     {file = "backoff-1.10.0.tar.gz", hash = "sha256:b8fba021fac74055ac05eb7c7bfce4723aedde6cd0a504e5326bcb0bdd6d19a4"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "bandit"
@@ -428,6 +528,11 @@ test = ["beautifulsoup4 (>=4.8.0)", "coverage (>=4.5.4)", "fixtures (>=3.0.0)", 
 toml = ["tomli (>=1.1.0)"]
 yaml = ["PyYAML"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "bidict"
 version = "0.22.1"
@@ -443,6 +548,11 @@ files = [
 docs = ["furo", "sphinx", "sphinx-copybutton"]
 lint = ["pre-commit"]
 test = ["hypothesis", "pytest", "pytest-benchmark[histogram]", "pytest-cov", "pytest-xdist", "sortedcollections", "sortedcontainers", "sphinx"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "black"
@@ -478,12 +588,17 @@ d = ["aiohttp (>=3.7.4)"]
 jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
 uvloop = ["uvloop (>=0.15.2)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "blis"
 version = "1.2.0"
 description = "The Blis BLAS-like linear algebra library, as a self-contained C-extension."
 optional = true
-python-versions = "<3.13,>=3.6"
+python-versions = ">=3.6,<3.13"
 files = [
     {file = "blis-1.2.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:76998702acbb782e9bb298a5c446aaa1ed4652dbade853baa6a7a26f7b98105b"},
     {file = "blis-1.2.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:1c290c1ba6cb5b633abe59b2fb9ae2ea5dcd7508202f65658fe816bb7e129485"},
@@ -519,12 +634,17 @@ files = [
 [package.dependencies]
 numpy = {version = ">=1.19.0,<3.0.0", markers = "python_version >= \"3.9\""}
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "boto3"
 version = "1.37.2"
 description = "The AWS SDK for Python"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">= 3.8"
 files = [
     {file = "boto3-1.37.2-py3-none-any.whl", hash = "sha256:e58136d52d79425ce26c3c1578bf94d4b2e91ead55fed9f6950406ee9713e6af"},
     {file = "boto3-1.37.2.tar.gz", hash = "sha256:d64491bd4142c2c6dfe44479bf89c4ab7fa8d00210c2aaa7361931e61898b608"},
@@ -538,12 +658,17 @@ s3transfer = ">=0.11.0,<0.12.0"
 [package.extras]
 crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "botocore"
 version = "1.37.2"
 description = "Low-level, data-driven core of boto 3."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">= 3.8"
 files = [
     {file = "botocore-1.37.2-py3-none-any.whl", hash = "sha256:5f59b966f3cd0c8055ef6f7c2600f7db5f8218071d992e5f95da3f9156d4370f"},
     {file = "botocore-1.37.2.tar.gz", hash = "sha256:3f460f3c32cd6d747d5897a9cbde011bf1715abc7bf0a6ea6fdb0b812df63287"},
@@ -556,6 +681,11 @@ urllib3 = {version = ">=1.25.4,<2.2.0 || >2.2.0,<3", markers = "python_version >
 
 [package.extras]
 crt = ["awscrt (==0.23.8)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "cachecontrol"
@@ -576,6 +706,11 @@ requests = "*"
 filecache = ["lockfile (>=0.9)"]
 redis = ["redis (>=2.10.5)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "cachetools"
 version = "5.3.1"
@@ -586,6 +721,11 @@ files = [
     {file = "cachetools-5.3.1-py3-none-any.whl", hash = "sha256:95ef631eeaea14ba2e36f06437f36463aac3a096799e876ee55e5cdccb102590"},
     {file = "cachetools-5.3.1.tar.gz", hash = "sha256:dce83f2d9b4e1f732a8cd44af8e8fab2dbe46201467fc98b3ef8f269092bf62b"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "catalogue"
@@ -598,6 +738,11 @@ files = [
     {file = "catalogue-2.0.8.tar.gz", hash = "sha256:b325c77659208bfb6af1b0d93b1a1aa4112e1bb29a4c5ced816758a722f0e388"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "certifi"
 version = "2025.1.31"
@@ -608,6 +753,11 @@ files = [
     {file = "certifi-2025.1.31-py3-none-any.whl", hash = "sha256:ca78db4565a652026a4db2bcdf68f2fb589ea80d0be70e03929ed730746b84fe"},
     {file = "certifi-2025.1.31.tar.gz", hash = "sha256:3d5da6925056f6f18f119200434a4780a94263f10d1c21d032a6f6b2baa20651"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "cffi"
@@ -684,6 +834,11 @@ files = [
 
 [package.dependencies]
 pycparser = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "charset-normalizer"
@@ -769,6 +924,11 @@ files = [
     {file = "charset_normalizer-3.1.0-py3-none-any.whl", hash = "sha256:3d9098b479e78c85080c98e1e35ff40b4a31d8953102bb0fd7d1b6f8a2111a3d"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "click"
 version = "8.1.3"
@@ -783,6 +943,11 @@ files = [
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "click-default-group"
 version = "1.2.2"
@@ -795,6 +960,11 @@ files = [
 
 [package.dependencies]
 click = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "cloudpathlib"
@@ -816,6 +986,11 @@ azure = ["azure-storage-blob (>=12)", "azure-storage-file-datalake (>=12)"]
 gs = ["google-cloud-storage"]
 s3 = ["boto3 (>=1.34.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "cloudpickle"
 version = "3.0.0"
@@ -826,6 +1001,11 @@ files = [
     {file = "cloudpickle-3.0.0-py3-none-any.whl", hash = "sha256:246ee7d0c295602a036e86369c77fecda4ab17b506496730f2f576d9016fd9c7"},
     {file = "cloudpickle-3.0.0.tar.gz", hash = "sha256:996d9a482c6fb4f33c1a35335cf8afd065d2a56e973270364840712d9131a882"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "colorama"
@@ -838,6 +1018,11 @@ files = [
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "colorclass"
 version = "2.2.2"
@@ -848,6 +1033,11 @@ files = [
     {file = "colorclass-2.2.2-py2.py3-none-any.whl", hash = "sha256:6f10c273a0ef7a1150b1120b6095cbdd68e5cf36dfd5d0fc957a2500bbf99a55"},
     {file = "colorclass-2.2.2.tar.gz", hash = "sha256:6d4fe287766166a98ca7bc6f6312daf04a0481b1eda43e7173484051c0ab4366"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "coloredlogs"
@@ -866,6 +1056,11 @@ humanfriendly = ">=9.1"
 [package.extras]
 cron = ["capturer (>=2.4)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "colorhash"
 version = "1.2.1"
@@ -876,6 +1071,11 @@ files = [
     {file = "colorhash-1.2.1-py3-none-any.whl", hash = "sha256:644f307fd09464ad2512650a382a9ce5ea8b788c8eaba083b6c54e4699fdd5eb"},
     {file = "colorhash-1.2.1.tar.gz", hash = "sha256:143d739adeeb4949d69d35274f9a973fdd5f3a77c8658be2e23f967688869c7b"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "confection"
@@ -891,6 +1091,11 @@ files = [
 [package.dependencies]
 pydantic = ">=1.7.4,<1.8 || >1.8,<1.8.1 || >1.8.1,<1.11.0"
 srsly = ">=2.4.0,<3.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "confluent-kafka"
@@ -942,6 +1147,11 @@ doc = ["avro (>=1.11.1,<2)", "fastavro (>=0.23.0,<1.0)", "fastavro (>=1.0)", "re
 json = ["jsonschema", "pyrsistent", "pyrsistent (==0.16.1)", "requests"]
 protobuf = ["protobuf", "requests"]
 schema-registry = ["requests"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "coverage"
@@ -1008,6 +1218,11 @@ tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.1
 [package.extras]
 toml = ["tomli"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "coveralls"
 version = "3.3.1"
@@ -1027,12 +1242,17 @@ requests = ">=1.0.0"
 [package.extras]
 yaml = ["PyYAML (>=3.10)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "cryptography"
 version = "44.0.1"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
 optional = false
-python-versions = "!=3.9.0,!=3.9.1,>=3.7"
+python-versions = ">=3.7, !=3.9.0, !=3.9.1"
 files = [
     {file = "cryptography-44.0.1-cp37-abi3-macosx_10_9_universal2.whl", hash = "sha256:bf688f615c29bfe9dfc44312ca470989279f0e94bb9f631f85e3459af8efc009"},
     {file = "cryptography-44.0.1-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dd7c7e2d71d908dc0f8d2027e1604102140d84b155e658c20e8ad1304317691f"},
@@ -1080,6 +1300,11 @@ ssh = ["bcrypt (>=3.1.5)"]
 test = ["certifi (>=2024)", "cryptography-vectors (==44.0.1)", "pretend (>=0.7)", "pytest (>=7.4.0)", "pytest-benchmark (>=4.0)", "pytest-cov (>=2.10.1)", "pytest-xdist (>=3.5.0)"]
 test-randomorder = ["pytest-randomly"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "cycler"
 version = "0.11.0"
@@ -1090,6 +1315,11 @@ files = [
     {file = "cycler-0.11.0-py3-none-any.whl", hash = "sha256:3a27e95f763a428a739d2add979fa7494c912a32c17c4c38c4d5f082cad165a3"},
     {file = "cycler-0.11.0.tar.gz", hash = "sha256:9c87405839a19696e837b3b818fed3f5f69f16f1eec1a1ad77e043dcea9c772f"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "cymem"
@@ -1128,6 +1358,11 @@ files = [
     {file = "cymem-2.0.7.tar.gz", hash = "sha256:e6034badb5dd4e10344211c81f16505a55553a7164adc314c75bd80cf07e57a8"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "dask"
 version = "2022.10.2"
@@ -1156,6 +1391,11 @@ diagnostics = ["bokeh (>=2.4.2,<3)", "jinja2"]
 distributed = ["distributed (==2022.10.2)"]
 test = ["pandas[test]", "pre-commit", "pytest", "pytest-rerunfailures", "pytest-xdist"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "databind"
 version = "1.5.3"
@@ -1170,6 +1410,11 @@ files = [
 [package.dependencies]
 "databind.core" = ">=1.5.3,<2.0.0"
 "databind.json" = ">=1.5.3,<2.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "databind-core"
@@ -1187,6 +1432,11 @@ Deprecated = ">=1.2.12,<2.0.0"
 "nr.util" = ">=0.8.3,<1.0.0"
 typing-extensions = ">=3.10.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "databind-json"
 version = "1.5.3"
@@ -1203,6 +1453,11 @@ files = [
 "nr.util" = ">=0.8.3,<1.0.0"
 typing-extensions = ">=3.10.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "datadog"
 version = "0.45.0"
@@ -1216,6 +1471,11 @@ files = [
 
 [package.dependencies]
 requests = ">=2.6.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "datadog-api-client"
@@ -1240,6 +1500,11 @@ async = ["aiosonic (==0.15.1)"]
 tests = ["aiosonic (==0.15.1)", "glom", "jinja2", "mypy", "pytest (<8.0.0)", "pytest-asyncio", "pytest-bdd (==6.0.1)", "pytest-randomly", "pytest-recording", "python-dateutil", "types-python-dateutil", "urllib3 (<2.3.0)", "zstandard"]
 zstandard = ["zstandard"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "deprecated"
 version = "1.2.14"
@@ -1256,6 +1521,11 @@ wrapt = ">=1.10,<2"
 
 [package.extras]
 dev = ["PyTest", "PyTest-Cov", "bump2version (<1)", "sphinx (<2)", "tox"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "dnspython"
@@ -1276,6 +1546,11 @@ doq = ["aioquic (>=0.9.20)"]
 idna = ["idna (>=2.1,<4.0)"]
 trio = ["trio (>=0.14,<0.23)"]
 wmi = ["wmi (>=1.5.1,<2.0.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "docker"
@@ -1298,6 +1573,11 @@ websocket-client = ">=0.32.0"
 [package.extras]
 ssh = ["paramiko (>=2.4.3)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "docopt"
 version = "0.6.2"
@@ -1307,6 +1587,11 @@ python-versions = "*"
 files = [
     {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "docspec"
@@ -1323,6 +1608,11 @@ files = [
 databind = ">=1.5.0,<2.0.0"
 Deprecated = ">=1.2.12,<2.0.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "docspec-python"
 version = "2.0.2"
@@ -1338,6 +1628,11 @@ files = [
 docspec = ">=2.0.2,<3.0.0"
 "nr.util" = ">=0.7.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "docstring-parser"
 version = "0.11"
@@ -1350,6 +1645,11 @@ files = [
 
 [package.extras]
 test = ["black", "pytest"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "exceptiongroup"
@@ -1365,6 +1665,11 @@ files = [
 [package.extras]
 test = ["pytest (>=6)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "execnet"
 version = "1.9.0"
@@ -1378,6 +1683,11 @@ files = [
 
 [package.extras]
 testing = ["pre-commit"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "fakeredis"
@@ -1398,6 +1708,11 @@ sortedcontainers = ">=2,<3"
 json = ["jsonpath-ng (>=1.5,<2.0)"]
 lua = ["lupa (>=1.14,<3.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "fbmessenger"
 version = "6.0.0"
@@ -1411,6 +1726,11 @@ files = [
 
 [package.dependencies]
 requests = ">=2.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "filelock"
@@ -1427,6 +1747,11 @@ files = [
 docs = ["furo (>=2023.5.20)", "sphinx (>=7.0.1)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "diff-cover (>=7.5)", "pytest (>=7.3.1)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)", "pytest-timeout (>=2.1)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "fire"
 version = "0.5.0"
@@ -1441,6 +1766,11 @@ files = [
 six = "*"
 termcolor = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "flatbuffers"
 version = "23.5.26"
@@ -1451,6 +1781,11 @@ files = [
     {file = "flatbuffers-23.5.26-py2.py3-none-any.whl", hash = "sha256:c0ff356da363087b915fde4b8b45bdda73432fc17cddb3c8157472eab1422ad1"},
     {file = "flatbuffers-23.5.26.tar.gz", hash = "sha256:9ea1144cac05ce5d86e2859f431c6cd5e66cd9c78c558317c7955fb8d4c78d89"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "fonttools"
@@ -1509,6 +1844,11 @@ ufo = ["fs (>=2.2.0,<3)"]
 unicode = ["unicodedata2 (>=15.0.0)"]
 woff = ["brotli (>=1.0.1)", "brotlicffi (>=0.8.0)", "zopfli (>=0.1.4)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "freezegun"
 version = "1.2.2"
@@ -1522,6 +1862,11 @@ files = [
 
 [package.dependencies]
 python-dateutil = ">=2.7"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "frozenlist"
@@ -1606,6 +1951,11 @@ files = [
     {file = "frozenlist-1.3.3.tar.gz", hash = "sha256:58bcc55721e8a90b88332d6cd441261ebb22342e238296bb330968952fbb3a6a"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "fsspec"
 version = "2023.6.0"
@@ -1641,6 +1991,11 @@ smb = ["smbprotocol"]
 ssh = ["paramiko"]
 tqdm = ["tqdm"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "future"
 version = "0.18.3"
@@ -1650,6 +2005,11 @@ python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
     {file = "future-0.18.3.tar.gz", hash = "sha256:34a17436ed1e96697a86f9de3d15a3b0be01d8bc8de9c1dffd59fb8234ed5307"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "gast"
@@ -1661,6 +2021,11 @@ files = [
     {file = "gast-0.4.0-py3-none-any.whl", hash = "sha256:b7adcdd5adbebf1adf17378da5ba3f543684dbec47b1cda1f3997e573cd542c4"},
     {file = "gast-0.4.0.tar.gz", hash = "sha256:40feb7b8b8434785585ab224d1568b857edb18297e5a3047f1ba012bc83b42c1"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "gitdb"
@@ -1675,6 +2040,11 @@ files = [
 
 [package.dependencies]
 smmap = ">=3.0.1,<6"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "github3-py"
@@ -1693,6 +2063,11 @@ python-dateutil = ">=2.6.0"
 requests = ">=2.18"
 uritemplate = ">=3.0.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "gitpython"
 version = "3.1.35"
@@ -1706,6 +2081,11 @@ files = [
 
 [package.dependencies]
 gitdb = ">=4.0.1,<5"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "google-api-core"
@@ -1728,6 +2108,11 @@ requests = ">=2.18.0,<3.0.0dev"
 grpc = ["grpcio (>=1.33.2,<2.0dev)", "grpcio-status (>=1.33.2,<2.0dev)"]
 grpcgcp = ["grpcio-gcp (>=0.2.2)"]
 grpcio-gcp = ["grpcio-gcp (>=0.2.2)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "google-auth"
@@ -1753,6 +2138,11 @@ pyopenssl = ["cryptography (>=38.0.3)", "pyopenssl (>=20.0.0)"]
 reauth = ["pyu2f (>=0.1.5)"]
 requests = ["requests (>=2.20.0,<3.0.0.dev0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "google-auth-oauthlib"
 version = "1.0.0"
@@ -1771,6 +2161,11 @@ requests-oauthlib = ">=0.7.0"
 [package.extras]
 tool = ["click (>=6.0.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "google-cloud-core"
 version = "2.3.3"
@@ -1788,6 +2183,11 @@ google-auth = ">=1.25.0,<3.0dev"
 
 [package.extras]
 grpc = ["grpcio (>=1.38.0,<2.0dev)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "google-cloud-storage"
@@ -1809,6 +2209,11 @@ requests = ">=2.18.0,<3.0.0dev"
 
 [package.extras]
 protobuf = ["protobuf (<5.0.0dev)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "google-crc32c"
@@ -1890,6 +2295,11 @@ files = [
 [package.extras]
 testing = ["pytest"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "google-pasta"
 version = "0.2.0"
@@ -1904,6 +2314,11 @@ files = [
 
 [package.dependencies]
 six = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "google-resumable-media"
@@ -1923,6 +2338,11 @@ google-crc32c = ">=1.0,<2.0dev"
 aiohttp = ["aiohttp (>=3.6.2,<4.0.0dev)"]
 requests = ["requests (>=2.18.0,<3.0.0dev)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "googleapis-common-protos"
 version = "1.56.1"
@@ -1939,6 +2359,11 @@ protobuf = ">=3.15.0"
 
 [package.extras]
 grpc = ["grpcio (>=1.0.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "greenlet"
@@ -2017,6 +2442,11 @@ files = [
 docs = ["Sphinx", "docutils (<0.18)"]
 test = ["objgraph", "psutil"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "grpcio"
 version = "1.56.0"
@@ -2074,6 +2504,11 @@ files = [
 [package.extras]
 protobuf = ["grpcio-tools (>=1.56.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "h11"
 version = "0.14.0"
@@ -2084,6 +2519,11 @@ files = [
     {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
     {file = "h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "h5py"
@@ -2118,6 +2558,11 @@ files = [
 [package.dependencies]
 numpy = ">=1.17.3"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "httpcore"
 version = "0.16.3"
@@ -2138,6 +2583,11 @@ sniffio = "==1.*"
 [package.extras]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (==1.*)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "httptools"
@@ -2192,6 +2642,11 @@ files = [
 [package.extras]
 test = ["Cython (>=0.29.24,<0.30.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "httpx"
 version = "0.23.3"
@@ -2214,6 +2669,11 @@ brotli = ["brotli", "brotlicffi"]
 cli = ["click (==8.*)", "pygments (==2.*)", "rich (>=10,<13)"]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (==1.*)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "huggingface-hub"
@@ -2249,6 +2709,11 @@ testing = ["InquirerPy (==0.3.4)", "Jinja2", "Pillow", "aiohttp", "fastapi", "gr
 torch = ["safetensors[torch]", "torch"]
 typing = ["types-PyYAML", "types-requests", "types-simplejson", "types-toml", "types-tqdm", "types-urllib3", "typing-extensions (>=4.8.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "humanfriendly"
 version = "10.0"
@@ -2263,6 +2728,11 @@ files = [
 [package.dependencies]
 pyreadline3 = {version = "*", markers = "sys_platform == \"win32\" and python_version >= \"3.8\""}
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "idna"
 version = "3.4"
@@ -2273,6 +2743,11 @@ files = [
     {file = "idna-3.4-py3-none-any.whl", hash = "sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2"},
     {file = "idna-3.4.tar.gz", hash = "sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "importlib-metadata"
@@ -2293,6 +2768,11 @@ docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "rst.linker
 perf = ["ipython"]
 testing = ["flufl.flake8", "importlib-resources (>=1.3)", "packaging", "pyfakefs", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-mypy (>=0.9.1)", "pytest-perf (>=0.9.2)", "pytest-ruff"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "incremental"
 version = "22.10.0"
@@ -2308,6 +2788,11 @@ files = [
 mypy = ["click (>=6.0)", "mypy (==0.812)", "twisted (>=16.4.0)"]
 scripts = ["click (>=6.0)", "twisted (>=16.4.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "iniconfig"
 version = "2.0.0"
@@ -2318,6 +2803,11 @@ files = [
     {file = "iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374"},
     {file = "iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "isodate"
@@ -2332,6 +2822,11 @@ files = [
 
 [package.dependencies]
 six = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "jax"
@@ -2362,6 +2857,11 @@ cuda12-pip = ["jaxlib (==0.4.13+cuda12.cudnn89)", "nvidia-cublas-cu12", "nvidia-
 minimum-jaxlib = ["jaxlib (==0.4.11)"]
 tpu = ["jaxlib (==0.4.13)", "libtpu-nightly (==0.1.dev20230622)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "jieba"
 version = "0.42.1"
@@ -2371,6 +2871,11 @@ python-versions = "*"
 files = [
     {file = "jieba-0.42.1.tar.gz", hash = "sha256:055ca12f62674fafed09427f176506079bc135638a14e23e25be909131928db2"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "jinja2"
@@ -2389,6 +2894,11 @@ MarkupSafe = ">=2.0"
 [package.extras]
 i18n = ["Babel (>=2.7)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "jmespath"
 version = "1.0.1"
@@ -2400,6 +2910,11 @@ files = [
     {file = "jmespath-1.0.1.tar.gz", hash = "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "joblib"
 version = "1.4.2"
@@ -2410,6 +2925,11 @@ files = [
     {file = "joblib-1.4.2-py3-none-any.whl", hash = "sha256:06d478d5674cbc267e7496a410ee875abd68e4340feff4490bcb7afb88060ae6"},
     {file = "joblib-1.4.2.tar.gz", hash = "sha256:2382c5816b2636fbd20a09e0f4e9dad4736765fdfb7dca582943b9c1366b3f0e"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "jsonpickle"
@@ -2428,6 +2948,11 @@ dev = ["black"]
 docs = ["furo", "rst.linker (>=1.9)", "sphinx (>=3.5)"]
 packaging = ["build", "setuptools (>=61.2)", "setuptools-scm[toml] (>=6.0)", "twine"]
 testing = ["PyYAML", "atheris (>=2.3.0,<2.4.0)", "bson", "ecdsa", "feedparser", "gmpy2", "numpy", "pandas", "pymongo", "pytest (>=6.0,!=8.1.*)", "pytest-benchmark", "pytest-benchmark[histogram]", "pytest-checkdocs (>=1.2.3)", "pytest-enabler (>=1.0.1)", "pytest-ruff (>=0.2.1)", "scikit-learn", "scipy", "scipy (>=1.9.3)", "simplejson", "sqlalchemy", "ujson"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "jsonschema"
@@ -2448,6 +2973,11 @@ pyrsistent = ">=0.14.0,<0.17.0 || >0.17.0,<0.17.1 || >0.17.1,<0.17.2 || >0.17.2"
 format = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3987", "uri-template", "webcolors (>=1.11)"]
 format-nongpl = ["fqdn", "idna", "isoduration", "jsonpointer (>1.13)", "rfc3339-validator", "rfc3986-validator (>0.1.0)", "uri-template", "webcolors (>=1.11)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "keras"
 version = "2.12.0"
@@ -2457,6 +2987,11 @@ python-versions = ">=3.8"
 files = [
     {file = "keras-2.12.0-py2.py3-none-any.whl", hash = "sha256:35c39534011e909645fb93515452e98e1a0ce23727b55d4918b9c58b2308c15e"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "kiwisolver"
@@ -2535,6 +3070,11 @@ files = [
     {file = "kiwisolver-1.4.4.tar.gz", hash = "sha256:d41997519fcba4a1e46eb4a2fe31bc12f0ff957b2b81bac28db24744f333e955"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "langcodes"
 version = "3.3.0"
@@ -2548,6 +3088,11 @@ files = [
 
 [package.extras]
 data = ["language-data (>=1.1,<2.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "libclang"
@@ -2566,6 +3111,11 @@ files = [
     {file = "libclang-16.0.0-py2.py3-none-win_arm64.whl", hash = "sha256:bf4628fc4da7a1dd06a244f9b8e121c5ec68076a763c59d6b13cbb103acc935b"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "locket"
 version = "1.0.0"
@@ -2576,6 +3126,11 @@ files = [
     {file = "locket-1.0.0-py2.py3-none-any.whl", hash = "sha256:b6c819a722f7b6bd955b80781788e4a66a55628b858d347536b7e81325a3a5e3"},
     {file = "locket-1.0.0.tar.gz", hash = "sha256:5c0d4c052a8bbbf750e056a8e65ccd309086f4f0f18a2eac306a8dfa4112a632"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "markdown"
@@ -2590,6 +3145,11 @@ files = [
 
 [package.extras]
 testing = ["coverage", "pyyaml"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "markdown-it-py"
@@ -2614,6 +3174,11 @@ plugins = ["mdit-py-plugins"]
 profiling = ["gprof2dot"]
 rtd = ["jupyter_sphinx", "mdit-py-plugins", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
 testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "markupsafe"
@@ -2684,6 +3249,11 @@ files = [
     {file = "MarkupSafe-2.1.3.tar.gz", hash = "sha256:af598ed32d6ae86f1b747b82783958b1a4ab8f617b06fe68795c7f026abbdcad"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "matplotlib"
 version = "3.5.3"
@@ -2738,6 +3308,11 @@ pillow = ">=6.2.0"
 pyparsing = ">=2.2.1"
 python-dateutil = ">=2.7"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "mattermostwrapper"
 version = "2.2"
@@ -2751,6 +3326,11 @@ files = [
 [package.dependencies]
 requests = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "mdurl"
 version = "0.1.2"
@@ -2761,6 +3341,11 @@ files = [
     {file = "mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
     {file = "mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "memory-profiler"
@@ -2775,6 +3360,11 @@ files = [
 
 [package.dependencies]
 psutil = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "ml-dtypes"
@@ -2808,6 +3398,11 @@ numpy = {version = ">=1.21.2", markers = "python_version > \"3.9\""}
 [package.extras]
 dev = ["absl-py", "pyink", "pylint (>=2.6.0)", "pytest", "pytest-xdist"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "mongomock"
 version = "4.1.2"
@@ -2823,6 +3418,11 @@ files = [
 packaging = "*"
 sentinels = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "monotonic"
 version = "1.6"
@@ -2833,6 +3433,11 @@ files = [
     {file = "monotonic-1.6-py2.py3-none-any.whl", hash = "sha256:68687e19a14f11f26d140dd5c86f3dba4bf5df58003000ed467e0e2a69bca96c"},
     {file = "monotonic-1.6.tar.gz", hash = "sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "moto"
@@ -2878,6 +3483,11 @@ server = ["PyYAML (>=5.1)", "antlr4-python3-runtime", "aws-xray-sdk (>=0.93,!=0.
 ssm = ["PyYAML (>=5.1)"]
 stepfunctions = ["antlr4-python3-runtime", "jsonpath_ng"]
 xray = ["aws-xray-sdk (>=0.93,!=0.96)", "setuptools"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "msgpack"
@@ -2950,6 +3560,11 @@ files = [
     {file = "msgpack-1.0.5-cp39-cp39-win_amd64.whl", hash = "sha256:06f5174b5f8ed0ed919da0e62cbd4ffde676a374aba4020034da05fab67b9164"},
     {file = "msgpack-1.0.5.tar.gz", hash = "sha256:c075544284eadc5cddc70f4757331d99dcbc16b2bbd4849d15f8aae4cf36d31c"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "multidict"
@@ -3032,6 +3647,11 @@ files = [
     {file = "multidict-5.2.0.tar.gz", hash = "sha256:0dd1c93edb444b33ba2274b66f63def8a327d607c6c790772f448a53b6ea59ce"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "murmurhash"
 version = "1.0.9"
@@ -3068,6 +3688,11 @@ files = [
     {file = "murmurhash-1.0.9-cp39-cp39-win_amd64.whl", hash = "sha256:379bf6b414bd27dd36772dd1570565a7d69918e980457370838bd514df0d91e9"},
     {file = "murmurhash-1.0.9.tar.gz", hash = "sha256:fe7a38cb0d3d87c14ec9dddc4932ffe2dbc77d75469ab80fd5014689b0e07b58"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "mypy"
@@ -3115,6 +3740,11 @@ install-types = ["pip"]
 python2 = ["typed-ast (>=1.4.0,<2)"]
 reports = ["lxml"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "mypy-extensions"
 version = "0.4.4"
@@ -3124,6 +3754,11 @@ python-versions = ">=2.7"
 files = [
     {file = "mypy_extensions-0.4.4.tar.gz", hash = "sha256:c8b707883a96efe9b4bb3aaf0dcc07e7e217d7d8368eec4db4049ee9e142f4fd"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "networkx"
@@ -3143,6 +3778,11 @@ doc = ["nb2plots (>=0.6)", "numpydoc (>=1.1)", "pillow (>=8.2)", "pydata-sphinx-
 extra = ["lxml (>=4.5)", "pydot (>=1.4.1)", "pygraphviz (>=1.7)"]
 test = ["codecov (>=2.1)", "pytest (>=6.2)", "pytest-cov (>=2.12)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "nr-util"
 version = "0.8.12"
@@ -3157,6 +3797,11 @@ files = [
 [package.dependencies]
 deprecated = ">=1.2.0,<2.0.0"
 typing-extensions = ">=3.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "numpy"
@@ -3195,6 +3840,11 @@ files = [
     {file = "numpy-1.23.5.tar.gz", hash = "sha256:1b1766d6f397c18153d40015ddfc79ddb715cabadc04d2d228d4e5a8bc4ded1a"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "oauthlib"
 version = "3.2.2"
@@ -3210,6 +3860,11 @@ files = [
 rsa = ["cryptography (>=3.0.0)"]
 signals = ["blinker (>=1.4.0)"]
 signedtoken = ["cryptography (>=3.0.0)", "pyjwt (>=2.0.0,<3)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "opt-einsum"
@@ -3229,6 +3884,11 @@ numpy = ">=1.7"
 docs = ["numpydoc", "sphinx (==1.2.3)", "sphinx-rtd-theme", "sphinxcontrib-napoleon"]
 tests = ["pytest", "pytest-cov", "pytest-pep8"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "packaging"
 version = "24.2"
@@ -3239,6 +3899,11 @@ files = [
     {file = "packaging-24.2-py3-none-any.whl", hash = "sha256:09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759"},
     {file = "packaging-24.2.tar.gz", hash = "sha256:c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pamqp"
@@ -3254,6 +3919,11 @@ files = [
 [package.extras]
 codegen = ["lxml", "requests", "yapf"]
 testing = ["coverage", "flake8", "flake8-comprehensions", "flake8-deprecated", "flake8-import-order", "flake8-print", "flake8-quotes", "flake8-rst-docstrings", "flake8-tuple", "yapf"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "partd"
@@ -3273,6 +3943,11 @@ toolz = "*"
 [package.extras]
 complete = ["blosc", "numpy (>=1.9.0)", "pandas (>=0.19.0)", "pyzmq"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pathspec"
 version = "0.11.1"
@@ -3283,6 +3958,11 @@ files = [
     {file = "pathspec-0.11.1-py3-none-any.whl", hash = "sha256:d8af70af76652554bd134c22b3e8a1cc46ed7d91edcdd721ef1a0c51a84a5293"},
     {file = "pathspec-0.11.1.tar.gz", hash = "sha256:2798de800fa92780e33acca925945e9a19a133b715067cf165b8866c15a31687"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pbr"
@@ -3295,12 +3975,17 @@ files = [
     {file = "pbr-5.11.1.tar.gz", hash = "sha256:aefc51675b0b533d56bb5fd1c8c6c0522fe31896679882e1c4c63d5e4a0fccb3"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pep440-version-utils"
 version = "1.1.1"
 description = "Utilities to deal with pep440 versioning"
 optional = false
-python-versions = "<3.13,>=3.8"
+python-versions = ">=3.8,<3.13"
 files = [
     {file = "pep440_version_utils-1.1.1-py3-none-any.whl", hash = "sha256:44661f4af7b610f55746903fe39c326bc52944b1aebb985ee9de198f56ba131e"},
     {file = "pep440_version_utils-1.1.1.tar.gz", hash = "sha256:f7a8bc8091f386e3da509f8e08e01d43218b6520c746c5c2dde9cf0c72286321"},
@@ -3308,6 +3993,11 @@ files = [
 
 [package.dependencies]
 packaging = ">=21.3,<25"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pillow"
@@ -3376,6 +4066,11 @@ files = [
 docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-removed-in", "sphinxext-opengraph"]
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "platformdirs"
 version = "3.8.0"
@@ -3391,6 +4086,11 @@ files = [
 docs = ["furo (>=2023.5.20)", "proselint (>=0.13)", "sphinx (>=7.0.1)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)"]
 test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.3.1)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pluggy"
 version = "1.5.0"
@@ -3405,6 +4105,11 @@ files = [
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "portalocker"
@@ -3424,6 +4129,11 @@ pywin32 = {version = ">=226", markers = "platform_system == \"Windows\""}
 docs = ["sphinx (>=1.7.1)"]
 redis = ["redis"]
 tests = ["pytest (>=5.4.1)", "pytest-cov (>=2.8.1)", "pytest-mypy (>=0.8.0)", "pytest-timeout (>=2.1.0)", "redis", "sphinx (>=6.0.0)", "types-redis"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "preshed"
@@ -3466,6 +4176,11 @@ files = [
 cymem = ">=2.0.2,<2.1.0"
 murmurhash = ">=0.28.0,<1.1.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "prompt-toolkit"
 version = "3.0.28"
@@ -3479,6 +4194,11 @@ files = [
 
 [package.dependencies]
 wcwidth = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "protobuf"
@@ -3501,6 +4221,11 @@ files = [
     {file = "protobuf-4.23.3-py3-none-any.whl", hash = "sha256:447b9786ac8e50ae72cae7a2eec5c5df6a9dbf9aa6f908f1b8bda6032644ea62"},
     {file = "protobuf-4.23.3.tar.gz", hash = "sha256:7a92beb30600332a52cdadbedb40d33fd7c8a0d7f549c440347bc606fb3fe34b"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "psutil"
@@ -3527,6 +4252,11 @@ files = [
 
 [package.extras]
 test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "psycopg2-binary"
@@ -3599,6 +4329,11 @@ files = [
     {file = "psycopg2_binary-2.9.6-cp39-cp39-win_amd64.whl", hash = "sha256:f6a88f384335bb27812293fdb11ac6aee2ca3f51d3c7820fe03de0a304ab6249"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pyasn1"
 version = "0.5.0"
@@ -3609,6 +4344,11 @@ files = [
     {file = "pyasn1-0.5.0-py2.py3-none-any.whl", hash = "sha256:87a2121042a1ac9358cabcaf1d07680ff97ee6404333bacca15f76aa8ad01a57"},
     {file = "pyasn1-0.5.0.tar.gz", hash = "sha256:97b7290ca68e62a832558ec3976f15cbf911bf5d7c7039d8b861c2a0ece69fde"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pyasn1-modules"
@@ -3624,6 +4364,11 @@ files = [
 [package.dependencies]
 pyasn1 = ">=0.4.6,<0.6.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pycparser"
 version = "2.21"
@@ -3634,6 +4379,11 @@ files = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pydantic"
@@ -3687,6 +4437,11 @@ typing-extensions = ">=4.2.0"
 dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pydoc-markdown"
 version = "4.7.0"
@@ -3713,6 +4468,11 @@ tomli_w = ">=1.0.0,<2.0.0"
 watchdog = "*"
 yapf = ">=0.30.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pydot"
 version = "1.4.2"
@@ -3727,6 +4487,11 @@ files = [
 [package.dependencies]
 pyparsing = ">=2.1.4"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pygments"
 version = "2.15.1"
@@ -3740,6 +4505,11 @@ files = [
 
 [package.extras]
 plugins = ["importlib-metadata"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pyjwt"
@@ -3761,6 +4531,11 @@ dev = ["coverage[toml] (==5.0.4)", "cryptography (>=3.4.0)", "pre-commit", "pyte
 docs = ["sphinx", "sphinx-rtd-theme", "zope.interface"]
 tests = ["coverage[toml] (==5.0.4)", "pytest (>=6.0.0,<7.0.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pykwalify"
 version = "1.8.0"
@@ -3776,6 +4551,11 @@ files = [
 docopt = ">=0.6.2"
 python-dateutil = ">=2.8.0"
 "ruamel.yaml" = ">=0.16.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pymongo"
@@ -3856,6 +4636,11 @@ snappy = ["python-snappy"]
 test = ["pytest (>=8.2)", "pytest-asyncio (>=0.24.0)"]
 zstd = ["zstandard"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pyparsing"
 version = "3.0.9"
@@ -3870,6 +4655,11 @@ files = [
 [package.extras]
 diagrams = ["jinja2", "railroad-diagrams"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pyreadline3"
 version = "3.4.1"
@@ -3880,6 +4670,11 @@ files = [
     {file = "pyreadline3-3.4.1-py3-none-any.whl", hash = "sha256:b0efb6516fd4fb07b45949053826a62fa4cb353db5be2bbb4a7aa1fdd1e345fb"},
     {file = "pyreadline3-3.4.1.tar.gz", hash = "sha256:6f3d1f7b8a31ba32b73917cefc1f28cc660562f39aea8646d30bd6eff21f7bae"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pyrsistent"
@@ -3922,6 +4717,11 @@ files = [
     {file = "pyrsistent-0.20.0.tar.gz", hash = "sha256:4c48f78f62ab596c679086084d0dd13254ae4f3d6c72a83ffdf5ebdef8f265a4"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pytest"
 version = "7.4.0"
@@ -3944,6 +4744,11 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 [package.extras]
 testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pytest-asyncio"
 version = "0.20.3"
@@ -3962,6 +4767,11 @@ pytest = ">=6.1.0"
 docs = ["sphinx (>=5.3)", "sphinx-rtd-theme (>=1.0)"]
 testing = ["coverage (>=6.2)", "flaky (>=3.5.0)", "hypothesis (>=5.7.1)", "mypy (>=0.931)", "pytest-trio (>=0.7.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pytest-cov"
 version = "4.1.0"
@@ -3979,6 +4789,11 @@ pytest = ">=4.6"
 
 [package.extras]
 testing = ["fields", "hunter", "process-tests", "pytest-xdist", "six", "virtualenv"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pytest-sanic"
@@ -4015,6 +4830,11 @@ files = [
 [package.dependencies]
 pytest = ">=5.0.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pytest-xdist"
 version = "3.3.1"
@@ -4034,6 +4854,11 @@ pytest = ">=6.2.0"
 psutil = ["psutil (>=3.0)"]
 setproctitle = ["setproctitle"]
 testing = ["filelock"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "python-crfsuite"
@@ -4094,6 +4919,11 @@ files = [
     {file = "python_crfsuite-0.9.9-cp39-cp39-win_amd64.whl", hash = "sha256:7cc85c02a117f37384181c43e8c096054ba88063fbc3255e12ad6213ed52553e"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "python-dateutil"
 version = "2.8.2"
@@ -4107,6 +4937,11 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "python-engineio"
@@ -4126,6 +4961,11 @@ simple-websocket = ">=0.10.0"
 asyncio-client = ["aiohttp (>=3.4)"]
 client = ["requests (>=2.21.0)", "websocket-client (>=0.54.0)"]
 docs = ["sphinx"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "python-socketio"
@@ -4147,6 +4987,11 @@ asyncio-client = ["aiohttp (>=3.4)"]
 client = ["requests (>=2.21.0)", "websocket-client (>=0.54.0)"]
 docs = ["sphinx"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "pytz"
 version = "2022.7.1"
@@ -4157,6 +5002,11 @@ files = [
     {file = "pytz-2022.7.1-py2.py3-none-any.whl", hash = "sha256:78f4f37d8198e0627c5f1143240bb0206b8691d8d7ac6d78fee88b78733f8c4a"},
     {file = "pytz-2022.7.1.tar.gz", hash = "sha256:01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pywin32"
@@ -4180,6 +5030,11 @@ files = [
     {file = "pywin32-306-cp39-cp39-win32.whl", hash = "sha256:e25fd5b485b55ac9c057f67d94bc203f3f6595078d1fb3b458c9c28b7153a802"},
     {file = "pywin32-306-cp39-cp39-win_amd64.whl", hash = "sha256:39b61c15272833b5c329a2989999dcae836b1eed650252ab1b7bfbe1d59f30f4"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "pyyaml"
@@ -4241,6 +5096,11 @@ files = [
     {file = "PyYAML-6.0.1.tar.gz", hash = "sha256:bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "questionary"
 version = "1.10.0"
@@ -4258,6 +5118,11 @@ prompt_toolkit = ">=2.0,<4.0"
 [package.extras]
 docs = ["Sphinx (>=3.3,<4.0)", "sphinx-autobuild (>=2020.9.1,<2021.0.0)", "sphinx-autodoc-typehints (>=1.11.1,<2.0.0)", "sphinx-copybutton (>=0.3.1,<0.4.0)", "sphinx-rtd-theme (>=0.5.0,<0.6.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "randomname"
 version = "0.1.5"
@@ -4270,6 +5135,11 @@ files = [
 
 [package.dependencies]
 fire = "*"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "rasa-sdk"
@@ -4294,6 +5164,11 @@ typing-extensions = ">=4.1.1,<5.0.0"
 websockets = ">=10.0,<11.0"
 wheel = ">=0.38.1"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "redis"
 version = "5.2.1"
@@ -4311,6 +5186,11 @@ async-timeout = {version = ">=4.0.3", markers = "python_full_version < \"3.11.3\
 [package.extras]
 hiredis = ["hiredis (>=3.0.0)"]
 ocsp = ["cryptography (>=36.0.1)", "pyopenssl (==23.2.1)", "requests (>=2.31.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "regex"
@@ -4409,6 +5289,11 @@ files = [
     {file = "regex-2022.10.31.tar.gz", hash = "sha256:a3a98921da9a1bf8457aeee6a551948a83601689e5ecdd736894ea9bbec77e83"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "requests"
 version = "2.31.0"
@@ -4430,6 +5315,11 @@ urllib3 = ">=1.21.1,<3"
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
 use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "requests-oauthlib"
 version = "1.3.1"
@@ -4448,6 +5338,11 @@ requests = ">=2.0.0"
 [package.extras]
 rsa = ["oauthlib[signedtoken] (>=3.0.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "requests-toolbelt"
 version = "1.0.0"
@@ -4461,6 +5356,11 @@ files = [
 
 [package.dependencies]
 requests = ">=2.0.1,<3.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "responses"
@@ -4482,6 +5382,11 @@ urllib3 = ">=1.25.10"
 [package.extras]
 tests = ["coverage (>=6.0.0)", "flake8", "mypy", "pytest (>=7.0.0)", "pytest-asyncio", "pytest-cov", "pytest-httpserver", "types-requests"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "rfc3986"
 version = "1.5.0"
@@ -4498,6 +5403,11 @@ idna = {version = "*", optional = true, markers = "extra == \"idna2008\""}
 
 [package.extras]
 idna2008 = ["idna"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "rich"
@@ -4517,6 +5427,11 @@ pygments = ">=2.13.0,<3.0.0"
 [package.extras]
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "rocketchat-api"
 version = "1.30.0"
@@ -4532,6 +5447,11 @@ files = [
 packaging = "*"
 requests = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "rsa"
 version = "4.9"
@@ -4545,6 +5465,11 @@ files = [
 
 [package.dependencies]
 pyasn1 = ">=0.1.3"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "ruamel-yaml"
@@ -4560,6 +5485,11 @@ files = [
 [package.extras]
 docs = ["ryd"]
 jinja2 = ["ruamel.yaml.jinja2 (>=0.2)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "ruff"
@@ -4587,12 +5517,17 @@ files = [
     {file = "ruff-0.0.255.tar.gz", hash = "sha256:f9eb1d3b2eecbeedae419fa494c4e2a5e4484baf93a1ce0f81eddb005e1919c5"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "s3transfer"
 version = "0.11.3"
 description = "An Amazon S3 Transfer Manager"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">= 3.8"
 files = [
     {file = "s3transfer-0.11.3-py3-none-any.whl", hash = "sha256:ca855bdeb885174b5ffa95b9913622459d4ad8e331fc98eb01e6d5eb6a30655d"},
     {file = "s3transfer-0.11.3.tar.gz", hash = "sha256:edae4977e3a122445660c7c114bba949f9d191bae3b34a096f18a1c8c354527a"},
@@ -4603,6 +5538,11 @@ botocore = ">=1.36.0,<2.0a.0"
 
 [package.extras]
 crt = ["botocore[crt] (>=1.36.0,<2.0a.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "safetensors"
@@ -4736,6 +5676,11 @@ tensorflow = ["safetensors[numpy]", "tensorflow (>=2.11.0)"]
 testing = ["h5py (>=3.7.0)", "huggingface-hub (>=0.12.1)", "hypothesis (>=6.70.2)", "pytest (>=7.2.0)", "pytest-benchmark (>=4.0.0)", "safetensors[numpy]", "setuptools-rust (>=1.5.2)"]
 torch = ["safetensors[numpy]", "torch (>=1.10)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "sanic"
 version = "21.12.2"
@@ -4763,19 +5708,30 @@ docs = ["docutils", "m2r2", "mistune (<2.0.0)", "pygments", "sphinx (>=2.1.2)", 
 ext = ["sanic-ext"]
 test = ["bandit", "beautifulsoup4", "black", "chardet (==3.*)", "coverage (==5.3)", "docutils", "flake8", "gunicorn (==20.0.4)", "isort (>=5.0.0)", "mypy (>=0.901,<0.910)", "pygments", "pytest (==6.2.5)", "pytest-benchmark", "pytest-cov", "pytest-sanic", "pytest-sugar", "sanic-testing (>=0.7.0)", "types-ujson", "uvicorn (<0.15.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "sanic-cors"
-version = "2.0.1"
+version = "2.2.0"
 description = "A Sanic extension adding a decorator for CORS support. Based on flask-cors by Cory Dolphin."
 optional = false
 python-versions = "*"
 files = [
-    {file = "Sanic-Cors-2.0.1.tar.gz", hash = "sha256:4d2f26333d49db428217814c66e89fc3df20fc62a5ab518a71fa22e2e249e19d"},
-    {file = "Sanic_Cors-2.0.1-py2.py3-none-any.whl", hash = "sha256:0c8132bed394ba86f93c03bef52787183652d96b70add4ea13c25eb98f344343"},
+    {file = "Sanic-Cors-2.2.0.tar.gz", hash = "sha256:f8d7515da4c8b837871d422c66314c4b5704396a78894b59c50e26aa72a95873"},
+    {file = "Sanic_Cors-2.2.0-py2.py3-none-any.whl", hash = "sha256:c3b133ff1f0bb609a53db35f727f5c371dc4ebeb6be4cc2c37c19dd8b9301115"},
 ]
 
 [package.dependencies]
+packaging = ">=21.3"
 sanic = ">=21.9.3"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sanic-jwt"
@@ -4795,6 +5751,11 @@ pyjwt = ">=2.1.0,<3.0.0"
 all = ["Jinja2 (<3.1)", "Sphinx"]
 docs = ["Jinja2 (<3.1)", "Sphinx"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "sanic-routing"
 version = "0.7.2"
@@ -4805,6 +5766,11 @@ files = [
     {file = "sanic-routing-0.7.2.tar.gz", hash = "sha256:139ce88b3f054e7aa336e2ecc8459837092b103b275d3a97609a34092c55374d"},
     {file = "sanic_routing-0.7.2-py3-none-any.whl", hash = "sha256:523034ffd07aca056040e08de438269c9a880722eee1ace3a32e4f74b394d9aa"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sanic-testing"
@@ -4819,6 +5785,11 @@ files = [
 
 [package.dependencies]
 httpx = ">=0.18,<0.24"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "scikit-learn"
@@ -4842,11 +5813,6 @@ files = [
     {file = "scikit_learn-1.5.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f60021ec1574e56632be2a36b946f8143bf4e5e6af4a06d85281adc22938e0dd"},
     {file = "scikit_learn-1.5.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:394397841449853c2290a32050382edaec3da89e35b3e03d6cc966aebc6a8ae6"},
     {file = "scikit_learn-1.5.2-cp312-cp312-win_amd64.whl", hash = "sha256:57cc1786cfd6bd118220a92ede80270132aa353647684efa385a74244a41e3b1"},
-    {file = "scikit_learn-1.5.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:e9a702e2de732bbb20d3bad29ebd77fc05a6b427dc49964300340e4c9328b3f5"},
-    {file = "scikit_learn-1.5.2-cp313-cp313-macosx_12_0_arm64.whl", hash = "sha256:b0768ad641981f5d3a198430a1d31c3e044ed2e8a6f22166b4d546a5116d7908"},
-    {file = "scikit_learn-1.5.2-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:178ddd0a5cb0044464fc1bfc4cca5b1833bfc7bb022d70b05db8530da4bb3dd3"},
-    {file = "scikit_learn-1.5.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f7284ade780084d94505632241bf78c44ab3b6f1e8ccab3d2af58e0e950f9c12"},
-    {file = "scikit_learn-1.5.2-cp313-cp313-win_amd64.whl", hash = "sha256:b7b0f9a0b1040830d38c39b91b3a44e1b643f4b36e36567b80b7c6bd2202a27f"},
     {file = "scikit_learn-1.5.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:757c7d514ddb00ae249832fe87100d9c73c6ea91423802872d9e74970a0e40b9"},
     {file = "scikit_learn-1.5.2-cp39-cp39-macosx_12_0_arm64.whl", hash = "sha256:52788f48b5d8bca5c0736c175fa6bdaab2ef00a8f536cda698db61bd89c551c1"},
     {file = "scikit_learn-1.5.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:643964678f4b5fbdc95cbf8aec638acc7aa70f5f79ee2cdad1eec3df4ba6ead8"},
@@ -4869,6 +5835,11 @@ examples = ["matplotlib (>=3.3.4)", "pandas (>=1.1.5)", "plotly (>=5.14.0)", "po
 install = ["joblib (>=1.2.0)", "numpy (>=1.19.5)", "scipy (>=1.6.0)", "threadpoolctl (>=3.1.0)"]
 maintenance = ["conda-lock (==2.5.6)"]
 tests = ["black (>=24.3.0)", "matplotlib (>=3.3.4)", "mypy (>=1.9)", "numpydoc (>=1.2.0)", "pandas (>=1.1.5)", "polars (>=0.20.30)", "pooch (>=1.6.0)", "pyamg (>=4.0.0)", "pyarrow (>=12.0.0)", "pytest (>=7.1.2)", "pytest-cov (>=2.9.0)", "ruff (>=0.2.1)", "scikit-image (>=0.17.2)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "scipy"
@@ -4919,6 +5890,11 @@ numpy = ">=1.23.5,<2.3"
 dev = ["cython-lint (>=0.12.2)", "doit (>=0.36.0)", "mypy (==1.10.0)", "pycodestyle", "pydevtool", "rich-click", "ruff (>=0.0.292)", "types-psutil", "typing_extensions"]
 doc = ["jupyterlite-pyodide-kernel", "jupyterlite-sphinx (>=0.13.1)", "jupytext", "matplotlib (>=3.5)", "myst-nb", "numpydoc", "pooch", "pydata-sphinx-theme (>=0.15.2)", "sphinx (>=5.0.0,<=7.3.7)", "sphinx-design (>=0.4.0)"]
 test = ["Cython", "array-api-strict (>=2.0)", "asv", "gmpy2", "hypothesis (>=6.30)", "meson", "mpmath", "ninja", "pooch", "pytest", "pytest-cov", "pytest-timeout", "pytest-xdist", "scikit-umfpack", "threadpoolctl"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sentencepiece"
@@ -4982,6 +5958,11 @@ files = [
     {file = "sentencepiece-0.2.0.tar.gz", hash = "sha256:a52c19171daaf2e697dc6cbe67684e0fa341b1248966f6aebb541de654d15843"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "sentinels"
 version = "1.0.0"
@@ -4991,6 +5972,11 @@ python-versions = "*"
 files = [
     {file = "sentinels-1.0.0.tar.gz", hash = "sha256:7be0704d7fe1925e397e92d18669ace2f619c92b5d4eb21a89f31e026f9ff4b1"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sentry-sdk"
@@ -5030,6 +6016,11 @@ starlette = ["starlette (>=0.19.1)"]
 starlite = ["starlite (>=1.48)"]
 tornado = ["tornado (>=5)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "setuptools"
 version = "70.3.0"
@@ -5044,6 +6035,11 @@ files = [
 [package.extras]
 doc = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "pygments-github-lexers (==0.0.5)", "pyproject-hooks (!=1.1)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-favicon", "sphinx-inline-tabs", "sphinx-lint", "sphinx-notfound-page (>=1,<2)", "sphinx-reredirects", "sphinxcontrib-towncrier"]
 test = ["build[virtualenv] (>=1.0.3)", "filelock (>=3.4.0)", "importlib-metadata", "ini2toml[lite] (>=0.14)", "jaraco.develop (>=7.21)", "jaraco.envs (>=2.2)", "jaraco.path (>=3.2.0)", "jaraco.test", "mypy (==1.10.0)", "packaging (>=23.2)", "pip (>=19.1)", "pyproject-hooks (!=1.1)", "pytest (>=6,!=8.1.*)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-home (>=0.5)", "pytest-mypy", "pytest-perf", "pytest-ruff (>=0.3.2)", "pytest-subprocess", "pytest-timeout", "pytest-xdist (>=3)", "tomli", "tomli-w (>=1.0.0)", "virtualenv (>=13.0.0)", "wheel"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "simple-websocket"
@@ -5062,6 +6058,11 @@ wsproto = "*"
 [package.extras]
 docs = ["sphinx"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "six"
 version = "1.16.0"
@@ -5072,6 +6073,11 @@ files = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
     {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sklearn-crfsuite"
@@ -5089,6 +6095,11 @@ python-crfsuite = ">=0.8.3"
 six = "*"
 tabulate = "*"
 tqdm = ">=2.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "skops"
@@ -5112,6 +6123,11 @@ docs = ["fairlearn (>=0.7.0)", "matplotlib (>=3.3)", "numpydoc (>=1.0.0)", "pand
 rich = ["rich (>=12)"]
 tests = ["catboost (>=1.0)", "fairlearn (>=0.7.0)", "flake8 (>=3.8.2)", "flaky (>=3.7.0)", "lightgbm (>=3)", "matplotlib (>=3.3)", "pandas (>=1)", "pytest (>=5.0.1)", "pytest-cov (>=2.9.0)", "quantile-forest (>=1.0.0)", "rich (>=12)", "types-requests (>=2.28.5)", "xgboost (>=1.6)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "slack-sdk"
 version = "3.33.1"
@@ -5125,6 +6141,11 @@ files = [
 
 [package.extras]
 optional = ["SQLAlchemy (>=1.4,<3)", "aiodns (>1.0)", "aiohttp (>=3.7.3,<4)", "boto3 (<=2)", "websocket-client (>=1,<2)", "websockets (>=9.1,<14)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "smart-open"
@@ -5147,6 +6168,11 @@ ssh = ["paramiko"]
 test = ["azure-common", "azure-core", "azure-storage-blob", "boto3", "google-cloud-storage (>=2.6.0)", "moto[server]", "paramiko", "pytest", "pytest-rerunfailures", "requests", "responses"]
 webhdfs = ["requests"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "smmap"
 version = "5.0.0"
@@ -5157,6 +6183,11 @@ files = [
     {file = "smmap-5.0.0-py3-none-any.whl", hash = "sha256:2aba19d6a040e78d8b09de5c57e96207b09ed71d8e55ce0959eeee6c8e190d94"},
     {file = "smmap-5.0.0.tar.gz", hash = "sha256:c840e62059cd3be204b0c9c9f74be2c09d5648eddd4580d9314c3ecde0b30936"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sniffio"
@@ -5169,6 +6200,11 @@ files = [
     {file = "sniffio-1.3.0.tar.gz", hash = "sha256:e60305c5e5d314f5389259b7f22aaa33d8f7dee49763119234af3755c55b9101"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "sortedcontainers"
 version = "2.4.0"
@@ -5179,6 +6215,11 @@ files = [
     {file = "sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"},
     {file = "sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "spacy"
@@ -5252,6 +6293,11 @@ lookups = ["spacy_lookups_data (>=1.0.3,<1.1.0)"]
 th = ["pythainlp (>=2.0)"]
 transformers = ["spacy_transformers (>=1.1.2,<1.4.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "spacy-legacy"
 version = "3.0.12"
@@ -5263,6 +6309,11 @@ files = [
     {file = "spacy_legacy-3.0.12-py2.py3-none-any.whl", hash = "sha256:476e3bd0d05f8c339ed60f40986c07387c0a71479245d6d0f4298dbd52cda55f"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "spacy-loggers"
 version = "1.0.4"
@@ -5273,6 +6324,11 @@ files = [
     {file = "spacy-loggers-1.0.4.tar.gz", hash = "sha256:e6f983bf71230091d5bb7b11bf64bd54415eca839108d5f83d9155d0ba93bf28"},
     {file = "spacy_loggers-1.0.4-py3-none-any.whl", hash = "sha256:e050bf2e63208b2f096b777e494971c962ad7c1dc997641c8f95c622550044ae"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "sqlalchemy"
@@ -5355,6 +6411,11 @@ postgresql-psycopg2cffi = ["psycopg2cffi"]
 pymysql = ["pymysql", "pymysql (<1)"]
 sqlcipher = ["sqlcipher3-binary"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "srsly"
 version = "2.4.6"
@@ -5395,6 +6456,11 @@ files = [
 [package.dependencies]
 catalogue = ">=2.0.3,<2.1.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "stevedore"
 version = "5.1.0"
@@ -5408,6 +6474,11 @@ files = [
 
 [package.dependencies]
 pbr = ">=2.0.0,<2.1.0 || >2.1.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "structlog"
@@ -5426,6 +6497,11 @@ docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-
 tests = ["freezegun (>=0.2.8)", "pretend", "pytest (>=6.0)", "pytest-asyncio (>=0.17)", "simplejson"]
 typing = ["mypy (>=1.4)", "rich", "twisted"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "structlog-sentry"
 version = "2.1.0"
@@ -5441,6 +6517,11 @@ files = [
 sentry-sdk = "*"
 structlog = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tabulate"
 version = "0.9.0"
@@ -5455,6 +6536,11 @@ files = [
 [package.extras]
 widechars = ["wcwidth"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tarsafe"
 version = "0.0.4"
@@ -5465,6 +6551,11 @@ files = [
     {file = "tarsafe-0.0.4-py3-none-any.whl", hash = "sha256:12903a81f2612c09d22117115301ea510944af5caa1e358636e0fc1d0e6134df"},
     {file = "tarsafe-0.0.4.tar.gz", hash = "sha256:a376f4138005298c11c30cb60a5081fa2c09f44384c966106fbaeee3059e9ec5"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorboard"
@@ -5490,6 +6581,11 @@ tensorboard-data-server = ">=0.7.0,<0.8.0"
 werkzeug = ">=1.0.1"
 wheel = ">=0.26"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tensorboard-data-server"
 version = "0.7.1"
@@ -5501,6 +6597,11 @@ files = [
     {file = "tensorboard_data_server-0.7.1-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:be8d016a1aa394e6198280d4a3dc37898f56467310c5f5e617cac10a783e055a"},
     {file = "tensorboard_data_server-0.7.1-py3-none-manylinux2014_x86_64.whl", hash = "sha256:255c02b7f5b03dd5c0a88c928e563441ff39e1d4b4a234cdbe09f016e53d9594"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorflow"
@@ -5551,6 +6652,11 @@ termcolor = ">=1.1.0"
 typing-extensions = ">=3.6.6,<4.6.0"
 wrapt = ">=1.11.0,<1.15"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tensorflow-cpu-aws"
 version = "2.12.1"
@@ -5588,6 +6694,11 @@ termcolor = ">=1.1.0"
 typing-extensions = ">=3.6.6,<4.6.0"
 wrapt = ">=1.11.0,<1.15"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tensorflow-estimator"
 version = "2.12.0"
@@ -5597,6 +6708,11 @@ python-versions = ">=3.7"
 files = [
     {file = "tensorflow_estimator-2.12.0-py2.py3-none-any.whl", hash = "sha256:59b191bead4883822de3d63ac02ace11a83bfe6c10d64d0c4dfde75a50e60ca1"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorflow-hub"
@@ -5615,6 +6731,11 @@ protobuf = ">=3.19.6"
 [package.extras]
 make-image-classifier = ["keras-preprocessing[image]"]
 make-nearest-neighbour-index = ["annoy", "apache-beam"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorflow-intel"
@@ -5653,12 +6774,17 @@ termcolor = ">=1.1.0"
 typing-extensions = ">=3.6.6"
 wrapt = ">=1.11.0,<1.15"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tensorflow-io-gcs-filesystem"
 version = "0.37.1"
 description = "TensorFlow IO"
 optional = false
-python-versions = "<3.13,>=3.7"
+python-versions = ">=3.7, <3.13"
 files = [
     {file = "tensorflow_io_gcs_filesystem-0.37.1-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:249c12b830165841411ba71e08215d0e94277a49c551e6dd5d72aab54fe5491b"},
     {file = "tensorflow_io_gcs_filesystem-0.37.1-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:257aab23470a0796978efc9c2bcf8b0bc80f22e6298612a4c0a50d3f4e88060c"},
@@ -5684,6 +6810,11 @@ tensorflow-aarch64 = ["tensorflow-aarch64 (>=2.16.0,<2.17.0)"]
 tensorflow-cpu = ["tensorflow-cpu (>=2.16.0,<2.17.0)"]
 tensorflow-gpu = ["tensorflow-gpu (>=2.16.0,<2.17.0)"]
 tensorflow-rocm = ["tensorflow-rocm (>=2.16.0,<2.17.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorflow-macos"
@@ -5726,6 +6857,11 @@ termcolor = ">=1.1.0"
 typing-extensions = ">=3.6.6"
 wrapt = ">=1.11.0,<1.15"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tensorflow-metal"
 version = "1.2.0"
@@ -5742,6 +6878,11 @@ files = [
 [package.dependencies]
 six = ">=1.15.0"
 wheel = ">=0.35,<1.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tensorflow-text"
@@ -5768,6 +6909,11 @@ tensorflow-hub = ">=0.8.0"
 tensorflow-cpu = ["tensorflow-cpu (>=2.12.0,<2.13)"]
 tests = ["absl-py", "pytest", "tensorflow-datasets (<4.9.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "termcolor"
 version = "2.3.0"
@@ -5782,6 +6928,11 @@ files = [
 [package.extras]
 tests = ["pytest", "pytest-cov"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "terminaltables"
 version = "3.1.10"
@@ -5792,6 +6943,11 @@ files = [
     {file = "terminaltables-3.1.10-py2.py3-none-any.whl", hash = "sha256:e4fdc4179c9e4aab5f674d80f09d76fa436b96fdc698a8505e0a36bf0804a874"},
     {file = "terminaltables-3.1.10.tar.gz", hash = "sha256:ba6eca5cb5ba02bba4c9f4f985af80c54ec3dccf94cfcd190154386255e47543"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "thinc"
@@ -5863,6 +7019,11 @@ mxnet = ["mxnet (>=1.5.1,<1.6.0)"]
 tensorflow = ["tensorflow (>=2.0.0,<2.6.0)"]
 torch = ["torch (>=1.6.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "threadpoolctl"
 version = "3.1.0"
@@ -5873,6 +7034,11 @@ files = [
     {file = "threadpoolctl-3.1.0-py3-none-any.whl", hash = "sha256:8b99adda265feb6773280df41eece7b2e6561b772d21ffd52e372f999024907b"},
     {file = "threadpoolctl-3.1.0.tar.gz", hash = "sha256:a335baacfaa4400ae1f0d8e3a58d6674d2f8828e3716bb2802c44955ad391380"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tokenizers"
@@ -5906,6 +7072,11 @@ dev = ["tokenizers[testing]"]
 docs = ["setuptools-rust", "sphinx", "sphinx-rtd-theme"]
 testing = ["black (==22.3)", "datasets", "numpy", "pytest", "requests", "ruff"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "toml"
 version = "0.10.2"
@@ -5916,6 +7087,11 @@ files = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
     {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tomli"
@@ -5928,6 +7104,11 @@ files = [
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tomli-w"
 version = "1.0.0"
@@ -5939,6 +7120,11 @@ files = [
     {file = "tomli_w-1.0.0.tar.gz", hash = "sha256:f463434305e0336248cac9c2dc8076b707d8a12d019dd349f5c1e382dd1ae1b9"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "toolz"
 version = "0.12.0"
@@ -5949,6 +7135,11 @@ files = [
     {file = "toolz-0.12.0-py3-none-any.whl", hash = "sha256:2059bd4148deb1884bb0eb770a3cde70e7f954cfbbdc2285f1f2de01fd21eb6f"},
     {file = "toolz-0.12.0.tar.gz", hash = "sha256:88c570861c440ee3f2f6037c4654613228ff40c93a6c25e0eba70d17282c6194"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "towncrier"
@@ -5972,6 +7163,11 @@ tomli = {version = "*", markers = "python_version < \"3.11\""}
 [package.extras]
 dev = ["furo", "packaging", "sphinx (>=5)", "twisted"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tqdm"
 version = "4.65.0"
@@ -5991,6 +7187,11 @@ dev = ["py-make (>=0.1.0)", "twine", "wheel"]
 notebook = ["ipywidgets (>=6)"]
 slack = ["slack-sdk"]
 telegram = ["requests"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "transformers"
@@ -6061,6 +7262,11 @@ torchhub = ["filelock", "huggingface-hub (>=0.24.0,<1.0)", "importlib-metadata",
 video = ["av (==9.2.0)"]
 vision = ["Pillow (>=10.0.1,<=15.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "twilio"
 version = "8.2.2"
@@ -6078,6 +7284,11 @@ aiohttp-retry = ">=2.8.3"
 PyJWT = ">=2.0.0,<3.0.0"
 pytz = "*"
 requests = ">=2.0.0"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "typer"
@@ -6100,6 +7311,11 @@ dev = ["autoflake (>=1.3.1,<2.0.0)", "flake8 (>=3.8.3,<4.0.0)", "pre-commit (>=2
 doc = ["cairosvg (>=2.5.2,<3.0.0)", "mdx-include (>=1.4.1,<2.0.0)", "mkdocs (>=1.1.2,<2.0.0)", "mkdocs-material (>=8.1.4,<9.0.0)", "pillow (>=9.3.0,<10.0.0)"]
 test = ["black (>=22.3.0,<23.0.0)", "coverage (>=6.2,<7.0)", "isort (>=5.0.6,<6.0.0)", "mypy (==0.910)", "pytest (>=4.4.0,<8.0.0)", "pytest-cov (>=2.10.0,<5.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "pytest-xdist (>=1.32.0,<4.0.0)", "rich (>=10.11.0,<14.0.0)", "shellingham (>=1.3.0,<2.0.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-pyopenssl"
 version = "23.2.0.1"
@@ -6114,6 +7330,11 @@ files = [
 [package.dependencies]
 cryptography = ">=35.0.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-python-dateutil"
 version = "2.8.19.13"
@@ -6125,6 +7346,11 @@ files = [
     {file = "types_python_dateutil-2.8.19.13-py3-none-any.whl", hash = "sha256:0b0e7c68e7043b0354b26a1e0225cb1baea7abb1b324d02b50e2d08f1221043f"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-pytz"
 version = "2022.7.1.2"
@@ -6135,6 +7361,11 @@ files = [
     {file = "types-pytz-2022.7.1.2.tar.gz", hash = "sha256:487d3e8e9f4071eec8081746d53fa982bbc05812e719dcbf2ebf3d55a1a4cd28"},
     {file = "types_pytz-2022.7.1.2-py3-none-any.whl", hash = "sha256:40ca448a928d566f7d44ddfde0066e384f7ffbd4da2778e42a4570eaca572446"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "types-redis"
@@ -6151,6 +7382,11 @@ files = [
 cryptography = ">=35.0.0"
 types-pyOpenSSL = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-requests"
 version = "2.31.0.1"
@@ -6165,6 +7401,11 @@ files = [
 [package.dependencies]
 types-urllib3 = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-setuptools"
 version = "67.8.0.0"
@@ -6175,6 +7416,11 @@ files = [
     {file = "types-setuptools-67.8.0.0.tar.gz", hash = "sha256:95c9ed61871d6c0e258433373a4e1753c0a7c3627a46f4d4058c7b5a08ab844f"},
     {file = "types_setuptools-67.8.0.0-py3-none-any.whl", hash = "sha256:6df73340d96b238a4188b7b7668814b37e8018168aef1eef94a3b1872e3f60ff"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "types-toml"
@@ -6187,6 +7433,11 @@ files = [
     {file = "types_toml-0.10.8.6-py3-none-any.whl", hash = "sha256:de7b2bb1831d6f7a4b554671ffe5875e729753496961b3e9b202745e4955dafa"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "types-urllib3"
 version = "1.26.25.13"
@@ -6198,6 +7449,11 @@ files = [
     {file = "types_urllib3-1.26.25.13-py3-none-any.whl", hash = "sha256:5dbd1d2bef14efee43f5318b5d36d805a489f6600252bb53626d4bfafd95e27c"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "typing-extensions"
 version = "4.5.0"
@@ -6208,6 +7464,11 @@ files = [
     {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
     {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "typing-utils"
@@ -6223,6 +7484,11 @@ files = [
 [package.extras]
 test = ["pytest"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "tzdata"
 version = "2023.3"
@@ -6233,6 +7499,11 @@ files = [
     {file = "tzdata-2023.3-py2.py3-none-any.whl", hash = "sha256:7e65763eef3120314099b6939b5546db7adce1e7d6f2e179e3df563c70511eda"},
     {file = "tzdata-2023.3.tar.gz", hash = "sha256:11ef1e08e54acb0d4f95bdb1be05da659673de4acbd21bf9c69e94cc5e907a3a"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "tzlocal"
@@ -6250,6 +7521,11 @@ tzdata = {version = "*", markers = "platform_system == \"Windows\""}
 
 [package.extras]
 devenv = ["black", "check-manifest", "flake8", "pyroma", "pytest (>=4.3)", "pytest-cov", "pytest-mock (>=3.3)", "zest.releaser"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "ujson"
@@ -6338,6 +7614,11 @@ files = [
     {file = "ujson-5.10.0.tar.gz", hash = "sha256:b3cd8f3c5d8c7738257f1018880444f7b7d9b66232c64649f562d7ba86ad4bc1"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "uritemplate"
 version = "4.1.1"
@@ -6348,6 +7629,11 @@ files = [
     {file = "uritemplate-4.1.1-py2.py3-none-any.whl", hash = "sha256:830c08b8d99bdd312ea4ead05994a38e8936266f84b9a7878232db50b044e02e"},
     {file = "uritemplate-4.1.1.tar.gz", hash = "sha256:4346edfc5c3b79f694bccd6d6099a322bbeb628dbf2cd86eea55a456ce5124f0"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "urllib3"
@@ -6365,6 +7651,11 @@ brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
 h2 = ["h2 (>=4,<5)"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "uvloop"
@@ -6410,6 +7701,11 @@ dev = ["Cython (>=0.29.32,<0.30.0)", "Sphinx (>=4.1.2,<4.2.0)", "aiohttp", "flak
 docs = ["Sphinx (>=4.1.2,<4.2.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)"]
 test = ["Cython (>=0.29.32,<0.30.0)", "aiohttp", "flake8 (>=3.9.2,<3.10.0)", "mypy (>=0.800)", "psutil", "pyOpenSSL (>=22.0.0,<22.1.0)", "pycodestyle (>=2.7.0,<2.8.0)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "wasabi"
 version = "1.1.2"
@@ -6423,6 +7719,11 @@ files = [
 
 [package.dependencies]
 colorama = {version = ">=0.4.6", markers = "sys_platform == \"win32\" and python_version >= \"3.7\""}
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "watchdog"
@@ -6463,6 +7764,11 @@ files = [
 [package.extras]
 watchmedo = ["PyYAML (>=3.10)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "wcwidth"
 version = "0.2.6"
@@ -6473,6 +7779,11 @@ files = [
     {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
     {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "weasel"
@@ -6496,6 +7807,11 @@ srsly = ">=2.4.3,<3.0.0"
 typer = ">=0.3.0,<1.0.0"
 wasabi = ">=0.9.1,<1.2.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "webexteamssdk"
 version = "1.6.1"
@@ -6513,6 +7829,11 @@ PyJWT = "*"
 requests = ">=2.4.2"
 requests-toolbelt = "*"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "websocket-client"
 version = "1.6.1"
@@ -6528,6 +7849,11 @@ files = [
 docs = ["Sphinx (>=3.4)", "sphinx-rtd-theme (>=0.5)"]
 optional = ["python-socks", "wsaccel"]
 test = ["websockets"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "websockets"
@@ -6607,6 +7933,11 @@ files = [
     {file = "websockets-10.4.tar.gz", hash = "sha256:eef610b23933c54d5d921c92578ae5f89813438fded840c2e9809d378dc765d3"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "werkzeug"
 version = "3.0.6"
@@ -6624,6 +7955,11 @@ MarkupSafe = ">=2.1.1"
 [package.extras]
 watchdog = ["watchdog (>=2.3)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "wheel"
 version = "0.44.0"
@@ -6637,6 +7973,11 @@ files = [
 
 [package.extras]
 test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "wrapt"
@@ -6721,6 +8062,11 @@ files = [
     {file = "wrapt-1.14.1.tar.gz", hash = "sha256:380a85cf89e0e69b7cfbe2ea9f765f004ff419f34194018a6827ac0e3edfed4d"},
 ]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "wsproto"
 version = "1.2.0"
@@ -6735,6 +8081,11 @@ files = [
 [package.dependencies]
 h11 = ">=0.9.0,<1"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "xmltodict"
 version = "0.13.0"
@@ -6745,6 +8096,11 @@ files = [
     {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
     {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
 ]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "yapf"
@@ -6761,6 +8117,11 @@ files = [
 importlib-metadata = ">=6.6.0"
 platformdirs = ">=3.5.1"
 tomli = ">=2.0.1"
+
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "yarl"
@@ -6849,6 +8210,11 @@ files = [
 idna = ">=2.0"
 multidict = ">=4.0"
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [[package]]
 name = "zipp"
 version = "3.15.0"
@@ -6864,6 +8230,11 @@ files = [
 docs = ["furo", "jaraco.packaging (>=9)", "jaraco.tidelift (>=1.4)", "rst.linker (>=1.9)", "sphinx (>=3.5)", "sphinx-lint"]
 testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more-itertools", "pytest (>=6)", "pytest-black (>=0.3.7)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=1.3)", "pytest-flake8", "pytest-mypy (>=0.9.1)"]
 
+[package.source]
+type = "legacy"
+url = "https://pypi.org/simple"
+reference = "internal repository mirroring psycopg binary for macos"
+
 [extras]
 full = ["jieba", "sentencepiece", "spacy", "spacy", "transformers"]
 gh-release-notes = ["github3.py"]
@@ -6875,4 +8246,4 @@ transformers = ["sentencepiece", "transformers"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10, <3.11"
-content-hash = "e555edaf6a81fcc085fb507e4b202813d736b7b1aaa25523cc1a5527b9e08faa"
+content-hash = "db3d9605eaf53601de78c2473b1ed6ceaba4c1f61e5799a3d4fbb4ad61a6d4cd"
