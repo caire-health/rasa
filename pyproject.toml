@@ -162,6 +162,7 @@ pydantic = { version = "<1.10.10", optional = true, extras = ["dotenv"] }
 filelock = "^3"
 huggingface-hub = "^0.25.0"
 safetensors = "^0"
+jinja2 = "^3"
 [[tool.poetry.dependencies.tensorflow-io-gcs-filesystem]]
 version = "^0.37"
 markers = "sys_platform == 'win32'"
@@ -287,7 +288,7 @@ optional = true
 version = "^4.9"
 extras = [ "tls", "srv",]
 
-[tool.poetry.dev-dependencies.pytest-sanic]
+[tool.poetry.group.dev.dependencies.pytest-sanic]
 git = "https://github.com/RasaHQ/pytest-sanic"
 branch = "fix_signal_issue"
 
