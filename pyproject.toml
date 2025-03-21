@@ -175,7 +175,7 @@ version = "^0.37"
 markers = "sys_platform == 'darwin' and platform_machine != 'arm64'"
 
 [[tool.poetry.dependencies.dask]]
-version = "2024.12.1"
+version = "2024.9.1"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.numpy]]
