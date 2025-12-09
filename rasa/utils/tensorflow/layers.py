@@ -2,8 +2,7 @@ import logging
 from typing import List, Optional, Text, Tuple, Callable, Union, Any
 import tensorflow as tf
 
-# TODO: The following is not (yet) available via tf.keras
-from keras.utils.control_flow_util import smart_cond
+from rasa.utils.tensorflow.compat import smart_cond
 import tensorflow.keras.backend as K
 
 import rasa.utils.tensorflow.crf

@@ -277,3 +277,17 @@ def test_if_sparse_feature_sizes_have_increased(
         old_sparse_feature_sizes=old_sparse_feature_sizes,
     )
     assert output == expected_output
+
+
+def test_rasa_model_compatibility():
+    """Test that RasaModel works with TensorFlow 2.16+ and Keras 3.0+."""
+    # Verify that RasaModel can be instantiated
+    model = RasaModel()
+    assert model is not None
+    
+    # Verify it's a valid Keras model
+    assert isinstance(model, tf.keras.Model)
+    
+    # Test that the model has expected attributes
+    assert hasattr(model, 'total_loss')
+    assert hasattr(model, 'random_seed')
