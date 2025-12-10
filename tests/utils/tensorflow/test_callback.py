@@ -57,10 +57,11 @@ def test_does_model_improve(
     assert checkpoint._does_model_improve(current_values) == improved
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")  # Changed from module to function scope to avoid cleanup issues
 def trained_ted(
     tmp_path_factory: TempPathFactory, moodbot_domain_path: Path
 ) -> TEDPolicy:
+    import tensorflow as tf
     training_files = "data/test_moodbot/data/stories.yml"
     domain = Domain.load(moodbot_domain_path)
     trackers = training.load_data(str(training_files), domain)
@@ -71,8 +72,12 @@ def trained_ted(
         ExecutionContext(GraphSchema({})),
     )
     policy.train(trackers, domain)
-
-    return policy
+    
+    yield policy
+    
+    # Clean up TensorFlow resources to avoid generator finalization errors
+    # This is needed for TensorFlow 2.16+ compatibility
+    tf.keras.backend.clear_session()
 
 
 @pytest.mark.parametrize(
@@ -89,14 +94,24 @@ def test_on_epoch_end_saves_checkpoints_file(
     tmp_path: Path,
     trained_ted: TEDPolicy,
 ):
+    import tensorflow as tf
     model_name = "checkpoint"
     best_model_file = tmp_path / model_name
-    assert not best_model_file.exists()
+    # In Keras 3.0+, save_weights without .weights.h5 extension uses checkpoint format
+    # which creates files like checkpoint.index, checkpoint.data-00000-of-00001, etc.
+    checkpoint_index_file = tmp_path / f"{model_name}.index"
+    assert not checkpoint_index_file.exists()
     checkpoint = RasaModelCheckpoint(tmp_path)
     checkpoint.best_metrics_so_far = previous_best
-    checkpoint.model = trained_ted.model
+    # In Keras 3.0+, model is set automatically via set_model() during fit
+    # For testing, we need to set it manually using the internal _model attribute
+    checkpoint._model = trained_ted.model
     checkpoint.on_epoch_end(1, current_values)
     if improved:
-        assert best_model_file.exists()
+        # Checkpoint format creates .index file (and .data-* files)
+        assert checkpoint_index_file.exists()
     else:
-        assert not best_model_file.exists()
+        assert not checkpoint_index_file.exists()
+    # Clean up TensorFlow resources to avoid generator finalization errors
+    # This is needed for TensorFlow 2.16+ compatibility
+    tf.keras.backend.clear_session()

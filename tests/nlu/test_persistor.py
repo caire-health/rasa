@@ -3,7 +3,7 @@ from typing import Text
 import pytest
 from unittest.mock import patch
 
-from moto import mock_s3
+from moto import mock_aws
 
 from rasa.nlu import persistor
 from rasa.nlu.persistor import Persistor
@@ -15,7 +15,7 @@ class Object:
 
 # noinspection PyPep8Naming
 def test_retrieve_tar_archive_with_s3_namespace():
-    with mock_s3():
+    with mock_aws():
         model = "/my/s3/project/model.tar.gz"
         destination = "dst"
         with patch.object(persistor.AWSPersistor, "_copy") as copy:
@@ -29,7 +29,7 @@ def test_retrieve_tar_archive_with_s3_namespace():
 
 # noinspection PyPep8Naming
 def test_s3_private_retrieve_tar():
-    with mock_s3():
+    with mock_aws():
         # Ensure the S3 persistor writes to a filename `model.tar.gz`, whilst
         # passing the fully namespaced path to boto3
         model = "/my/s3/project/model.tar.gz"

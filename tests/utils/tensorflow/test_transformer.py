@@ -15,16 +15,16 @@ def test_multi_head_attention_with_training():
     """Test MultiHeadAttention with training flag (uses smart_cond)."""
     mha = MultiHeadAttention(units=64, num_heads=4)
     
-    query = tf.random.normal((2, 10, 64))
-    key = tf.random.normal((2, 10, 64))
-    value = tf.random.normal((2, 10, 64))
+    # Create dummy inputs (query_input and source_input)
+    query_input = tf.random.normal((2, 10, 64))
+    source_input = tf.random.normal((2, 10, 64))
     
     # Test with training=True
-    output_train = mha(query, key, value, training=True)
+    output_train, _ = mha(query_input, source_input, training=True)
     assert output_train.shape == (2, 10, 64)
     
     # Test with training=False
-    output_eval = mha(query, key, value, training=False)
+    output_eval, _ = mha(query_input, source_input, training=False)
     assert output_eval.shape == (2, 10, 64)
     
     # Both should produce valid outputs

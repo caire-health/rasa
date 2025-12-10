@@ -239,18 +239,33 @@ class RasaModel(Model):
     @staticmethod
     def _dynamic_signature(
         batch_in: Union[Tuple[tf.Tensor, ...], Tuple[np.ndarray, ...]]
-    ) -> List[List[tf.TensorSpec]]:
+    ) -> Tuple[tf.TensorSpec, ...]:
+        """Create input signature for tf.function.
+        
+        In TensorFlow 2.16+, tf.function with tuple input needs tuple of TensorSpecs.
+        The first dimension is always the batch dimension (None), remaining dims are preserved.
+        """
         element_spec = []
         for tensor in batch_in:
-            if len(tensor.shape) > 1:
-                shape: List[Union[None, int]] = [None] * (len(tensor.shape) - 1)
-                shape += [tensor.shape[-1]]
+            # Convert FeatureArray or numpy array to tensor if needed for shape/dtype
+            if tf.is_tensor(tensor):
+                tensor_shape = tensor.shape
+                tensor_dtype = tensor.dtype
+            else:
+                # Convert to tensor to get proper shape and dtype
+                tensor_converted = tf.convert_to_tensor(tensor)
+                tensor_shape = tensor_converted.shape
+                tensor_dtype = tensor_converted.dtype
+            
+            # Create shape: first dim is batch (None), rest are feature dims
+            if len(tensor_shape) > 0:
+                # First dimension is batch (variable), rest are feature dimensions (fixed)
+                shape: List[Union[None, int]] = [None] + [int(d) if d is not None else None for d in tensor_shape[1:]]
             else:
                 shape = [None]
-            element_spec.append(tf.TensorSpec(shape, tensor.dtype))
-        # batch_in is a list of tensors, therefore we need to wrap element_spec into
-        # the list
-        return [element_spec]
+            element_spec.append(tf.TensorSpec(shape, tensor_dtype))
+        # Return tuple to match tuple input
+        return tuple(element_spec)
 
     def _rasa_predict(
         self, batch_in: Tuple[np.ndarray, ...]
@@ -281,13 +296,18 @@ class RasaModel(Model):
             return outputs
 
         if self._tf_predict_step is None:
-            self._tf_predict_step = tf.function(
-                self.predict_step, input_signature=self._dynamic_signature(batch_in)
-            )
+            # In TensorFlow 2.16+, let tf.function infer the signature automatically
+            # Explicit signatures with tuples can cause issues with variable batch sizes
+            self._tf_predict_step = tf.function(self.predict_step)
 
+        # Convert inputs to tensors before calling tf.function (TensorFlow 2.16+ requirement)
+        batch_tensors = tuple(
+            tf.convert_to_tensor(t) if not tf.is_tensor(t) else t 
+            for t in batch_in
+        )
         # Once we take advantage of TF's distributed training, this is where
         # scheduled functions will be forced to execute and return actual values.
-        outputs = tf_utils.sync_to_numpy_or_python_type(self._tf_predict_step(batch_in))
+        outputs = tf_utils.sync_to_numpy_or_python_type(self._tf_predict_step(batch_tensors))
         if DIAGNOSTIC_DATA in outputs:
             outputs[DIAGNOSTIC_DATA] = self._empty_lists_to_none_in_dict(
                 outputs[DIAGNOSTIC_DATA]
@@ -393,6 +413,117 @@ class RasaModel(Model):
             if metric.name in self.metrics_to_log
         }
 
+    def fit(
+        self,
+        x=None,
+        y=None,
+        batch_size=None,
+        epochs=1,
+        verbose="auto",
+        callbacks=None,
+        validation_split=0.0,
+        validation_data=None,
+        shuffle=True,
+        class_weight=None,
+        sample_weight=None,
+        initial_epoch=0,
+        steps_per_epoch=None,
+        validation_steps=None,
+        validation_batch_size=None,
+        validation_freq=1,
+        max_queue_size=10,
+        workers=1,
+        use_multiprocessing=False,
+        **kwargs: Any,
+    ):
+        """Override fit to handle RasaDataGenerator compatibility with TensorFlow 2.16+.
+        
+        TensorFlow 2.16+ is stricter about data generator output formats.
+        This override ensures the generator data is properly converted.
+        """
+        # If x is a RasaDataGenerator, convert it to a format TensorFlow 2.16+ can handle
+        from rasa.utils.tensorflow.data_generator import RasaDataGenerator
+        
+        if isinstance(x, RasaDataGenerator):
+            # Initialize history if needed
+            if not hasattr(self, 'history'):
+                from keras.callbacks import History
+                self.history = History()
+                self.history.set_model(self)
+            
+            # For TensorFlow 2.16+, manually iterate through generator to avoid TensorSpec issues
+            if steps_per_epoch is None:
+                steps_per_epoch = len(x)
+            
+            if callbacks:
+                for callback in callbacks:
+                    callback.set_model(self)
+                    callback.set_params({
+                        'verbose': verbose,
+                        'epochs': epochs,
+                        'steps': steps_per_epoch,
+                    })
+            
+            for epoch in range(initial_epoch, epochs):
+                if callbacks:
+                    for callback in callbacks:
+                        callback.on_epoch_begin(epoch, logs=None)
+                
+                epoch_logs = {}
+                for step in range(steps_per_epoch):
+                    if step < len(x):
+                        batch = x[step]
+                        # train_step expects batch_in as first element of tuple
+                        if isinstance(batch, tuple):
+                            batch_in = batch[0]
+                        else:
+                            batch_in = batch
+                        step_logs = self.train_step(batch_in)
+                        epoch_logs.update(step_logs)
+                
+                # Call on_epoch_end for generator
+                x.on_epoch_end()
+                
+                if callbacks:
+                    for callback in callbacks:
+                        callback.on_epoch_end(epoch, epoch_logs)
+                
+                # Update history
+                for key, value in epoch_logs.items():
+                    if key not in self.history.history:
+                        self.history.history[key] = []
+                    self.history.history[key].append(float(value))
+            
+            if callbacks:
+                for callback in callbacks:
+                    callback.on_train_end(logs=None)
+            
+            return self.history
+        else:
+            # For non-generator inputs, use parent fit method
+            return super().fit(
+                x=x,
+                y=y,
+                batch_size=batch_size,
+                epochs=epochs,
+                verbose=verbose,
+                callbacks=callbacks,
+                validation_split=validation_split,
+                validation_data=validation_data,
+                shuffle=shuffle,
+                class_weight=class_weight,
+                sample_weight=sample_weight,
+                initial_epoch=initial_epoch,
+                steps_per_epoch=steps_per_epoch,
+                validation_steps=validation_steps,
+                validation_batch_size=validation_batch_size,
+                validation_freq=validation_freq,
+                max_queue_size=max_queue_size,
+                workers=workers,
+                use_multiprocessing=use_multiprocessing,
+                **kwargs,
+            )
+
     def save(self, model_file_name: Text, overwrite: bool = True) -> None:
         """Save the model to the given file.
 
@@ -401,7 +532,18 @@ class RasaModel(Model):
             overwrite: If 'True' an already existing model with the same file name will
                        be overwritten.
         """
-        self.save_weights(model_file_name, overwrite=overwrite, save_format="tf")
+        # In Keras 3.0+, save_weights without format defaults to H5 format
+        # which requires .weights.h5 extension. For other filenames, use checkpoint format.
+        # Checkpoint format creates a directory with .index file.
+        import os
+        if model_file_name.endswith('.weights.h5'):
+            # Use H5 format for .weights.h5 files
+            self.save_weights(model_file_name, overwrite=overwrite)
+        else:
+            # For other filenames, use TensorFlow checkpoint format directly
+            # This creates a directory with .index, .data-*, and checkpoint files
+            checkpoint = tf.train.Checkpoint(model=self)
+            checkpoint.write(model_file_name)
 
     @classmethod
     def load(

@@ -115,16 +115,32 @@ class LocalModelStorage(ModelStorage):
     def _extract_archive_to_directory(
         model_archive_path: Union[Text, Path], temporary_directory: Path
     ) -> None:
+        """Extract archive to directory with security filtering.
+        
+        Uses filter="data" parameter for Python 3.12+ compatibility and security.
+        This prevents path traversal attacks and ensures only safe paths are extracted.
+        """
         with TarSafe.open(model_archive_path, mode="r:gz") as tar:
-            if sys.platform == "win32":
-                # on Windows by default there is a restriction on long
-                # path names; using the prefix below allows to bypass
-                # this restriction in environments where it's not possible
-                # to override this behavior, mostly for internal policy reasons
-                # reference: https://stackoverflow.com/a/49102229
-                tar.extractall(f"\\\\?\\{temporary_directory}")
-            else:
-                tar.extractall(temporary_directory)
+            # Use filter="data" for secure extraction (Python 3.12+)
+            # This prevents path traversal attacks and ensures safe extraction
+            extract_path = (
+                f"\\\\?\\{temporary_directory}"
+                if sys.platform == "win32"
+                else str(temporary_directory)
+            )
+            # on Windows by default there is a restriction on long
+            # path names; using the prefix below allows to bypass
+            # this restriction in environments where it's not possible
+            # to override this behavior, mostly for internal policy reasons
+            # reference: https://stackoverflow.com/a/49102229
+            try:
+                # Python 3.12+ supports filter parameter for secure extraction
+                tar.extractall(extract_path, filter="data")
+            except TypeError:
+                # Fallback for older Python versions that don't support filter parameter
+                # TarSafe already provides path validation, so this is still safe
+                tar.extractall(extract_path)
+            logger.debug(f"Extracted archive to '{extract_path}' with security filtering.")
         LocalModelStorage._assert_not_rasa2_archive(temporary_directory)
 
     @staticmethod

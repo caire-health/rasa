@@ -278,6 +278,7 @@ class RandomlyConnectedDense(tf.keras.layers.Dense):
             raise TFLayerConfigException("Layer density must be in [0, 1].")
 
         self.density = density
+        self.kernel_mask = None  # Initialize to None, will be set in build() if needed
 
     def build(self, input_shape: tf.TensorShape) -> None:
         """Prepares the kernel mask.
@@ -360,7 +361,7 @@ class RandomlyConnectedDense(tf.keras.layers.Dense):
         Returns:
             The processed inputs.
         """
-        if self.density < 1.0:
+        if self.density < 1.0 and hasattr(self, 'kernel_mask') and self.kernel_mask is not None:
             # Set fraction of the `kernel` weights to zero according to precomputed mask
             self.kernel.assign(self.kernel * self.kernel_mask)
         return super().call(inputs)

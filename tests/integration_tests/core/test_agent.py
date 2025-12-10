@@ -5,7 +5,7 @@ from typing import Any, Text
 
 import boto3
 import pytest
-from moto import mock_iam, mock_s3
+from moto import mock_aws
 from pytest import MonkeyPatch
 
 from rasa.core.agent import Agent
@@ -31,7 +31,7 @@ def aws_endpoint_url() -> Text:
     return "http://localhost:5000"
 
 
-@mock_iam
+@mock_aws
 def create_user_with_access_key_and_attached_policy(region_name: Text) -> Any:
     """Create a user and an access key for them."""
     client = boto3.client("iam", region_name=region_name)
@@ -79,7 +79,7 @@ def aws_environment_variables(
     os.environ["TEST_SERVER_MODE"] = "true"
 
 
-@mock_s3
+@mock_aws
 def test_load_model_from_aws_remote_storage(
     monkeypatch: MonkeyPatch,
     aws_environment_variables: Any,

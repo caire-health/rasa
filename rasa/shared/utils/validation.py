@@ -3,7 +3,12 @@ import os
 from typing import Text, Dict, List, Optional, Any
 
 from packaging import version
-from packaging.version import LegacyVersion
+try:
+    from packaging.version import LegacyVersion
+except ImportError:
+    # LegacyVersion was removed in packaging 25.0+
+    # Use Version as fallback
+    LegacyVersion = version.Version
 from pykwalify.errors import SchemaError
 
 from ruamel.yaml.constructor import DuplicateKeyError

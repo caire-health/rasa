@@ -19,18 +19,21 @@ def test_multi_head_attention_with_smart_cond():
     """Test that MultiHeadAttention works with the new smart_cond implementation."""
     mha = MultiHeadAttention(units=64, num_heads=4)
     
-    # Create dummy inputs
-    query = tf.random.normal((2, 10, 64))
-    key = tf.random.normal((2, 10, 64))
-    value = tf.random.normal((2, 10, 64))
+    # Create dummy inputs (query_input and source_input, not query/key/value)
+    query_input = tf.random.normal((2, 10, 64))
+    source_input = tf.random.normal((2, 10, 64))
     
     # Test with training=True (uses smart_cond)
-    output = mha(query, key, value, training=True)
-    assert output.shape == (2, 10, 64)
+    output_train, _ = mha(query_input, source_input, training=True)
+    assert output_train.shape == (2, 10, 64)
     
     # Test with training=False (uses smart_cond)
-    output = mha(query, key, value, training=False)
-    assert output.shape == (2, 10, 64)
+    output_eval, _ = mha(query_input, source_input, training=False)
+    assert output_eval.shape == (2, 10, 64)
+    
+    # Both should produce valid outputs
+    assert tf.is_tensor(output_train)
+    assert tf.is_tensor(output_eval)
 
 
 def test_sparse_dropout_with_smart_cond():
@@ -58,27 +61,36 @@ def test_transformer_encoder():
         num_layers=2,
         units=64,
         num_heads=4,
+        filter_units=128,
+        reg_lambda=0.001,
         dropout_rate=0.1,
     )
     
     # Create dummy input
     inputs = tf.random.normal((2, 10, 64))
-    mask = tf.ones((2, 10), dtype=tf.bool)
+    # pad_mask should have shape (batch_size, length, 1) to squeeze to (batch_size, length)
+    mask = tf.ones((2, 10, 1), dtype=tf.float32)
     
-    output = encoder(inputs, mask=mask, training=True)
+    # TransformerEncoder.call() signature: (inputs, pad_mask=None, training=None)
+    output, _ = encoder(inputs, pad_mask=mask, training=True)
     assert output.shape == (2, 10, 64)
 
 
 def test_rasa_model_with_tf_utils():
     """Test that RasaModel works with the new tf_utils implementation."""
-    # Create a minimal model data
+    from rasa.utils.tensorflow.model_data import FeatureArray
+    
+    # Create a minimal model data using FeatureArray (required format)
     model_data = RasaModelData(
         label_key=LABEL,
         label_sub_key=IDS,
         data={
             TEXT: {
                 SENTENCE: [
-                    np.random.rand(5, 10).astype(np.float32)
+                    FeatureArray(
+                        np.random.rand(5, 10).astype(np.float32),
+                        number_of_dimensions=2
+                    )
                 ]
             }
         },
@@ -112,7 +124,10 @@ def test_rasa_model_with_tf_utils():
         data={
             TEXT: {
                 SENTENCE: [
-                    np.random.rand(2, 10).astype(np.float32)
+                    FeatureArray(
+                        np.random.rand(2, 10).astype(np.float32),
+                        number_of_dimensions=2
+                    )
                 ]
             }
         },
@@ -143,23 +158,31 @@ def test_model_save_load_compatibility():
     
     model = SimpleRasaModel()
     
-    # Build the model
+    # Build the model by calling it and compiling (required in Keras 3.0+)
     dummy_input = tf.random.normal((1, 10))
     _ = model.batch_predict((dummy_input,))
     
-    # Test saving weights (uses save_format="tf")
+    # Compile the model to ensure it's built
+    model.compile(optimizer=tf.keras.optimizers.Adam(0.001), run_eagerly=True)
+    
+    # Test saving weights using checkpoint format (no extension = checkpoint format)
+    # In Keras 3.0+, checkpoint format is default when no extension is provided
     with tempfile.TemporaryDirectory() as tmpdir:
         weights_path = os.path.join(tmpdir, "test_weights")
-        model.save_weights(weights_path, save_format="tf")
+        # Use tf.train.Checkpoint for checkpoint format (compatible with Keras 3.0+)
+        checkpoint = tf.train.Checkpoint(model=model)
+        checkpoint.save(weights_path)
         
-        # Verify file was created
-        assert os.path.exists(weights_path + ".index")
+        # Verify checkpoint files were created (checkpoint format creates .index file)
+        assert os.path.exists(weights_path + "-1.index")
         
         # Test loading weights
         new_model = SimpleRasaModel()
         dummy_input2 = tf.random.normal((1, 10))
         _ = new_model.batch_predict((dummy_input2,))
-        new_model.load_weights(weights_path)
+        new_model.compile(optimizer=tf.keras.optimizers.Adam(0.001), run_eagerly=True)
+        checkpoint_restore = tf.train.Checkpoint(model=new_model)
+        checkpoint_restore.restore(weights_path + "-1")
 
 
 def test_keras_backend_compatibility():

@@ -118,7 +118,7 @@ class FBetaScore(tf.keras.metrics.Metric):
 
         def _zero_wt_init(name: Any) -> Any:
             return self.add_weight(
-                name, shape=self.init_shape, initializer="zeros", dtype=self.dtype
+                name=name, shape=self.init_shape, initializer="zeros", dtype=self.dtype
             )
 
         self.true_positives = _zero_wt_init("true_positives")

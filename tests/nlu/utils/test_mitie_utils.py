@@ -7,11 +7,17 @@ from rasa.engine.graph import ExecutionContext
 from rasa.engine.storage.resource import Resource
 from rasa.engine.storage.storage import ModelStorage
 from rasa.nlu.utils.mitie_utils import MitieNLP
-import mitie
 
 from rasa.shared.exceptions import RasaException
 
+# mitie is an optional dependency - skip tests if not available
+try:
+    import mitie
+except ImportError:
+    mitie = None
 
+
+@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
 def test_provide(
     default_model_storage: ModelStorage, default_execution_context: ExecutionContext
 ):
@@ -31,6 +37,7 @@ def test_provide(
     assert model.fingerprint() == str(expected_path)
 
 
+@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
 def test_provide_different_path(
     default_model_storage: ModelStorage,
     default_execution_context: ExecutionContext,
@@ -53,6 +60,7 @@ def test_provide_different_path(
     assert model.fingerprint() == str(new_path)
 
 
+@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
 def test_invalid_path(
     default_model_storage: ModelStorage, default_execution_context: ExecutionContext
 ):

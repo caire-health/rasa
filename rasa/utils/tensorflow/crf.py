@@ -9,8 +9,12 @@ from typing import Tuple, Any, List, Union, Optional
 # (modified to our neeeds)
 
 
-class CrfDecodeForwardRnnCell(tf.keras.layers.AbstractRNNCell):
-    """Computes the forward decoding in a linear-chain CRF."""
+class CrfDecodeForwardRnnCell(tf.keras.layers.Layer):
+    """Computes the forward decoding in a linear-chain CRF.
+    
+    Note: In Keras 3.0+, AbstractRNNCell was removed. This class now inherits
+    from Layer and implements the RNN cell interface required by tf.keras.layers.RNN.
+    """
 
     def __init__(self, transition_params: TensorLike, **kwargs: Any) -> None:
         """Initialize the CrfDecodeForwardRnnCell.
@@ -27,6 +31,7 @@ class CrfDecodeForwardRnnCell(tf.keras.layers.AbstractRNNCell):
 
     @property
     def state_size(self) -> int:
+        """Returns the state size for RNN cell compatibility."""
         return self._num_tags
 
     @property

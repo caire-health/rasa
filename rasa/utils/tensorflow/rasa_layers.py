@@ -70,11 +70,17 @@ class RasaCustomLayer(tf.keras.layers.Layer):
         """
         for name, layer in self._tf_layers.items():
             if isinstance(layer, RasaCustomLayer):
+                # Temporarily disable tracking for nested layer adjustments
+                was_built = layer.built
+                if was_built:
+                    layer._self_setattr_tracking(False)
                 layer.adjust_sparse_layers_for_incremental_training(
                     new_sparse_feature_sizes=new_sparse_feature_sizes,
                     old_sparse_feature_sizes=old_sparse_feature_sizes,
                     reg_lambda=reg_lambda,
                 )
+                if was_built:
+                    layer._self_setattr_tracking(True)
             elif isinstance(layer, layers.DenseForSparse):
                 attribute = layer.get_attribute()
                 feature_type = layer.get_feature_type()
@@ -89,7 +95,7 @@ class RasaCustomLayer(tf.keras.layers.Layer):
                         feature_type
                     ]
                     if sum(new_feature_sizes) > sum(old_feature_sizes):
-                        self._tf_layers[name] = self._replace_dense_for_sparse_layer(
+                        new_layer = self._replace_dense_for_sparse_layer(
                             layer_to_replace=layer,
                             new_sparse_feature_sizes=new_feature_sizes,
                             old_sparse_feature_sizes=old_feature_sizes,
@@ -97,6 +103,16 @@ class RasaCustomLayer(tf.keras.layers.Layer):
                             feature_type=feature_type,
                             reg_lambda=reg_lambda,
                         )
+                        # In Keras 3.0+, we need to temporarily disable tracking to replace layers
+                        # in a built parent. Use _self_setattr_tracking to bypass tracking.
+                        was_built = self.built
+                        if was_built:
+                            # Temporarily disable tracking to allow layer replacement
+                            self._self_setattr_tracking(False)
+                        self._tf_layers[name] = new_layer
+                        if was_built:
+                            # Re-enable tracking
+                            self._self_setattr_tracking(True)
 
     @staticmethod
     def _replace_dense_for_sparse_layer(
@@ -300,12 +316,14 @@ class ConcatenateSparseDenseFeatures(RasaCustomLayer):
     ) -> tf.Tensor:
         """Turns sparse tensor into dense, possibly adds dropout before and/or after."""
         if self.SPARSE_DROPOUT in self._tf_layers:
-            feature = self._tf_layers[self.SPARSE_DROPOUT](feature, training)
+            # In TensorFlow 2.16+, training must be a keyword argument
+            feature = self._tf_layers[self.SPARSE_DROPOUT](feature, training=training)
 
         feature = self._tf_layers[self.SPARSE_TO_DENSE](feature)
 
         if self.DENSE_DROPOUT in self._tf_layers:
-            feature = self._tf_layers[self.DENSE_DROPOUT](feature, training)
+            # In TensorFlow 2.16+, training must be a keyword argument
+            feature = self._tf_layers[self.DENSE_DROPOUT](feature, training=training)
 
         return feature
 
@@ -942,8 +960,9 @@ class RasaSequenceLayer(RasaCustomLayer):
         # False meaning tokens that aren't masked or that are fake (padded) tokens.
         # Note that only sequence-level features are masked, nothing happens to the
         # sentence-level features in the combined features tensor.
+        # In TensorFlow 2.16+, training must be a keyword argument
         seq_sent_features, mlm_boolean_mask = self._tf_layers[self.MLM_INPUT_MASK](
-            seq_sent_features, mask_sequence, training
+            seq_sent_features, mask_sequence, training=training
         )
 
         return seq_sent_features, token_ids, mlm_boolean_mask
@@ -996,12 +1015,14 @@ class RasaSequenceLayer(RasaCustomLayer):
         # Combine all features (sparse/dense, sequence-/sentence-level) into one tensor,
         # also get a binary mask that has 1s at positions with real features and 0s at
         # padded positions.
+        # In TensorFlow 2.16+, training must be a keyword argument
         seq_sent_features, mask_combined_sequence_sentence = self._tf_layers[
             self.FEATURE_COMBINING
-        ]((sequence_features, sentence_features, sequence_feature_lengths))
+        ]((sequence_features, sentence_features, sequence_feature_lengths), training=training)
 
         # Apply one or more dense layers.
-        seq_sent_features = self._tf_layers[self.FFNN](seq_sent_features, training)
+        # In TensorFlow 2.16+, training must be a keyword argument
+        seq_sent_features = self._tf_layers[self.FFNN](seq_sent_features, training=training)
 
         # If using masked language modeling, mask the transformer inputs and get labels
         # for the masked tokens and a boolean mask. Note that TED does not use MLM loss,
@@ -1029,8 +1050,9 @@ class RasaSequenceLayer(RasaCustomLayer):
         # input example into a simple fixed-size embedding.
         if self._has_transformer:
             mask_padding = 1 - mask_combined_sequence_sentence
+            # In TensorFlow 2.16+, training must be a keyword argument
             outputs, attention_weights = self._tf_layers[self.TRANSFORMER](
-                seq_sent_features_masked, mask_padding, training
+                seq_sent_features_masked, mask_padding, training=training
             )
             outputs = tf.nn.gelu(outputs)
         else:

@@ -1434,9 +1434,10 @@ class TED(TransformerRasaModel):
             # exactly the same positional encoding
             dialogue_in = tf.reverse_sequence(dialogue_in, dialogue_lengths, seq_axis=1)
 
+        # In TensorFlow 2.16+, training must be a keyword argument
         dialogue_transformed, attention_weights = self._tf_layers[
             f"transformer.{DIALOGUE}"
-        ](dialogue_in, 1 - mask, self._training)
+        ](dialogue_in, pad_mask=1 - mask, training=self._training)
         dialogue_transformed = tf.nn.gelu(dialogue_transformed)
 
         if self.max_history_featurizer_is_used:
@@ -1680,8 +1681,9 @@ class TED(TransformerRasaModel):
             ]((tf_batch_data[attribute][SENTENCE],), training=self._training)
 
         if attribute in SENTENCE_FEATURES_TO_ENCODE + LABEL_FEATURES_TO_ENCODE:
+            # In TensorFlow 2.16+, training must be a keyword argument
             attribute_features = self._tf_layers[f"encoding_layer.{attribute}"](
-                attribute_features, self._training
+                attribute_features, training=self._training
             )
 
         # attribute features have shape
