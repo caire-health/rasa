@@ -1514,7 +1514,7 @@ class DIET(TransformerRasaModel):
         # convert to bag-of-words by summing along the sequence dimension
         x = tf.reduce_sum(x, axis=1)
 
-        return self._tf_layers[f"ffnn.{name}"](x, self._training)
+        return self._tf_layers[f"ffnn.{name}"](x, training=self._training)
 
     def _create_all_labels(self) -> Tuple[tf.Tensor, tf.Tensor]:
         all_label_ids = self.tf_label_data[LABEL_KEY][LABEL_SUB_KEY][0]

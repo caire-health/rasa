@@ -68,11 +68,10 @@ class RasaModelCheckpoint(tf.keras.callbacks.Callback):
         """
         if self._does_model_improve(logs):
             logger.debug(f"Creating model checkpoint at epoch={epoch + 1} ...")
-            # In Keras 3.0+, use TensorFlow checkpoint format for secure saving
-            # This creates checkpoint.index, checkpoint.data-*, and checkpoint files
-            import tensorflow as tf
-            checkpoint = tf.train.Checkpoint(model=self.model)
-            checkpoint.write(str(self.checkpoint_file))
+            # In Keras 3.0+, save_format parameter is removed, default format is used
+            self.model.save_weights(
+                self.checkpoint_file, overwrite=True
+            )
 
     def _does_model_improve(self, curr_results: Dict[Text, Any]) -> bool:
         """Checks whether the current results are better than the best so far.

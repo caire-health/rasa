@@ -70,26 +70,6 @@ pytest_plugins = ["pytester"]
 # these tests are run separately
 collect_ignore_glob = ["docs/*.py"]
 
-
-def pytest_runtest_teardown(item):
-    """Clean up TensorFlow resources after each test to avoid generator finalization errors.
-    
-    This is needed for TensorFlow 2.16+ compatibility where data generators
-    can cause cleanup errors during Python interpreter shutdown.
-    """
-    import tensorflow as tf
-    import os
-    # Suppress TensorFlow generator finalization warnings/errors
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress INFO, WARNING, and ERROR
-    try:
-        tf.keras.backend.clear_session()
-    except Exception:
-        # Ignore errors during cleanup
-        pass
-    finally:
-        # Restore logging
-        os.environ.pop('TF_CPP_MIN_LOG_LEVEL', None)
-
 # Defines how tests are parallelized in the CI
 PATH_PYTEST_MARKER_MAPPINGS = {
     "acceptance": [Path("tests", "acceptance_tests").absolute()],

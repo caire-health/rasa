@@ -10,14 +10,15 @@ from rasa.nlu.utils.mitie_utils import MitieNLP
 
 from rasa.shared.exceptions import RasaException
 
-# mitie is an optional dependency - skip tests if not available
 try:
     import mitie
+
+    MITIE_AVAILABLE = True
 except ImportError:
-    mitie = None
+    MITIE_AVAILABLE = False
 
 
-@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
+@pytest.mark.skipif(not MITIE_AVAILABLE, reason="mitie is not installed")
 def test_provide(
     default_model_storage: ModelStorage, default_execution_context: ExecutionContext
 ):
@@ -37,7 +38,7 @@ def test_provide(
     assert model.fingerprint() == str(expected_path)
 
 
-@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
+@pytest.mark.skipif(not MITIE_AVAILABLE, reason="mitie is not installed")
 def test_provide_different_path(
     default_model_storage: ModelStorage,
     default_execution_context: ExecutionContext,
@@ -60,7 +61,7 @@ def test_provide_different_path(
     assert model.fingerprint() == str(new_path)
 
 
-@pytest.mark.skipif(mitie is None, reason="mitie is not installed")
+@pytest.mark.skipif(not MITIE_AVAILABLE, reason="mitie is not installed")
 def test_invalid_path(
     default_model_storage: ModelStorage, default_execution_context: ExecutionContext
 ):

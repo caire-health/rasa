@@ -191,6 +191,122 @@ class RasaModel(Model):
 
         return self._get_metric_results()
 
+    def fit(
+        self,
+        x=None,
+        y=None,
+        batch_size=None,
+        epochs=1,
+        verbose=1,
+        callbacks=None,
+        validation_split=0.0,
+        validation_data=None,
+        shuffle=True,
+        class_weight=None,
+        sample_weight=None,
+        initial_epoch=0,
+        steps_per_epoch=None,
+        validation_steps=None,
+        validation_batch_size=None,
+        validation_freq=1,
+        max_queue_size=10,
+        workers=1,
+        use_multiprocessing=False,
+        **kwargs
+    ):
+        """Override fit method to handle RasaDataGenerator for TensorFlow 2.16+ compatibility.
+        
+        TensorFlow 2.16+ is stricter about data generator output formats. This override
+        manually iterates through RasaDataGenerator and converts numpy arrays to tensors
+        before calling train_step, bypassing the strict tf.data.Dataset.from_generator checks.
+        """
+        # If x is a RasaDataGenerator, handle it manually
+        if isinstance(x, RasaDataGenerator):
+            # Set up callbacks
+            if callbacks is None:
+                callbacks = []
+            callbacks = tf.keras.callbacks.CallbackList(
+                callbacks,
+                add_history=True,
+                add_progbar=verbose != 0,
+                model=self,
+                verbose=verbose,
+                epochs=epochs,
+            )
+            callbacks.on_train_begin()
+            
+            # Manual training loop
+            for epoch in range(initial_epoch, epochs):
+                callbacks.on_epoch_begin(epoch)
+                epoch_logs = {}
+                
+                # Iterate through batches
+                for batch_idx in range(len(x)):
+                    callbacks.on_batch_begin(batch_idx)
+                    
+                    # Get batch from generator
+                    batch_x, batch_y = x[batch_idx]
+                    
+                    # Convert numpy arrays to tensors
+                    # Handle tuple inputs (which is what RasaDataGenerator returns)
+                    # FeatureArray is a subclass of np.ndarray, so isinstance check will work
+                    if isinstance(batch_x, tuple):
+                        batch_x = tuple(
+                            tf.convert_to_tensor(arr) if (arr is not None and isinstance(arr, (np.ndarray, list))) else arr
+                            for arr in batch_x
+                        )
+                    else:
+                        if batch_x is not None and isinstance(batch_x, (np.ndarray, list)):
+                            batch_x = tf.convert_to_tensor(batch_x)
+                    
+                    # Call train_step
+                    logs = self.train_step(batch_x)
+                    
+                    # Update epoch logs
+                    for key, value in logs.items():
+                        if key not in epoch_logs:
+                            epoch_logs[key] = []
+                        epoch_logs[key].append(value)
+                    
+                    callbacks.on_batch_end(batch_idx, logs)
+                
+                # Average epoch metrics
+                for key in epoch_logs:
+                    epoch_logs[key] = np.mean(epoch_logs[key])
+                
+                callbacks.on_epoch_end(epoch, epoch_logs)
+                
+                # Shuffle for next epoch if needed
+                if shuffle:
+                    x.on_epoch_end()
+            
+            callbacks.on_train_end()
+            return self.history
+        else:
+            # For non-RasaDataGenerator inputs, use parent's fit method
+            return super().fit(
+                x=x,
+                y=y,
+                batch_size=batch_size,
+                epochs=epochs,
+                verbose=verbose,
+                callbacks=callbacks,
+                validation_split=validation_split,
+                validation_data=validation_data,
+                shuffle=shuffle,
+                class_weight=class_weight,
+                sample_weight=sample_weight,
+                initial_epoch=initial_epoch,
+                steps_per_epoch=steps_per_epoch,
+                validation_steps=validation_steps,
+                validation_batch_size=validation_batch_size,
+                validation_freq=validation_freq,
+                max_queue_size=max_queue_size,
+                workers=workers,
+                use_multiprocessing=use_multiprocessing,
+                **kwargs
+            )
+
     def test_step(
         self, batch_in: Union[Tuple[tf.Tensor, ...], Tuple[np.ndarray, ...]]
     ) -> Dict[Text, float]:
@@ -413,117 +529,6 @@ class RasaModel(Model):
             if metric.name in self.metrics_to_log
         }
 
-    def fit(
-        self,
-        x=None,
-        y=None,
-        batch_size=None,
-        epochs=1,
-        verbose="auto",
-        callbacks=None,
-        validation_split=0.0,
-        validation_data=None,
-        shuffle=True,
-        class_weight=None,
-        sample_weight=None,
-        initial_epoch=0,
-        steps_per_epoch=None,
-        validation_steps=None,
-        validation_batch_size=None,
-        validation_freq=1,
-        max_queue_size=10,
-        workers=1,
-        use_multiprocessing=False,
-        **kwargs: Any,
-    ):
-        """Override fit to handle RasaDataGenerator compatibility with TensorFlow 2.16+.
-        
-        TensorFlow 2.16+ is stricter about data generator output formats.
-        This override ensures the generator data is properly converted.
-        """
-        # If x is a RasaDataGenerator, convert it to a format TensorFlow 2.16+ can handle
-        from rasa.utils.tensorflow.data_generator import RasaDataGenerator
-        
-        if isinstance(x, RasaDataGenerator):
-            # Initialize history if needed
-            if not hasattr(self, 'history'):
-                from keras.callbacks import History
-                self.history = History()
-                self.history.set_model(self)
-            
-            # For TensorFlow 2.16+, manually iterate through generator to avoid TensorSpec issues
-            if steps_per_epoch is None:
-                steps_per_epoch = len(x)
-            
-            if callbacks:
-                for callback in callbacks:
-                    callback.set_model(self)
-                    callback.set_params({
-                        'verbose': verbose,
-                        'epochs': epochs,
-                        'steps': steps_per_epoch,
-                    })
-            
-            for epoch in range(initial_epoch, epochs):
-                if callbacks:
-                    for callback in callbacks:
-                        callback.on_epoch_begin(epoch, logs=None)
-                
-                epoch_logs = {}
-                for step in range(steps_per_epoch):
-                    if step < len(x):
-                        batch = x[step]
-                        # train_step expects batch_in as first element of tuple
-                        if isinstance(batch, tuple):
-                            batch_in = batch[0]
-                        else:
-                            batch_in = batch
-                        step_logs = self.train_step(batch_in)
-                        epoch_logs.update(step_logs)
-                
-                # Call on_epoch_end for generator
-                x.on_epoch_end()
-                
-                if callbacks:
-                    for callback in callbacks:
-                        callback.on_epoch_end(epoch, epoch_logs)
-                
-                # Update history
-                for key, value in epoch_logs.items():
-                    if key not in self.history.history:
-                        self.history.history[key] = []
-                    self.history.history[key].append(float(value))
-            
-            if callbacks:
-                for callback in callbacks:
-                    callback.on_train_end(logs=None)
-            
-            return self.history
-        else:
-            # For non-generator inputs, use parent fit method
-            return super().fit(
-                x=x,
-                y=y,
-                batch_size=batch_size,
-                epochs=epochs,
-                verbose=verbose,
-                callbacks=callbacks,
-                validation_split=validation_split,
-                validation_data=validation_data,
-                shuffle=shuffle,
-                class_weight=class_weight,
-                sample_weight=sample_weight,
-                initial_epoch=initial_epoch,
-                steps_per_epoch=steps_per_epoch,
-                validation_steps=validation_steps,
-                validation_batch_size=validation_batch_size,
-                validation_freq=validation_freq,
-                max_queue_size=max_queue_size,
-                workers=workers,
-                use_multiprocessing=use_multiprocessing,
-                **kwargs,
-            )
-
     def save(self, model_file_name: Text, overwrite: bool = True) -> None:
         """Save the model to the given file.
 
@@ -532,18 +537,15 @@ class RasaModel(Model):
             overwrite: If 'True' an already existing model with the same file name will
                        be overwritten.
         """
-        # In Keras 3.0+, save_weights without format defaults to H5 format
-        # which requires .weights.h5 extension. For other filenames, use checkpoint format.
-        # Checkpoint format creates a directory with .index file.
-        import os
+        # In Keras 3.0+, save_weights() defaults to H5 format if no format is specified,
+        # requiring the .weights.h5 extension. For other extensions (like .tf_model),
+        # use tf.train.Checkpoint which creates a checkpoint directory.
         if model_file_name.endswith('.weights.h5'):
-            # Use H5 format for .weights.h5 files
             self.save_weights(model_file_name, overwrite=overwrite)
         else:
-            # For other filenames, use TensorFlow checkpoint format directly
-            # This creates a directory with .index, .data-*, and checkpoint files
+            # Use tf.train.Checkpoint for non-H5 formats (creates checkpoint directory)
             checkpoint = tf.train.Checkpoint(model=self)
-            checkpoint.write(model_file_name)
+            checkpoint.save(model_file_name)
 
     @classmethod
     def load(

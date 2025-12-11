@@ -70,17 +70,11 @@ class RasaCustomLayer(tf.keras.layers.Layer):
         """
         for name, layer in self._tf_layers.items():
             if isinstance(layer, RasaCustomLayer):
-                # Temporarily disable tracking for nested layer adjustments
-                was_built = layer.built
-                if was_built:
-                    layer._self_setattr_tracking(False)
                 layer.adjust_sparse_layers_for_incremental_training(
                     new_sparse_feature_sizes=new_sparse_feature_sizes,
                     old_sparse_feature_sizes=old_sparse_feature_sizes,
                     reg_lambda=reg_lambda,
                 )
-                if was_built:
-                    layer._self_setattr_tracking(True)
             elif isinstance(layer, layers.DenseForSparse):
                 attribute = layer.get_attribute()
                 feature_type = layer.get_feature_type()
@@ -95,7 +89,7 @@ class RasaCustomLayer(tf.keras.layers.Layer):
                         feature_type
                     ]
                     if sum(new_feature_sizes) > sum(old_feature_sizes):
-                        new_layer = self._replace_dense_for_sparse_layer(
+                        self._tf_layers[name] = self._replace_dense_for_sparse_layer(
                             layer_to_replace=layer,
                             new_sparse_feature_sizes=new_feature_sizes,
                             old_sparse_feature_sizes=old_feature_sizes,
@@ -103,16 +97,6 @@ class RasaCustomLayer(tf.keras.layers.Layer):
                             feature_type=feature_type,
                             reg_lambda=reg_lambda,
                         )
-                        # In Keras 3.0+, we need to temporarily disable tracking to replace layers
-                        # in a built parent. Use _self_setattr_tracking to bypass tracking.
-                        was_built = self.built
-                        if was_built:
-                            # Temporarily disable tracking to allow layer replacement
-                            self._self_setattr_tracking(False)
-                        self._tf_layers[name] = new_layer
-                        if was_built:
-                            # Re-enable tracking
-                            self._self_setattr_tracking(True)
 
     @staticmethod
     def _replace_dense_for_sparse_layer(

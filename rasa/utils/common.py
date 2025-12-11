@@ -52,7 +52,7 @@ EXPECTED_PILLOW_DEPRECATION_WARNINGS: List[Tuple[Type[Warning], str]] = [
 EXPECTED_WARNINGS: List[Tuple[Type[Warning], str]] = [
     # TODO (issue #9932)
     (
-        getattr(np, 'VisibleDeprecationWarning', DeprecationWarning),
+        np.VisibleDeprecationWarning,
         "Creating an ndarray from ragged nested sequences.*",
     ),
     # cf. https://github.com/tensorflow/tensorflow/issues/38168
