@@ -156,6 +156,9 @@ wheel = "^0.44"
 certifi = "^2025"
 cryptography = "^44.0"
 lockfile = "^0.12"
+# jax & jaxlib must be the exact same version to work together.
+# Poetry can't enforce this, so we pin both explicitly.
+# When upgrading, update BOTH to the same version.
 jax = "0.4.30"
 jaxlib = "0.4.30"
 pydantic = { version = "<1.10.10", optional = true, extras = ["dotenv"] }
