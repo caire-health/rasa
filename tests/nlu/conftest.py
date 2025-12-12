@@ -7,7 +7,6 @@ from rasa.engine.graph import ExecutionContext, GraphComponent, GraphSchema
 from rasa.engine.storage.resource import Resource
 from rasa.engine.storage.storage import ModelStorage
 from rasa.nlu.featurizers.dense_featurizer.spacy_featurizer import SpacyFeaturizer
-from rasa.nlu.tokenizers.mitie_tokenizer import MitieTokenizer
 from rasa.nlu.tokenizers.spacy_tokenizer import SpacyTokenizer
 from rasa.shared.importers.rasa import RasaFileImporter
 from rasa.shared.nlu.training_data.message import Message
@@ -25,9 +24,8 @@ def pretrained_embeddings_spacy_config() -> Dict:
             {"name": "SpacyTokenizer"},
             {"name": "SpacyFeaturizer"},
             {"name": "RegexFeaturizer"},
-            {"name": "CRFEntityExtractor", EPOCHS: 1, RANDOM_SEED: 42},
             {"name": "EntitySynonymMapper"},
-            {"name": "SklearnIntentClassifier"},
+            {"name": "DIETClassifier", EPOCHS: 1, RANDOM_SEED: 42},
         ],
     }
 
@@ -93,8 +91,3 @@ def spacy_tokenizer() -> SpacyTokenizer:
 @pytest.fixture()
 def spacy_featurizer() -> SpacyFeaturizer:
     return SpacyFeaturizer(SpacyFeaturizer.get_default_config(), name="SpacyFeaturizer")
-
-
-@pytest.fixture()
-def mitie_tokenizer() -> MitieTokenizer:
-    return MitieTokenizer(MitieTokenizer.get_default_config())

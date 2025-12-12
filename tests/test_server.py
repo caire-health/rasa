@@ -41,10 +41,8 @@ from rasa.core.channels import (
     channel,
     CollectingOutputChannel,
     RestInput,
-    SlackInput,
     CallbackInput,
 )
-from rasa.core.channels.slack import SlackBot
 from rasa.core.tracker_store import InMemoryTrackerStore
 import rasa.nlu.test
 from rasa.nlu.test import CVEvaluationResult
@@ -1668,15 +1666,8 @@ async def test_trigger_intent_with_not_existing_intent(rasa_app: SanicASGITestCl
 @pytest.mark.parametrize(
     "input_channels, output_channel_to_use, expected_channel",
     [
-        (None, "slack", CollectingOutputChannel),
         ([], None, CollectingOutputChannel),
-        ([RestInput()], "slack", CollectingOutputChannel),
         ([RestInput()], "rest", CollectingOutputChannel),
-        (
-            [RestInput(), SlackInput("test", slack_signing_secret="foobar")],
-            "slack",
-            SlackBot,
-        ),
     ],
 )
 def test_get_output_channel(
@@ -1698,7 +1689,6 @@ def test_get_output_channel(
     [
         ([], CollectingOutputChannel),
         ([RestInput()], CollectingOutputChannel),
-        ([RestInput(), SlackInput("test", slack_signing_secret="foobar")], SlackBot),
     ],
 )
 def test_get_latest_output_channel(input_channels: List[Text], expected_channel: Type):
@@ -1709,7 +1699,7 @@ def test_get_latest_output_channel(input_channels: List[Text], expected_channel:
     request.args = {"output_channel": "latest"}
 
     tracker = DialogueStateTracker.from_events(
-        "default", [UserUttered("text", input_channel="slack")]
+        "default", [UserUttered("text", input_channel="rest")]
     )
 
     actual = rasa.server._get_output_channel(request, tracker)

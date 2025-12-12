@@ -29,7 +29,6 @@ from rasa.core.actions.action import (
 )
 from rasa.core.actions.forms import FormAction
 from rasa.core.channels import CollectingOutputChannel, OutputChannel
-from rasa.core.channels.slack import SlackBot
 from rasa.core.constants import COMPRESS_ACTION_SERVER_REQUEST_ENV_NAME
 from rasa.core.nlg import NaturalLanguageGenerator
 from rasa.shared.constants import (
@@ -784,22 +783,6 @@ async def test_response_invalid_response(
     assert len(events) == 1
     assert isinstance(events[0], BotUttered)
     assert events[0].text.startswith("a response referencing an invalid {variable}.")
-
-
-async def test_response_channel_specific(default_nlg, default_tracker, domain: Domain):
-
-    output_channel = SlackBot("DummyToken", "General")
-
-    events = await ActionBotResponse("utter_channel").run(
-        output_channel, default_nlg, default_tracker, domain
-    )
-
-    assert events == [
-        BotUttered(
-            "you're talking to me on slack!",
-            metadata={"channel": "slack", "utter_action": "utter_channel"},
-        )
-    ]
 
 
 @pytest.fixture

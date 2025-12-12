@@ -98,15 +98,10 @@ absl-py = "^2.1"
 apscheduler = "^3.10"
 tqdm = "^4.31"
 networkx = "^3"
-fbmessenger = "^6.0"
 pykwalify = "^1.8.0"
 coloredlogs = "^15.0"
 "ruamel.yaml" = "^0.16"
 pyyaml = "^6.0"
-twilio = "^9.3"
-webexteamssdk = "^1.6"
-mattermostwrapper = "^2.2"
-rocketchat_API = "^1.32"
 colorhash = "^2.0"
 jsonschema = "^4.23"
 packaging = "^21"
@@ -127,7 +122,6 @@ python-socketio = "^5.11"
 python-engineio = "^4"
 pydot = "^3.0"
 SQLAlchemy = "^1.4"
-sklearn-crfsuite = "^0.5"
 psycopg2-binary = "^2.9"
 python-dateutil = "^2.9"
 protobuf = "^4.23"
@@ -139,14 +133,14 @@ joblib = "^1.4"
 sentry-sdk = "^2.14"
 aio-pika = "^9.4"
 aiogram = "^2.15"
-typing-extensions = "^4"
+typing-extensions = "^4.8"
 typing-utils = "^0.1"
+twilio = "^9.3"
 tarsafe = "^0.0"
 google-auth = "^2"
 CacheControl = "^0.14"
 randomname = "^0.2"
 pluggy = "^1.5"
-slack-sdk = "^3.33"
 confluent-kafka = "^2.5"
 portalocker = "^2.10"
 structlog = "^24.4"
@@ -156,8 +150,8 @@ wheel = "^0.44"
 certifi = "^2025"
 cryptography = "^44.0"
 lockfile = "^0.12"
-jax = "^0.4"
-jaxlib = "^0.4"
+jax = "0.4.13"
+jaxlib = "0.4.13"
 pydantic = { version = "<1.10.10", optional = true, extras = ["dotenv"] }
 filelock = "^3"
 huggingface-hub = "^0.25.0"
@@ -179,16 +173,16 @@ version = "2024.9.1"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.numpy]]
-version = ">=1.19.2,<1.25.0"
+version = ">=1.23.5,<2.0.0"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.numpy]]
-version = "1.22.3"
+version = ">=1.23.5,<2.0.0"
 markers = "sys_platform =='Windows' and platform_python_implementation != 'PyPy'"
 python = "3.10"
 
 [[tool.poetry.dependencies.scipy]]
-version = ">=1.10.0,<1.11.0"
+version = ">=1.10.0,<1.14.0"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.scikit-learn]]
@@ -207,9 +201,7 @@ optional = true
 
 [tool.poetry.extras]
 spacy = [ "spacy",]
-jieba = [ "jieba",]
-transformers = [ "transformers", "sentencepiece",]
-full = [ "spacy", "transformers", "sentencepiece", "jieba",]
+full = [ "spacy",]
 gh-release-notes = [ "github3.py",]
 metal = [ "tensorflow-metal",]
 
@@ -234,19 +226,19 @@ timeout_func_only = true
 asyncio_mode = "auto"
 
 [tool.poetry.dependencies.tensorflow]
-version = "2.12.1"
+version = "2.15.0"
 markers = "sys_platform != 'darwin' or platform_machine != 'arm64'"
 
 [tool.poetry.dependencies.tensorflow-intel]
-version = "2.12.0"
+version = "2.15.0"
 markers = "sys_platform == 'win32'"
 
 [tool.poetry.dependencies.tensorflow-cpu-aws]
-version = "2.12.1"
+version = "2.15.0"
 markers = "sys_platform == 'linux' and (platform_machine == 'arm64' or platform_machine == 'aarch64')"
 
 [tool.poetry.dependencies.tensorflow-macos]
-version = "2.12.0"
+version = "2.15.0"
 markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"
 
 [tool.poetry.dependencies.PyJWT]
@@ -262,25 +254,8 @@ version = "^1.1"
 markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"
 optional = true
 
-[tool.poetry.dependencies.tensorflow-text]
-version = "2.12.1"
-markers = "sys_platform != 'win32' and platform_machine != 'arm64' and platform_machine != 'aarch64'"
-
 [tool.poetry.dependencies."github3.py"]
 version = ">=3.2.0"
-optional = true
-
-[tool.poetry.dependencies.transformers]
-version = "^4.44"
-optional = true
-
-[tool.poetry.dependencies.sentencepiece]
-version = "^0.2"
-optional = true
-extras = [ "sentencepiece",]
-
-[tool.poetry.dependencies.jieba]
-version = ">=0.39, <0.43"
 optional = true
 
 [tool.poetry.dependencies.pymongo]

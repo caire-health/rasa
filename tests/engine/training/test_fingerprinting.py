@@ -12,7 +12,7 @@ from rasa.engine.storage.resource import Resource
 from rasa.engine.storage.storage import ModelStorage
 from rasa.engine.training import fingerprinting
 from rasa.nlu.classifiers.diet_classifier import DIETClassifier
-from rasa.nlu.selectors.response_selector import ResponseSelector
+from rasa.core.policies.memoization import MemoizationPolicy
 from tests.engine.training.test_components import FingerprintableText
 
 
@@ -34,7 +34,7 @@ def test_fingerprint_changes_due_to_class():
         {"input": FingerprintableText("Hi")},
     )
     key2 = fingerprinting.calculate_fingerprint_key(
-        ResponseSelector,
+        MemoizationPolicy,
         TEDPolicy.get_default_config(),
         {"input": FingerprintableText("Hi")},
     )
@@ -47,7 +47,7 @@ def test_fingerprint_changes_due_to_config():
         TEDPolicy, {}, {"input": FingerprintableText("Hi")}
     )
     key2 = fingerprinting.calculate_fingerprint_key(
-        ResponseSelector,
+        MemoizationPolicy,
         TEDPolicy.get_default_config(),
         {"input": FingerprintableText("Hi")},
     )
@@ -60,7 +60,7 @@ def test_fingerprint_changes_due_to_inputs():
         TEDPolicy, {}, {"input": FingerprintableText("Hi")}
     )
     key2 = fingerprinting.calculate_fingerprint_key(
-        ResponseSelector,
+        MemoizationPolicy,
         TEDPolicy.get_default_config(),
         {"input": FingerprintableText("bye")},
     )

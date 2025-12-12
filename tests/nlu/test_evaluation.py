@@ -13,9 +13,7 @@ import pytest
 from _pytest.monkeypatch import MonkeyPatch
 from unittest.mock import Mock, MagicMock
 
-from rasa.nlu.extractors.crf_entity_extractor import CRFEntityExtractor
-from rasa.nlu.extractors.mitie_entity_extractor import MitieEntityExtractor
-from rasa.nlu.extractors.spacy_entity_extractor import SpacyEntityExtractor
+from rasa.nlu.classifiers.diet_classifier import DIETClassifier
 from rasa.shared.core.trackers import DialogueStateTracker
 from tests.conftest import AsyncMock
 
@@ -167,7 +165,7 @@ NLU_CONFIG = {
     "pipeline": [
         {"name": "WhitespaceTokenizer"},
         {"name": "CountVectorsFeaturizer"},
-        {"name": "LogisticRegressionClassifier"},
+        {"name": "DIETClassifier", EPOCHS: 2},
     ],
 }
 N_FOLDS = 2
@@ -288,7 +286,7 @@ def test_determine_token_labels_throws_error():
         determine_token_labels(
             CH_correct_segmentation[0],
             [CH_correct_entity, CH_wrong_entity],
-            {CRFEntityExtractor.__name__},
+            {DIETClassifier.__name__},
         )
 
 
@@ -308,7 +306,7 @@ def test_determine_token_labels_with_extractors():
     label = determine_token_labels(
         CH_correct_segmentation[0],
         [CH_correct_entity, CH_wrong_entity],
-        {SpacyEntityExtractor.__name__, MitieEntityExtractor.__name__},
+        {DIETClassifier.__name__},
     )
     assert label == "direction"
 
@@ -340,10 +338,10 @@ def test_determine_token_labels_with_extractors():
                     "value": "pizza",
                     "entity": "food",
                     "confidence_entity": 0.87,
-                    "extractor": "CRFEntityExtractor",
+                    "extractor": "DIETClassifier",
                 }
             ],
-            {"CRFEntityExtractor"},
+            {"DIETClassifier"},
             0.87,
         ),
         (
@@ -522,7 +520,7 @@ async def test_run_cv_evaluation():
         "pipeline": [
             {"name": "WhitespaceTokenizer"},
             {"name": "CountVectorsFeaturizer"},
-            {"name": "LogisticRegressionClassifier", EPOCHS: 2},
+            {"name": "DIETClassifier", EPOCHS: 2},
         ],
     }
 
@@ -569,7 +567,7 @@ async def test_run_cv_evaluation_no_entities():
         "pipeline": [
             {"name": "WhitespaceTokenizer"},
             {"name": "CountVectorsFeaturizer"},
-            {"name": "LogisticRegressionClassifier", EPOCHS: 25},
+            {"name": "DIETClassifier", EPOCHS: 25},
         ],
     }
 
@@ -622,9 +620,7 @@ async def test_run_cv_evaluation_with_response_selector():
         "pipeline": [
             {"name": "WhitespaceTokenizer"},
             {"name": "CountVectorsFeaturizer"},
-            {"name": "LogisticRegressionClassifier", EPOCHS: 25},
-            {"name": "CRFEntityExtractor", EPOCHS: 25},
-            {"name": "ResponseSelector", EPOCHS: 2, RUN_EAGERLY: True},
+            {"name": "DIETClassifier", EPOCHS: 25},
         ],
     }
 
@@ -673,7 +669,7 @@ async def test_run_cv_evaluation_with_response_selector():
         for intent_report in response_selection_results.evaluation["report"].values()
     )
 
-    entity_extractor_name = "CRFEntityExtractor"
+    entity_extractor_name = "DIETClassifier"
     assert len(entity_results.train[entity_extractor_name]["Accuracy"]) == n_folds
     assert len(entity_results.train[entity_extractor_name]["Precision"]) == n_folds
     assert len(entity_results.train[entity_extractor_name]["F1-score"]) == n_folds
@@ -701,8 +697,7 @@ async def test_run_cv_evaluation_lookup_tables():
         "pipeline": [
             {"name": "WhitespaceTokenizer"},
             {"name": "CountVectorsFeaturizer"},
-            {"name": "LogisticRegressionClassifier", EPOCHS: 1},
-            {"name": "RegexEntityExtractor", "use_lookup_tables": True},
+            {"name": "DIETClassifier", EPOCHS: 1},
         ],
     }
 

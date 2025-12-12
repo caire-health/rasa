@@ -1,4 +1,4 @@
-.PHONY: clean test lint init docs format formatter build-docker build-docker-full build-docker-mitie-en build-docker-spacy-en build-docker-spacy-de
+.PHONY: clean test lint init docs format formatter build-docker build-docker-full build-docker-spacy-en build-docker-spacy-de
 
 JOBS ?= 1
 INTEGRATION_TEST_FOLDER = tests/integration_tests/
@@ -12,7 +12,7 @@ help:
 	@echo "    install"
 	@echo "        Install rasa."
 	@echo "    install-full"
-	@echo "        Install rasa with all extras (transformers, tensorflow_text, spacy, jieba)."
+	@echo "        Install rasa with all extras (spacy)."
 	@echo "    formatter"
 	@echo "        Apply black formatting to code."
 	@echo "    lint"
@@ -31,15 +31,8 @@ help:
 	@echo "        Install system requirements for running tests on Windows."
 	@echo "    prepare-spacy"
 	@echo "        Download models needed for spacy tests."
-	@echo "    prepare-mitie"
-	@echo "        Download the standard english mitie model."
-	@echo "    prepare-transformers"
-	@echo "        Download all models needed for testing LanguageModelFeaturizer."
 	@echo "    test"
 	@echo "        Run pytest on tests/."
-	@echo "        Use the JOBS environment variable to configure number of workers (default: 1)."
-	@echo "    test-integration"
-	@echo "        Run integration tests using pytest."
 	@echo "        Use the JOBS environment variable to configure number of workers (default: 1)."
 	@echo "    livedocs"
 	@echo "        Build the docs locally."
@@ -47,10 +40,6 @@ help:
 	@echo "        Prepare a release."
 	@echo "    build-docker"
 	@echo "        Build Rasa Open Source Docker image."
-	@echo "    run-integration-containers"
-	@echo "        Run the integration test containers."
-	@echo "    stop-integration-containers"
-	@echo "        Stop the integration test containers."
 
 clean:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -66,11 +55,7 @@ install:
 	poetry run python -m pip install -U pip
 	poetry install
 
-install-mitie:
-	poetry run python -m pip install -U pip
-	poetry run python -m pip install -U git+https://github.com/tmbo/MITIE.git#egg=mitie
-
-install-full: install-mitie
+install-full:
 	poetry install -E full
 
 install-docs:
@@ -107,22 +92,6 @@ prepare-spacy:
 	poetry run python -m spacy download en_core_web_md
 	poetry run python -m spacy download de_core_news_sm
 
-prepare-mitie:
-	wget --progress=dot:giga -N -P data/ https://github.com/mit-nlp/MITIE/releases/download/v0.4/MITIE-models-v0.2.tar.bz2
-ifeq ($(OS),Windows_NT)
-	7z x data/MITIE-models-v0.2.tar.bz2 -bb3
-	7z x MITIE-models-v0.2.tar -bb3
-	cp MITIE-models/english/total_word_feature_extractor.dat data/
-	rm -r MITIE-models
-	rm MITIE-models-v0.2.tar
-else
-	tar -xvjf data/MITIE-models-v0.2.tar.bz2 --strip-components 2 -C data/ MITIE-models/english/total_word_feature_extractor.dat
-endif
-	rm data/MITIE*.bz2
-
-prepare-transformers:
-	while read -r MODEL; do poetry run python scripts/download_transformer_model.py $$MODEL ; done < data/test/hf_transformers_models.txt
-	if ! [ $(CI) ]; then poetry run python scripts/download_transformer_model.py rasa/LaBSE; fi
 prepare-tests-macos:
 	brew install wget graphviz || true
 
@@ -143,15 +112,6 @@ test: clean
 	# TF_CPP_MIN_LOG_LEVEL=2 sets C code log level for tensorflow to error suppressing lower log events
 	OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest tests -n $(JOBS) --dist loadscope --cov rasa --ignore $(INTEGRATION_TEST_FOLDER)
 
-test-integration:
-	# OMP_NUM_THREADS can improve overall performance using one thread by process (on tensorflow), avoiding overload
-	# TF_CPP_MIN_LOG_LEVEL=2 sets C code log level for tensorflow to error suppressing lower log events
-ifeq (,$(wildcard tests_deployment/.env))
-	OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest $(INTEGRATION_TEST_FOLDER) -n $(JOBS) -m $(INTEGRATION_TEST_PYTEST_MARKERS) --dist loadgroup
-else
-	set -o allexport; source tests_deployment/.env && OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest $(INTEGRATION_TEST_FOLDER) -n $(JOBS) -m $(INTEGRATION_TEST_PYTEST_MARKERS) --dist loadgroup && set +o allexport
-endif
-
 test-cli: PYTEST_MARKER=category_cli and (not flaky) and (not acceptance)
 test-cli: DD_ARGS := $(or $(DD_ARGS),)
 test-cli: test-marker
@@ -166,19 +126,19 @@ test-policies: test-marker
 
 test-nlu-featurizers: PYTEST_MARKER=category_nlu_featurizers and (not flaky) and (not acceptance)
 test-nlu-featurizers: DD_ARGS := $(or $(DD_ARGS),)
-test-nlu-featurizers: prepare-spacy prepare-mitie prepare-transformers test-marker
+test-nlu-featurizers: prepare-spacy test-marker
 
 test-nlu-predictors: PYTEST_MARKER=category_nlu_predictors and (not flaky) and (not acceptance)
 test-nlu-predictors: DD_ARGS := $(or $(DD_ARGS),)
-test-nlu-predictors: prepare-spacy prepare-mitie test-marker
+test-nlu-predictors: prepare-spacy test-marker
 
 test-full-model-training: PYTEST_MARKER=category_full_model_training and (not flaky) and (not acceptance)
 test-full-model-training: DD_ARGS := $(or $(DD_ARGS),)
-test-full-model-training: prepare-spacy prepare-mitie prepare-transformers test-marker
+test-full-model-training: prepare-spacy test-marker
 
 test-other-unit-tests: PYTEST_MARKER=category_other_unit_tests and (not flaky) and (not acceptance)
 test-other-unit-tests: DD_ARGS := $(or $(DD_ARGS),)
-test-other-unit-tests: prepare-spacy prepare-mitie test-marker
+test-other-unit-tests: prepare-spacy test-marker
 
 test-performance: PYTEST_MARKER=category_performance and (not flaky) and (not acceptance)
 test-performance: DD_ARGS := $(or $(DD_ARGS),)
@@ -186,11 +146,11 @@ test-performance: test-marker
 
 test-flaky: PYTEST_MARKER=flaky and (not acceptance)
 test-flaky: DD_ARGS := $(or $(DD_ARGS),)
-test-flaky: prepare-spacy prepare-mitie test-marker
+test-flaky: prepare-spacy test-marker
 
 test-acceptance: PYTEST_MARKER=acceptance and (not flaky)
 test-acceptance: DD_ARGS := $(or $(DD_ARGS),)
-test-acceptance: prepare-spacy prepare-mitie test-marker
+test-acceptance: prepare-spacy test-marker
 
 test-gh-actions:
 	OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest .github/tests --cov .github/scripts
@@ -198,7 +158,7 @@ test-gh-actions:
 test-marker: clean
     # OMP_NUM_THREADS can improve overall performance using one thread by process (on tensorflow), avoiding overload
 	# TF_CPP_MIN_LOG_LEVEL=2 sets C code log level for tensorflow to error suppressing lower log events
-	TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest tests -n $(JOBS) --dist loadscope -m "$(PYTEST_MARKER)" --cov rasa --ignore $(INTEGRATION_TEST_FOLDER) $(DD_ARGS)
+	OMP_NUM_THREADS=1 TF_CPP_MIN_LOG_LEVEL=2 poetry run pytest tests -n $(JOBS) --dist loadscope -m "$(PYTEST_MARKER)" --cov rasa --ignore $(INTEGRATION_TEST_FOLDER) $(DD_ARGS)
 
 generate-pending-changelog:
 	poetry run python -c "from scripts import release; release.generate_changelog('major.minor.patch')"
@@ -250,13 +210,6 @@ build-docker-full:
 	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl base-builder && \
 	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl full
 
-build-docker-mitie-en:
-	export IMAGE_NAME=rasa && \
-	docker buildx use default && \
-	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl base-images && \
-	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl base-builder && \
-	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl mitie-en
-
 build-docker-spacy-en:
 	export IMAGE_NAME=rasa && \
 	docker buildx use default && \
@@ -280,15 +233,3 @@ build-docker-spacy-it:
 	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl base-poetry && \
 	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl base-builder && \
 	docker buildx bake --set default.platform=${PLATFORM} -f docker/docker-bake.hcl spacy-it
-
-build-tests-deployment-env: ## Create environment files (.env) for docker-compose.
-	cd tests_deployment && \
-	test -f .env || cat .env.example >> .env
-
-run-integration-containers: build-tests-deployment-env ## Run the integration test containers.
-	cd tests_deployment && \
-	docker-compose -f docker-compose.integration.yml up &
-
-stop-integration-containers: ## Stop the integration test containers.
-	cd tests_deployment && \
-	docker-compose -f docker-compose.integration.yml down

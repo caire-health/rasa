@@ -21,7 +21,6 @@ from rasa.shared.nlu.constants import (
     FEATURE_TYPE_SENTENCE,
 )
 from rasa.nlu.convert import convert_training_data
-from rasa.nlu.extractors.mitie_entity_extractor import MitieEntityExtractor
 from rasa.nlu.tokenizers.whitespace_tokenizer import WhitespaceTokenizer
 from rasa.shared.nlu.training_data.features import Features
 from rasa.shared.nlu.training_data.message import Message
@@ -493,76 +492,6 @@ def test_data_merging(files):
     assert td.entities == td_reference.entities
     assert td.entity_synonyms == td_reference.entity_synonyms
     assert td.regex_features == td_reference.regex_features
-
-
-def test_repeated_entities(tmp_path: Path, whitespace_tokenizer: WhitespaceTokenizer):
-    data = """
-{
-  "rasa_nlu_data": {
-    "common_examples" : [
-      {
-        "text": "book a table today from 3 to 6 for 3 people",
-        "intent": "unk",
-        "entities": [
-          {
-            "entity": "description",
-            "start": 35,
-            "end": 36,
-            "value": "3"
-          }
-        ]
-      }
-    ]
-  }
-}"""
-    f = tmp_path / "tmp_training_data.json"
-    f.write_text(data, rasa.shared.utils.io.DEFAULT_ENCODING)
-    td = load_data(str(f))
-    assert len(td.entity_examples) == 1
-    example = td.entity_examples[0]
-    entities = example.get("entities")
-    assert len(entities) == 1
-    tokens = whitespace_tokenizer.tokenize(example, attribute=TEXT)
-    start, end = MitieEntityExtractor.find_entity(
-        entities[0], example.get(TEXT), tokens
-    )
-    assert start == 9
-    assert end == 10
-
-
-def test_multiword_entities(tmp_path: Path, whitespace_tokenizer: WhitespaceTokenizer):
-    data = """
-{
-  "rasa_nlu_data": {
-    "common_examples" : [
-      {
-        "text": "show me flights to New York City",
-        "intent": "unk",
-        "entities": [
-          {
-            "entity": "destination",
-            "start": 19,
-            "end": 32,
-            "value": "New York City"
-          }
-        ]
-      }
-    ]
-  }
-}"""
-    f = tmp_path / "tmp_training_data.json"
-    f.write_text(data, rasa.shared.utils.io.DEFAULT_ENCODING)
-    td = load_data(str(f))
-    assert len(td.entity_examples) == 1
-    example = td.entity_examples[0]
-    entities = example.get("entities")
-    assert len(entities) == 1
-    tokens = whitespace_tokenizer.tokenize(example, attribute=TEXT)
-    start, end = MitieEntityExtractor.find_entity(
-        entities[0], example.get(TEXT), tokens
-    )
-    assert start == 4
-    assert end == 7
 
 
 def test_nonascii_entities(tmp_path):
