@@ -139,7 +139,7 @@ joblib = "^1.4"
 sentry-sdk = "^2.14"
 aio-pika = "^9.4"
 aiogram = "^2.15"
-typing-extensions = "^4.12"
+typing-extensions = "^4"
 typing-utils = "^0.1"
 tarsafe = "^0.0"
 google-auth = "^2"
@@ -156,11 +156,8 @@ wheel = "^0.44"
 certifi = "^2025"
 cryptography = "^44.0"
 lockfile = "^0.12"
-# jax & jaxlib must be the exact same version to work together.
-# Poetry can't enforce this, so we pin both explicitly.
-# When upgrading, update BOTH to the same version.
-jax = "0.4.30"
-jaxlib = "0.4.30"
+jax = "^0.4"
+jaxlib = "^0.4"
 pydantic = { version = "<1.10.10", optional = true, extras = ["dotenv"] }
 filelock = "^3"
 huggingface-hub = "^0.25.0"
@@ -182,16 +179,16 @@ version = "2024.9.1"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.numpy]]
-version = ">=1.23.5,<2.0.0"
+version = ">=1.19.2,<1.25.0"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.numpy]]
-version = ">=1.23.5,<2.0.0"
+version = "1.22.3"
 markers = "sys_platform =='Windows' and platform_python_implementation != 'PyPy'"
 python = "3.10"
 
 [[tool.poetry.dependencies.scipy]]
-version = ">=1.10.0,<1.14.0"
+version = ">=1.10.0,<1.11.0"
 python = ">=3.8,<3.11"
 
 [[tool.poetry.dependencies.scikit-learn]]
@@ -237,19 +234,19 @@ timeout_func_only = true
 asyncio_mode = "auto"
 
 [tool.poetry.dependencies.tensorflow]
-version = "2.15.0"
+version = "2.12.1"
 markers = "sys_platform != 'darwin' or platform_machine != 'arm64'"
 
 [tool.poetry.dependencies.tensorflow-intel]
-version = "2.15.0"
+version = "2.12.0"
 markers = "sys_platform == 'win32'"
 
 [tool.poetry.dependencies.tensorflow-cpu-aws]
-version = "2.15.0"
+version = "2.12.1"
 markers = "sys_platform == 'linux' and (platform_machine == 'arm64' or platform_machine == 'aarch64')"
 
 [tool.poetry.dependencies.tensorflow-macos]
-version = "2.15.0"
+version = "2.12.0"
 markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"
 
 [tool.poetry.dependencies.PyJWT]
@@ -266,7 +263,7 @@ markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"
 optional = true
 
 [tool.poetry.dependencies.tensorflow-text]
-version = "2.15.0"
+version = "2.12.1"
 markers = "sys_platform != 'win32' and platform_machine != 'arm64' and platform_machine != 'aarch64'"
 
 [tool.poetry.dependencies."github3.py"]

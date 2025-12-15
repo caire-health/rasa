@@ -7,8 +7,8 @@ import os
 from collections import defaultdict
 from typing import List, Text, Dict, Tuple, Union, Optional, Any, TYPE_CHECKING
 
-from tensorflow.python.keras.utils import tf_utils
-from tensorflow.keras import Model
+from keras.utils import tf_utils
+from keras import Model
 
 from rasa.shared.constants import DIAGNOSTIC_DATA
 from rasa.utils.tensorflow.constants import (
