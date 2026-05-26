@@ -133,10 +133,10 @@ SQLAlchemy = "^1.4"
 sklearn-crfsuite = "^0.5"
 psycopg2-binary = "^2.9"
 python-dateutil = "^2.9"
-protobuf = "^4.23"
+protobuf = ">=4.23"
 tensorflow_hub = "^0.16"
 setuptools = "^80"
-ujson = "^5.10"
+ujson = ">=5.12.1"
 regex = "^2024.9"
 joblib = "^1.4"
 sentry-sdk = "^2.14"
@@ -253,7 +253,7 @@ version = "2.12.0"
 markers = "sys_platform == 'darwin' and platform_machine == 'arm64'"
 
 [tool.poetry.dependencies.PyJWT]
-version = "^2.9"
+version = ">=2.12"
 extras = [ "crypto",]
 
 [tool.poetry.dependencies.colorama]
@@ -274,11 +274,11 @@ version = ">=3.2.0"
 optional = true
 
 [tool.poetry.dependencies.transformers]
-version = "^4.44"
+version = ">=4.53"
 optional = true
 
 [tool.poetry.dependencies.sentencepiece]
-version = "^0.2"
+version = ">=0.2.1"
 optional = true
 extras = [ "sentencepiece",]
 
@@ -307,7 +307,7 @@ aioresponses = "^0.7.2"
 moto = "^5"
 fakeredis = "^2.11.2"
 mongomock = "^4.1.2"
-black = "^22.10.0"
+black = ">=26.3.1"
 google-cloud-storage = "^2.4.0"
 azure-storage-blob = "^12.17"
 coveralls = "^3.0.1"
