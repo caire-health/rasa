@@ -162,9 +162,11 @@ lockfile = "^0.12"
 jax = "^0.4"
 jaxlib = "^0.4"
 pydantic = { version = "<1.10.14", optional = true, extras = ["dotenv"] }
-filelock = "^3"
+filelock = ">=3.20.3"
 huggingface-hub = ">=0.30.0"
 safetensors = "^0"
+jinja2 = ">=3.1.6"
+grpcio = ">=1.68.0"
 [[tool.poetry.dependencies.tensorflow-io-gcs-filesystem]]
 version = "^0.37"
 markers = "sys_platform == 'win32'"
