@@ -19,7 +19,9 @@ RUN apt-get update -qq && \
   && apt-get autoremove -y
 
 # Make sure that all security updates are installed
-RUN apt-get update && apt-get dist-upgrade -y --no-install-recommends
+# CVE-2023-38545 (curl/libcurl): dist-upgrade pulls patched curl from Ubuntu security repos
+RUN apt-get update && apt-get dist-upgrade -y --no-install-recommends && \
+    apt-get install -y --only-upgrade curl libcurl4
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 100 \
    && update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 100

@@ -1,5 +1,6 @@
 # The base image used for all images that require a MITIE model
-FROM alpine:latest
+# Pinned to avoid alpine:latest pulling OpenSSL 3.5.x (CVE-2026-31789)
+FROM alpine:3.20
 
 RUN apk add --update make wget
 
