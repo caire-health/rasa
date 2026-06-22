@@ -389,9 +389,9 @@ jobs:
 
       - name: Store coverage reports
         if: needs.changes.outputs.backend == 'true' && matrix.os == 'ubuntu-22.04'
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.test }}-coverage
+          name: ${{ matrix.test }}-${{ matrix.python-version }}-coverage
           path: |
             ${{ github.workspace }}/${{ matrix.test }}-coverage
 
@@ -540,11 +540,11 @@ jobs:
 
       - name: Store coverage reports
         if: needs.changes.outputs.backend == 'true' && matrix.os == 'ubuntu-22.04'
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.test }}-coverage
+          name: test-flaky-${{ matrix.python-version }}-coverage
           path: |
-            ${{ github.workspace }}/${{ matrix.test }}-coverage
+            ${{ github.workspace }}/test-flaky-coverage
 
   prepare_coverage_reports_analyse_with_sonarcloud:
     name: Prepare coverage reports and Analyse coverage with Sonarcloud
@@ -567,7 +567,7 @@ jobs:
 
       - name: Get backend coverage reports
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
+        uses: actions/download-artifact@v4
         with:
           path: ${{ github.workspace }}/tests_coverage
 
