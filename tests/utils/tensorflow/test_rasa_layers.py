@@ -525,7 +525,7 @@ def test_raises_exception_when_missing_features(
 
 def test_concat_sparse_dense_raises_exception_when_inconsistent_sparse_features() -> (
     None
-):  # noqa: E501
+):
     with pytest.raises(TFLayerConfigException):
         ConcatenateSparseDenseFeatures(
             attribute=attribute_name,

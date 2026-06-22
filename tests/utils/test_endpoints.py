@@ -250,7 +250,7 @@ async def test_endpoint_config_caches_session() -> None:
 
 async def test_endpoint_config_constructor_does_not_create_session_cached_property() -> (
     None
-):  # noqa: E501
+):
     """Test that the instantiation of EndpointConfig does not create the session cached property."""  # noqa: E501
     endpoint = endpoint_utils.EndpointConfig("https://example.com/")
 
