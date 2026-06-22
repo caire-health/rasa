@@ -1,6 +1,5 @@
 from typing import List, Text
 
-
 DOCS_BASE_URL = "https://rasa.com/docs/rasa"
 LEGACY_DOCS_BASE_URL = "https://legacy-docs-v1.rasa.com"
 DOCS_URL_TRAINING_DATA = DOCS_BASE_URL + "/training-data-format"

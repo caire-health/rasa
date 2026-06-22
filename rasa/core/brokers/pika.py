@@ -94,7 +94,7 @@ class PikaEventBroker(EventBroker):
 
     @staticmethod
     def _get_queues_from_args(
-        queues_arg: Union[List[Text], Tuple[Text, ...], Text, None]
+        queues_arg: Union[List[Text], Tuple[Text, ...], Text, None],
     ) -> Union[List[Text], Tuple[Text, ...]]:
         """Get queues for this event broker.
 

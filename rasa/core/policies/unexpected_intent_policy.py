@@ -808,7 +808,7 @@ class UnexpecTEDIntentPolicy(TEDPolicy):
 
     @staticmethod
     def _compute_label_quantiles(
-        label_id_scores: Dict[int, Dict[Text, List[float]]]
+        label_id_scores: Dict[int, Dict[Text, List[float]]],
     ) -> Dict[int, List[float]]:
         """Computes multiple quantiles for each label id.
 

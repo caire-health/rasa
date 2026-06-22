@@ -37,7 +37,7 @@ class WitReader(JsonTrainingDataReader):
                 entity_name = e["entity"]
                 if ":" not in entity_name:
                     continue
-                (name, role) = entity_name.rsplit(":", 1)
+                name, role = entity_name.rsplit(":", 1)
                 e[ENTITY_ATTRIBUTE_TYPE] = name
                 e[ENTITY_ATTRIBUTE_ROLE] = role
                 e[ENTITY_ATTRIBUTE_VALUE] = e.pop("body", None)

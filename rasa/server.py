@@ -881,9 +881,11 @@ def create_app(
 
         try:
             async with app.ctx.agent.lock_store.lock(conversation_id):
-                tracker = await (
-                    app.ctx.agent.processor.fetch_tracker_and_update_session(
-                        conversation_id
+                tracker = (
+                    await (
+                        app.ctx.agent.processor.fetch_tracker_and_update_session(
+                            conversation_id
+                        )
                     )
                 )
 
@@ -934,9 +936,11 @@ def create_app(
 
         try:
             async with app.ctx.agent.lock_store.lock(conversation_id):
-                tracker = await (
-                    app.ctx.agent.processor.fetch_tracker_and_update_session(
-                        conversation_id
+                tracker = (
+                    await (
+                        app.ctx.agent.processor.fetch_tracker_and_update_session(
+                            conversation_id
+                        )
                     )
                 )
                 output_channel = _get_output_channel(request, tracker)

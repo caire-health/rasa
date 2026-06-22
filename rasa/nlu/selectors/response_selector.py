@@ -430,9 +430,9 @@ class ResponseSelector(DIETClassifier):
         self, message: Message, prediction_dict: Dict[Text, Any], selector_key: Text
     ) -> None:
         message_selector_properties = message.get(RESPONSE_SELECTOR_PROPERTY_NAME, {})
-        message_selector_properties[
-            RESPONSE_SELECTOR_RETRIEVAL_INTENTS
-        ] = self.all_retrieval_intents
+        message_selector_properties[RESPONSE_SELECTOR_RETRIEVAL_INTENTS] = (
+            self.all_retrieval_intents
+        )
         message_selector_properties[selector_key] = prediction_dict
         message.set(
             RESPONSE_SELECTOR_PROPERTY_NAME,
@@ -796,10 +796,10 @@ class DIET2DIET(DIET):
             (self.text_name, self.config),
             (self.label_name, label_config),
         ]:
-            self._tf_layers[
-                f"sequence_layer.{attribute}"
-            ] = rasa_layers.RasaSequenceLayer(
-                attribute, self.data_signature[attribute], config
+            self._tf_layers[f"sequence_layer.{attribute}"] = (
+                rasa_layers.RasaSequenceLayer(
+                    attribute, self.data_signature[attribute], config
+                )
             )
 
         if self.config[MASKED_LM]:

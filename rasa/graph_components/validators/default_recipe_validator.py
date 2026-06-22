@@ -43,7 +43,6 @@ from rasa.shared.importers.importer import TrainingDataImporter
 from rasa.shared.nlu.training_data.training_data import TrainingData
 import rasa.shared.utils.io
 
-
 # TODO: Can we replace this with the registered types from the regitry?
 TRAINABLE_EXTRACTORS = [MitieEntityExtractor, CRFEntityExtractor, DIETClassifier]
 # TODO: replace these once the Recipe is merged (used in tests)
@@ -293,9 +292,9 @@ class DefaultV1RecipeValidator(GraphComponent):
         Both of these look for the same entities based on the same training data
         leading to ambiguity in the results.
         """
-        extractors_in_configuration: Set[
-            Type[GraphComponent]
-        ] = self._component_types.intersection(TRAINABLE_EXTRACTORS)
+        extractors_in_configuration: Set[Type[GraphComponent]] = (
+            self._component_types.intersection(TRAINABLE_EXTRACTORS)
+        )
         if len(extractors_in_configuration) > 1:
             rasa.shared.utils.io.raise_warning(
                 f"You have defined multiple entity extractors that do the same job "

@@ -4,7 +4,6 @@ import re
 
 import pytest
 
-
 DOCS_BASE_DIR = Path("docs/")
 MDX_DOCS_FILES = list((DOCS_BASE_DIR / "docs").glob("**/*.mdx"))
 # we're matching anchors with href containing strings, but not starting

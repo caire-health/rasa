@@ -273,7 +273,7 @@ def test_get_validated_config_with_invalid_input(parameters: Dict[Text, Any]) ->
     ],
 )
 def test_get_validated_config_with_default_and_no_config(
-    parameters: Dict[Text, Any]
+    parameters: Dict[Text, Any],
 ) -> None:
     config_path = None
     default_config_content = {
@@ -357,16 +357,14 @@ def test_validate_files_action_not_found_invalid_domain(
     file_type: Text, data_type: Text, tmp_path: Path
 ):
     file_name = tmp_path / f"{file_type}.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         {file_type}:
         - {data_type}: test path
           steps:
           - intent: goodbye
           - action: action_test
-        """
-    )
+        """)
 
     importer = TrainingDataImporter.load_from_config(
         "data/test_config/config_defaults.yml",
@@ -389,8 +387,7 @@ def test_validate_files_form_not_found_invalid_domain(
     file_type: Text, data_type: Text, tmp_path: Path
 ):
     file_name = tmp_path / f"{file_type}.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         {file_type}:
         - {data_type}: test path
@@ -398,8 +395,7 @@ def test_validate_files_form_not_found_invalid_domain(
             - intent: request_restaurant
             - action: restaurant_form
             - active_loop: restaurant_form
-        """
-    )
+        """)
 
     importer = TrainingDataImporter.load_from_config(
         "data/test_config/config_defaults.yml",
@@ -425,8 +421,7 @@ def test_validate_files_with_active_loop_null(
     )
     nlu_file = "data/test_nlu/test_nlu_validate_files_with_active_loop_null.yml"
     file_name = tmp_path / f"{file_type}.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         {file_type}:
         - {data_type}: test path
@@ -436,8 +431,7 @@ def test_validate_files_with_active_loop_null(
             - active_loop: restaurant_form
             - active_loop: null
             - action: action_search_restaurants
-        """
-    )
+        """)
 
     importer = TrainingDataImporter.load_from_config(
         "data/test_config/config_unique_assistant_id.yml",
@@ -464,8 +458,7 @@ def test_validate_files_with_active_loop_null(
 
 def test_validate_files_form_slots_not_matching(tmp_path: Path):
     domain_file_name = tmp_path / "domain.yml"
-    domain_file_name.write_text(
-        f"""
+    domain_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         forms:
           name_form:
@@ -481,8 +474,7 @@ def test_validate_files_form_slots_not_matching(tmp_path: Path):
                 type: text
                 mappings:
                 - type: from_text
-        """
-    )
+        """)
 
     importer = TrainingDataImporter.load_from_config(
         "data/test_config/config_defaults.yml",
@@ -536,8 +528,7 @@ def test_validate_files_invalid_slot_mappings(tmp_path: Path):
     tested_slot = "duration"
     form_name = "booking_form"
     # form required_slots does not include the tested_slot
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intents:
             - state_length_of_time
@@ -561,8 +552,7 @@ def test_validate_files_invalid_slot_mappings(tmp_path: Path):
               {form_name}:
                 required_slots:
                 - location
-                """
-    )
+                """)
     importer = TrainingDataImporter.load_from_config(
         "data/test_config/config_defaults.yml", str(domain), None
     )

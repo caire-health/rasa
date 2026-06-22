@@ -3920,10 +3920,9 @@ reference = "internal repository mirroring psycopg binary for macos"
 name = "langcodes"
 version = "3.5.1"
 description = "Tools for labeling human languages with IETF language tags"
-optional = true
+optional = false
 python-versions = ">=3.9"
 groups = ["main"]
-markers = "(extra == \"spacy\" or extra == \"full\") and (sys_platform != \"darwin\" or platform_machine != \"arm64\")"
 files = [
     {file = "langcodes-3.5.1-py3-none-any.whl", hash = "sha256:b6a9c25c603804e2d169165091d0cdb23934610524a21d226e4f463e8e958a72"},
     {file = "langcodes-3.5.1.tar.gz", hash = "sha256:40bff315e01b01d11c2ae3928dd4f5cbd74dd38f9bd912c12b9a3606c143f731"},
@@ -10567,4 +10566,4 @@ transformers = ["sentencepiece", "transformers"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10, <3.11"
-content-hash = "3f2e289541d5e274e45c35bebc9bf9bed4a63c9a9b7b7217d352adbd64f19b37"
+content-hash = "10bab77de3adacd6233e2197756f53d4c8b9658c57d4b0ad51fbf890836e1547"

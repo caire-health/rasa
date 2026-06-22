@@ -145,7 +145,7 @@ def test_feature_computation(
 def test_features_for_messages_with_missing_part_of_speech_tags(
     create_lexical_syntactic_featurizer: Callable[
         [Dict[Text, Any]], LexicalSyntacticFeaturizer
-    ]
+    ],
 ):
     # build the message and do NOT add part of speech information
     sentence = "hello goodbye hello"
@@ -170,7 +170,7 @@ def test_features_for_messages_with_missing_part_of_speech_tags(
 def test_only_featurizes_text_attribute(
     create_lexical_syntactic_featurizer: Callable[
         [Dict[Text, Any]], LexicalSyntacticFeaturizer
-    ]
+    ],
 ):
     # build a message with tokens for lots of attributes
     sentence = "hello goodbye hello"
@@ -197,7 +197,7 @@ def test_only_featurizes_text_attribute(
 def test_process_multiple_messages(
     create_lexical_syntactic_featurizer: Callable[
         [Dict[Text, Any]], LexicalSyntacticFeaturizer
-    ]
+    ],
 ):
     # build a message with tokens for lots of attributes
     multiple_messages = []

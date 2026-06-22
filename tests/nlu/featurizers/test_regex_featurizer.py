@@ -462,7 +462,7 @@ def test_lookup_with_and_without_boundaries(
     message.set(SPACY_DOCS[TEXT], spacy_nlp(sentence))
     spacy_tokenizer.process([message])
 
-    (sequence_features, sentence_features) = ftr._features_for_patterns(message, TEXT)
+    sequence_features, sentence_features = ftr._features_for_patterns(message, TEXT)
 
     sequence_features = sequence_features.toarray()
     sentence_features = sentence_features.toarray()

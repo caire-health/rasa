@@ -208,7 +208,7 @@ def test_all_events_before_user_msg():
 
 
 def all_events_before_latest_user_msg(
-    events: List[Dict[Text, Any]]
+    events: List[Dict[Text, Any]],
 ) -> List[Dict[Text, Any]]:
     """Return all events that happened before the most recent user message."""
 
@@ -604,8 +604,7 @@ async def test_interactive_domain_persistence(
 async def test_write_domain_to_file_with_form(tmp_path: Path):
     domain_path = str(tmp_path / "domain.yml")
     form_name = "my_form"
-    old_domain = Domain.from_yaml(
-        f"""
+    old_domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         actions:
         - utter_greet
@@ -615,8 +614,7 @@ async def test_write_domain_to_file_with_form(tmp_path: Path):
             required_slots: []
         intents:
         - greet
-        """
-    )
+        """)
 
     events = [ActionExecuted(form_name), ActionExecuted(ACTION_LISTEN_NAME)]
     events = [e.as_dict() for e in events]

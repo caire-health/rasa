@@ -3,7 +3,12 @@ import logging
 import time
 from typing import List, NamedTuple, Optional, Text
 
-from transformers import AutoTokenizer, TFAutoModel
+from transformers import AutoTokenizer
+
+try:
+    from transformers import TFAutoModel
+except ImportError:
+    TFAutoModel = None  # transformers v5+ dropped TF support
 
 import rasa.shared.utils.io
 from rasa.nlu.utils.hugging_face.registry import (
@@ -73,8 +78,9 @@ def instantiate_to_download(comp: LmfSpec) -> None:
     """Instantiates Auto class instances, but only to download."""
 
     _ = AutoTokenizer.from_pretrained(comp.model_weights, cache_dir=comp.cache_dir)
-    logger.info("Done with AutoTokenizer, now doing TFAutoModel")
-    _ = TFAutoModel.from_pretrained(comp.model_weights, cache_dir=comp.cache_dir)
+    if TFAutoModel is not None:
+        logger.info("Done with AutoTokenizer, now doing TFAutoModel")
+        _ = TFAutoModel.from_pretrained(comp.model_weights, cache_dir=comp.cache_dir)
 
 
 def download(config_path: str):

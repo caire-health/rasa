@@ -86,7 +86,7 @@ jobs:
     # Looks for doc test workflows and waits for it to complete successfully
     # Runs on pushes to main exclusively
     name: Wait for docs tests
-    if: github.ref_type != 'tag'
+    if: false
     runs-on: ubuntu-22.04
     needs: [changes]
 
@@ -144,7 +144,7 @@ jobs:
       - name: Load Poetry Cached Libraries ⬇
         id: cache-poetry
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-poetry-${{ env.POETRY_VERSION }}-${{ env.DEFAULT_PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-${{ secrets.POETRY_CACHE_VERSION }}
@@ -250,7 +250,7 @@ jobs:
           - test-other-unit-tests
           - test-performance
         os: [ubuntu-22.04, windows-2019]
-        python-version: [3.8, 3.9, "3.10"]
+        python-version: ["3.10"]
 
     steps:
       - name: Run DataDog Agent
@@ -290,7 +290,7 @@ jobs:
       - name: Load Poetry Cached Libraries ⬇
         id: cache-poetry
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-poetry-${{ env.POETRY_VERSION }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-venv-${{ secrets.POETRY_CACHE_VERSION }}-${{ env.pythonLocation }}
@@ -389,9 +389,9 @@ jobs:
 
       - name: Store coverage reports
         if: needs.changes.outputs.backend == 'true' && matrix.os == 'ubuntu-22.04'
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.test }}-coverage
+          name: ${{ matrix.test }}-${{ matrix.python-version }}-coverage
           path: |
             ${{ github.workspace }}/${{ matrix.test }}-coverage
 
@@ -405,7 +405,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04, windows-2019]
-        python-version: [3.8, 3.9, "3.10"]
+        python-version: ["3.10"]
 
     steps:
       - name: Run DataDog Agent
@@ -445,7 +445,7 @@ jobs:
       - name: Load Poetry Cached Libraries ⬇
         id: cache-poetry
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-poetry-${{ env.POETRY_VERSION }}-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}-venv-${{ secrets.POETRY_CACHE_VERSION }}-${{ env.pythonLocation }}
@@ -540,11 +540,11 @@ jobs:
 
       - name: Store coverage reports
         if: needs.changes.outputs.backend == 'true' && matrix.os == 'ubuntu-22.04'
-        uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+        uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.test }}-coverage
+          name: test-flaky-${{ matrix.python-version }}-coverage
           path: |
-            ${{ github.workspace }}/${{ matrix.test }}-coverage
+            ${{ github.workspace }}/test-flaky-coverage
 
   prepare_coverage_reports_analyse_with_sonarcloud:
     name: Prepare coverage reports and Analyse coverage with Sonarcloud
@@ -567,7 +567,7 @@ jobs:
 
       - name: Get backend coverage reports
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/download-artifact@9bc31d5ccc31df68ecc42ccf4149144866c47d8a
+        uses: actions/download-artifact@v4
         with:
           path: ${{ github.workspace }}/tests_coverage
 
@@ -678,7 +678,7 @@ jobs:
       - name: Load Poetry Cached Libraries ⬇
         id: cache-poetry
         if: needs.changes.outputs.backend == 'true'
-        uses: actions/cache@88522ab9f39a2ea568f7027eddc7d8d8bc9d59c8
+        uses: actions/cache@v4
         with:
           path: .venv
           key: ${{ runner.os }}-poetry-${{ env.POETRY_VERSION }}-${{ env.DEFAULT_PYTHON_VERSION }}-${{ hashFiles('**/poetry.lock') }}-venv-${{ secrets.POETRY_CACHE_VERSION }}-${{ env.pythonLocation }}

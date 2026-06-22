@@ -286,7 +286,7 @@ class LanguageModelFeaturizer(DenseFeaturizer, GraphComponent):
                 # `self._lm_specific_token_cleanup()` to raise an exception
                 continue
 
-            (split_token_ids, split_token_strings) = self._lm_specific_token_cleanup(
+            split_token_ids, split_token_strings = self._lm_specific_token_cleanup(
                 split_token_ids, split_token_strings
             )
 

@@ -1327,8 +1327,7 @@ async def test_predict_next_action_with_hidden_rules(
     story_action = "story_action"
     rule_slot = "rule_slot"
     story_slot = "story_slot"
-    domain_content = textwrap.dedent(
-        f"""
+    domain_content = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - {rule_intent}
@@ -1345,14 +1344,12 @@ async def test_predict_next_action_with_hidden_rules(
             type: text
             mappings:
             - type: from_text
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_content)
     domain_path = tmp_path / "domain.yml"
     rasa.shared.utils.io.write_text_file(domain_content, domain_path)
 
-    training_data = textwrap.dedent(
-        f"""
+    training_data = textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
     rules:
@@ -1370,21 +1367,18 @@ async def test_predict_next_action_with_hidden_rules(
       - action: {story_action}
       - slot_was_set:
           - {story_slot}: {story_slot}
-    """
-    )
+    """)
     training_data_path = tmp_path / "data.yml"
     rasa.shared.utils.io.write_text_file(training_data, training_data_path)
 
-    config = textwrap.dedent(
-        f"""
+    config = textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     assistant_id: placeholder_default
     policies:
     - name: RulePolicy
     - name: MemoizationPolicy
 
-    """
-    )
+    """)
     config_path = tmp_path / "config.yml"
     rasa.shared.utils.io.write_text_file(config, config_path)
     model_path = await trained_async(
@@ -1686,8 +1680,7 @@ async def test_processor_executes_bot_uttered_returned_by_action_extract_slots(
     default_agent: Agent,
 ):
     slot_name = "location"
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -1706,8 +1699,7 @@ async def test_processor_executes_bot_uttered_returned_by_action_extract_slots(
 
         actions:
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     processor = default_agent.processor
     processor.domain = domain

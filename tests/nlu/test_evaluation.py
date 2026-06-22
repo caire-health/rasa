@@ -80,7 +80,6 @@ from rasa.utils.tensorflow.constants import EPOCHS, RUN_EAGERLY
 # is currently the only way of changing the scope of this fixture
 from tests.nlu.utilities import write_file_config
 
-
 # Chinese Example
 # "对面食过敏" -> To be allergic to wheat-based food
 CH_wrong_segmentation = [
@@ -460,16 +459,14 @@ async def test_run_evaluation(default_agent: Agent, nlu_as_json_path: Text):
     300, func_only=True
 )  # these can take a longer time than the default timeout
 async def test_run_evaluation_with_regex_message(mood_agent: Agent, tmp_path: Path):
-    training_data = textwrap.dedent(
-        """
+    training_data = textwrap.dedent("""
     version: '2.0'
     nlu:
     - intent: goodbye
       examples: |
         - Bye
         - /goodbye{"location": "29432"}
-    """
-    )
+    """)
 
     data_path = tmp_path / "test.yml"
     rasa.shared.utils.io.write_text_file(training_data, data_path)
@@ -497,7 +494,7 @@ async def test_eval_data(tmp_path: Path, project: Text, trained_rasa_model: Text
     processor = Agent.load(trained_rasa_model).processor
 
     data = data_importer.get_nlu_data()
-    (intent_results, response_selection_results, entity_results) = await get_eval_data(
+    intent_results, response_selection_results, entity_results = await get_eval_data(
         processor, data
     )
 

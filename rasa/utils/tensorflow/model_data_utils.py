@@ -375,7 +375,7 @@ def _feature_arrays_for_attribute(
     if training:
         fake_features[attribute] = _create_fake_features(features)
 
-    (attribute_masks, _dense_features, _sparse_features) = _extract_features(
+    attribute_masks, _dense_features, _sparse_features = _extract_features(
         features, fake_features[attribute], attribute
     )
 

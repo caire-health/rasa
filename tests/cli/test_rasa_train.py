@@ -244,7 +244,7 @@ def test_train_dry_run_failure(run_in_simple_project: Callable[..., RunResult]):
 
 
 def test_train_dry_run_force(
-    run_in_simple_project_with_model: Callable[..., RunResult]
+    run_in_simple_project_with_model: Callable[..., RunResult],
 ):
     temp_dir = os.getcwd()
 
@@ -498,7 +498,7 @@ def test_train_core_help(run: Callable[..., RunResult]):
 
 
 def test_train_nlu_finetune_with_model(
-    run_in_simple_project_with_model: Callable[..., RunResult]
+    run_in_simple_project_with_model: Callable[..., RunResult],
 ):
     temp_dir = os.getcwd()
 

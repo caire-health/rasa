@@ -312,9 +312,9 @@ def test_tracker_store_from_invalid_string(domain: Domain):
     assert isinstance(tracker_store, InMemoryTrackerStore)
 
 
-async def _tracker_store_and_tracker_with_slot_set() -> Tuple[
-    InMemoryTrackerStore, DialogueStateTracker
-]:
+async def _tracker_store_and_tracker_with_slot_set() -> (
+    Tuple[InMemoryTrackerStore, DialogueStateTracker]
+):
     # returns an InMemoryTrackerStore containing a tracker with a slot set
 
     slot_key = "cuisine"

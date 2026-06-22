@@ -12,7 +12,6 @@ from rasa.shared.core.training_data.story_writer.yaml_story_writer import (
 from rasa.shared.constants import UTTER_PREFIX
 from rasa.utils.converter import TrainingDataConverter
 
-
 OBSOLETE_RESPOND_PREFIX = "respond_"
 
 

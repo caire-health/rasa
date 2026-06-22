@@ -99,7 +99,7 @@ class DefaultV1Recipe(Recipe):
         MODEL_LOADER = 6
 
     name = "default.v1"
-    _registered_components: Dict[Text, RegisteredComponent] = {}  # noqa: RUF012
+    _registered_components: Dict[Text, RegisteredComponent] = {}
 
     def __init__(self) -> None:
         """Creates recipe."""
@@ -150,10 +150,10 @@ class DefaultV1Recipe(Recipe):
             else:
                 unique_types = set(component_types)
 
-            cls._registered_components[
-                registered_class.__name__
-            ] = cls.RegisteredComponent(
-                registered_class, unique_types, is_trainable, model_from
+            cls._registered_components[registered_class.__name__] = (
+                cls.RegisteredComponent(
+                    registered_class, unique_types, is_trainable, model_from
+                )
             )
             return registered_class
 

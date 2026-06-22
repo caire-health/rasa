@@ -17,7 +17,6 @@ from rasa.core.channels.channel import (
     UserMessage,
 )
 
-
 logger = logging.getLogger(__name__)
 structlogger = structlog.get_logger()
 

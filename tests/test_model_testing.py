@@ -380,10 +380,7 @@ def test_write_classification_errors():
     ]
     tracker = DialogueStateTracker.from_events("default", events)
     dump = YAMLStoryWriter().dumps(tracker.as_story().story_steps)
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: default
@@ -391,9 +388,7 @@ def test_write_classification_errors():
           - intent: greet  # predicted: goodbye: Hello
           - action: utter_greet  # predicted: utter_goodbye
 
-    """
-        ).strip()
-    )
+    """).strip()
 
 
 def test_log_failed_stories(tmp_path: Path):

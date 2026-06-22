@@ -335,9 +335,11 @@ class EntityExtractorMixin(abc.ABC):
         interleaving_text = text[last_token_end : token.start]
         tokens_separated_by_allowed_chars = all(
             filter(
-                lambda char: True
-                if char in SINGLE_ENTITY_ALLOWED_INTERLEAVING_CHARSET
-                else False,
+                lambda char: (
+                    True
+                    if char in SINGLE_ENTITY_ALLOWED_INTERLEAVING_CHARSET
+                    else False
+                ),
                 interleaving_text,
             )
         )

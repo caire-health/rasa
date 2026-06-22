@@ -56,13 +56,9 @@ def inform_about_telemetry(_: argparse.Namespace) -> None:
             "Telemetry reporting is currently disabled for this installation."
         )
 
-    print(
-        textwrap.dedent(
-            """
+    print(textwrap.dedent("""
             Rasa uses telemetry to report anonymous usage information. This information
-            is essential to help improve Rasa Open Source for all users."""
-        )
-    )
+            is essential to help improve Rasa Open Source for all users."""))
 
     if not is_enabled:
         print("\nYou can enable telemetry reporting using")

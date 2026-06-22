@@ -320,7 +320,7 @@ class TestShapeValuesTrainAndProcess:
         expected_cls_vec: List[List[float]],
     ) -> None:
         for index in range(len(messages)):
-            (computed_sequence_vec, computed_sentence_vec) = messages[
+            computed_sequence_vec, computed_sentence_vec = messages[
                 index
             ].get_dense_features(TEXT, [])
             if computed_sequence_vec:
@@ -349,7 +349,7 @@ class TestShapeValuesTrainAndProcess:
                 atol=1e-4,
             )
 
-            (intent_sequence_vec, intent_sentence_vec) = messages[
+            intent_sequence_vec, intent_sentence_vec = messages[
                 index
             ].get_dense_features(INTENT, [])
             if intent_sequence_vec:

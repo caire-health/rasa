@@ -123,7 +123,7 @@ class MessageProcessor:
 
     @staticmethod
     def _load_model(
-        model_path: Union[Text, Path]
+        model_path: Union[Text, Path],
     ) -> Tuple[Text, ModelMetadata, GraphRunner]:
         """Unpacks a model from a given path using the graph model loader."""
         try:

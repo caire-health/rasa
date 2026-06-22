@@ -55,9 +55,11 @@ class LUISEmulator(Emulator):
                     "type": e[ENTITY_ATTRIBUTE_TYPE],
                     "text": e[ENTITY_ATTRIBUTE_VALUE],
                     "startIndex": e.get(ENTITY_ATTRIBUTE_START),
-                    "length": (e[ENTITY_ATTRIBUTE_END] - e[ENTITY_ATTRIBUTE_START])
-                    if ENTITY_ATTRIBUTE_START in e and ENTITY_ATTRIBUTE_END in e
-                    else None,
+                    "length": (
+                        (e[ENTITY_ATTRIBUTE_END] - e[ENTITY_ATTRIBUTE_START])
+                        if ENTITY_ATTRIBUTE_START in e and ENTITY_ATTRIBUTE_END in e
+                        else None
+                    ),
                     "score": e.get(PREDICTED_CONFIDENCE_KEY),
                     "modelType": e.get(EXTRACTOR),
                 }

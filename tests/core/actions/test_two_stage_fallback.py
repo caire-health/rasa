@@ -157,14 +157,12 @@ async def test_ask_rephrase_after_failed_affirmation():
         ],
     )
 
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
             utter_ask_rephrase:
             - text: {rephrase_text}
-        """
-    )
+        """)
     action = TwoStageFallbackAction()
 
     events = await action.run(

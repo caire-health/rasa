@@ -291,9 +291,11 @@ class DialogueStateTracker:
         """
         return frozenset(
             {
-                key: frozenset(values.items())
-                if isinstance(values, Dict)
-                else frozenset(values)
+                key: (
+                    frozenset(values.items())
+                    if isinstance(values, Dict)
+                    else frozenset(values)
+                )
                 for key, values in state.items()
             }.items()
         )

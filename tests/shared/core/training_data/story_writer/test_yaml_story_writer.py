@@ -85,10 +85,7 @@ def test_yaml_writer_dumps_user_messages():
     tracker = DialogueStateTracker.from_events("default", events)
     dump = YAMLStoryWriter().dumps(tracker.as_story().story_steps, is_test_story=True)
 
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: default
@@ -98,9 +95,7 @@ def test_yaml_writer_dumps_user_messages():
               Hello
           - action: utter_greet
 
-    """
-        ).strip()
-    )
+    """).strip()
 
 
 def test_yaml_writer_doesnt_dump_action_unlikely_intent():
@@ -113,10 +108,7 @@ def test_yaml_writer_doesnt_dump_action_unlikely_intent():
     tracker = DialogueStateTracker.from_events("default", events)
     dump = YAMLStoryWriter().dumps(tracker.as_story().story_steps, is_test_story=True)
 
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     stories:
     - story: default
@@ -127,9 +119,7 @@ def test_yaml_writer_doesnt_dump_action_unlikely_intent():
       - action: utter_hello
       - action: utter_bye
 
-"""
-        ).strip()
-    )
+""").strip()
 
 
 def test_yaml_writer_avoids_dumping_not_existing_user_messages():
@@ -137,10 +127,7 @@ def test_yaml_writer_avoids_dumping_not_existing_user_messages():
     tracker = DialogueStateTracker.from_events("default", events)
     dump = YAMLStoryWriter().dumps(tracker.as_story().story_steps)
 
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: default
@@ -148,9 +135,7 @@ def test_yaml_writer_avoids_dumping_not_existing_user_messages():
           - intent: greet
           - action: utter_greet
 
-    """
-        ).strip()
-    )
+    """).strip()
 
 
 @pytest.mark.parametrize(
@@ -197,8 +182,7 @@ def test_yaml_writer_stories_to_yaml(domain: Domain):
 
 def test_yaml_writer_stories_to_yaml_with_null_entities(domain: Domain):
     writer = YAMLStoryWriter()
-    stories = textwrap.dedent(
-        """
+    stories = textwrap.dedent("""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     stories:
     - story: happy path
@@ -207,8 +191,7 @@ def test_yaml_writer_stories_to_yaml_with_null_entities(domain: Domain):
         entities:
         - test_entity: null
         - test_entity2: false
-    """
-    )
+    """)
 
     stories_yaml = YAMLStoryReader().read_from_string(stories)
     result = writer.stories_to_yaml(stories_yaml)
@@ -248,10 +231,7 @@ def test_writing_end_to_end_stories(domain: Domain):
     tracker = DialogueStateTracker.from_events(story_name, events)
     dump = YAMLStoryWriter().dumps(tracker.as_story().story_steps)
 
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: {story_name}
@@ -266,9 +246,7 @@ def test_writing_end_to_end_stories(domain: Domain):
           - user: |-
               Hi
           - bot: Hi, I'm a bot.
-    """
-        ).strip()
-    )
+    """).strip()
 
 
 def test_reading_and_writing_end_to_end_stories_in_test_mode(domain: Domain):
@@ -295,10 +273,7 @@ stories:
     end_to_end_tests = YAMLStoryReader().read_from_string(conversation_tests)
     dump = YAMLStoryWriter().dumps(end_to_end_tests, is_test_story=True)
 
-    assert (
-        dump.strip()
-        == textwrap.dedent(
-            f"""
+    assert dump.strip() == textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: {story_name}
@@ -317,6 +292,4 @@ stories:
           - user: |-
               [Hi](test)
           - bot: Hi, I'm a bot.
-    """
-        ).strip()
-    )
+    """).strip()

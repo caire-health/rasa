@@ -36,7 +36,6 @@ from rasa.shared.core.events import (
 from rasa.shared.core.trackers import DialogueStateTracker
 from rasa.shared.exceptions import RasaCoreException
 
-
 if typing.TYPE_CHECKING:
     import networkx as nx
 
@@ -691,7 +690,7 @@ class StoryGraph:
 
     @staticmethod
     def topological_sort(
-        graph: Dict[Text, Set[Text]]
+        graph: Dict[Text, Set[Text]],
     ) -> Tuple[deque, List[Tuple[Text, Text]]]:
         """Creates a top sort of a directed graph. This is an unstable sorting!
 

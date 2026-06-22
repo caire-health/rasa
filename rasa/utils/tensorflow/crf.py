@@ -3,7 +3,6 @@ from tensorflow import TensorShape
 from tensorflow.types.experimental import TensorLike
 from typing import Tuple, Any, List, Union, Optional
 
-
 # original code taken from
 # https://github.com/tensorflow/addons/blob/b8cab7fd61af4f697a1cdae4f51c37c346b9c6f0/tensorflow_addons/text/crf.py
 # (modified to our neeeds)

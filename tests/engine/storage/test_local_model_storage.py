@@ -231,7 +231,7 @@ def test_create_model_package(tmp_path_factory: TempPathFactory, domain: Domain)
 
     just_packaged_metadata = LocalModelStorage.metadata_from_archive(archive_path)
 
-    (load_model_storage, packaged_metadata) = LocalModelStorage.from_model_archive(
+    load_model_storage, packaged_metadata = LocalModelStorage.from_model_archive(
         load_model_storage_dir, archive_path
     )
 

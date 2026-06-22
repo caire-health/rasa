@@ -1169,9 +1169,7 @@ class DIETClassifier(GraphComponent, IntentClassifier, EntityExtractorMixin):
         )
 
     @classmethod
-    def _load_from_files(
-        cls, model_path: Path
-    ) -> Tuple[
+    def _load_from_files(cls, model_path: Path) -> Tuple[
         Dict[int, Text],
         List[EntityTagSpec],
         RasaModelData,
@@ -1449,10 +1447,10 @@ class DIET(TransformerRasaModel):
         # everything using a transformer and optionally also do masked language
         # modeling.
         self.text_name = TEXT
-        self._tf_layers[
-            f"sequence_layer.{self.text_name}"
-        ] = rasa_layers.RasaSequenceLayer(
-            self.text_name, self.data_signature[self.text_name], self.config
+        self._tf_layers[f"sequence_layer.{self.text_name}"] = (
+            rasa_layers.RasaSequenceLayer(
+                self.text_name, self.data_signature[self.text_name], self.config
+            )
         )
         if self.config[MASKED_LM]:
             self._prepare_mask_lm_loss(self.text_name)
@@ -1470,10 +1468,10 @@ class DIET(TransformerRasaModel):
                 {SPARSE_INPUT_DROPOUT: False, DENSE_INPUT_DROPOUT: False}
             )
 
-            self._tf_layers[
-                f"feature_combining_layer.{self.label_name}"
-            ] = rasa_layers.RasaFeatureCombiningLayer(
-                self.label_name, self.label_signature[self.label_name], label_config
+            self._tf_layers[f"feature_combining_layer.{self.label_name}"] = (
+                rasa_layers.RasaFeatureCombiningLayer(
+                    self.label_name, self.label_signature[self.label_name], label_config
+                )
             )
 
             self._prepare_ffnn_layer(

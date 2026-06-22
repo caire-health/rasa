@@ -14,7 +14,6 @@ from rasa.shared.nlu.constants import (
 )
 from rasa.shared.nlu.training_data.message import Message
 
-
 GROUP_ENTITY_VALUE = "value"
 GROUP_ENTITY_TYPE = "entity"
 GROUP_ENTITY_DICT = "entity_dict"

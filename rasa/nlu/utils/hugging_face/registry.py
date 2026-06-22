@@ -41,7 +41,6 @@ from rasa.nlu.utils.hugging_face.transformers_pre_post_processors import (  # no
     camembert_tokens_pre_processor,
 )
 
-
 model_class_dict: Dict[Text, Type[TFPreTrainedModel]] = {
     "bert": TFBertModel,
     "gpt": TFOpenAIGPTModel,

@@ -3,7 +3,6 @@ from typing import List, Text, Tuple
 
 import pytest
 
-
 DOCS_BASE_DIR = Path("docs/")
 MDX_DOCS_FILES = list((DOCS_BASE_DIR / "docs").glob("**/*.mdx"))
 CODE_BLOCK_OPEN = ["```", "<pre><code"]

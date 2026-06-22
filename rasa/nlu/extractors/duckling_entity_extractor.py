@@ -17,7 +17,6 @@ from rasa.nlu.extractors.extractor import EntityExtractorMixin
 from rasa.shared.nlu.training_data.message import Message
 import rasa.shared.utils.io
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -34,7 +33,7 @@ def extract_value(match: Dict[Text, Any]) -> Dict[Text, Any]:
 
 
 def convert_duckling_format_to_rasa(
-    matches: List[Dict[Text, Any]]
+    matches: List[Dict[Text, Any]],
 ) -> List[Dict[Text, Any]]:
     extracted = []
 

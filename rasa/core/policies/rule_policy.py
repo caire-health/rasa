@@ -776,10 +776,10 @@ class RulePolicy(MemoizationPolicy):
         trackers_as_actions = rule_trackers_as_actions + story_trackers_as_actions
 
         # negative rules are not anti-rules, they are auxiliary to actual rules
-        self.lookup[
-            RULES_FOR_LOOP_UNHAPPY_PATH
-        ] = self._create_loop_unhappy_lookup_from_states(
-            trackers_as_states, trackers_as_actions
+        self.lookup[RULES_FOR_LOOP_UNHAPPY_PATH] = (
+            self._create_loop_unhappy_lookup_from_states(
+                trackers_as_states, trackers_as_actions
+            )
         )
 
     def train(

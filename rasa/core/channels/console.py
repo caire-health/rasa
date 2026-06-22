@@ -103,17 +103,15 @@ def _print_bot_output(
 
 
 @overload
-async def _get_user_input(previous_response: None) -> Text:
-    ...
+async def _get_user_input(previous_response: None) -> Text: ...
 
 
 @overload
-async def _get_user_input(previous_response: Dict[str, Any]) -> Optional[Text]:
-    ...
+async def _get_user_input(previous_response: Dict[str, Any]) -> Optional[Text]: ...
 
 
 async def _get_user_input(
-    previous_response: Optional[Dict[str, Any]]
+    previous_response: Optional[Dict[str, Any]],
 ) -> Optional[Text]:
     button_response = None
     if previous_response is not None:

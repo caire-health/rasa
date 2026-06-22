@@ -1250,9 +1250,7 @@ def align_all_entity_predictions(
     return aligned_predictions
 
 
-async def get_eval_data(
-    processor: MessageProcessor, test_data: TrainingData
-) -> Tuple[
+async def get_eval_data(processor: MessageProcessor, test_data: TrainingData) -> Tuple[
     List[IntentEvaluationResult],
     List[ResponseSelectionEvaluationResult],
     List[EntityEvaluationResult],
@@ -1428,7 +1426,7 @@ async def run_evaluation(
     if output_directory:
         rasa.shared.utils.io.create_directory(output_directory)
 
-    (intent_results, response_selection_results, entity_results) = await get_eval_data(
+    intent_results, response_selection_results, entity_results = await get_eval_data(
         processor, test_data
     )
 

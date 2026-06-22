@@ -91,6 +91,7 @@ class SingleStateFeaturizer:
             domain: An instance of :class:`rasa.shared.core.domain.Domain`.
             bilou_tagging: indicates whether BILOU tagging should be used or not
         """
+
         # store feature states for each attribute in order to create binary features
         def convert_to_dict(feature_states: List[Text]) -> Dict[Text, int]:
             return {

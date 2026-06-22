@@ -465,7 +465,7 @@ class YAMLStoryReader(StoryReader):
 
     @staticmethod
     def _parse_raw_entities(
-        raw_entities: Union[List[Dict[Text, Text]], List[Text]]
+        raw_entities: Union[List[Dict[Text, Text]], List[Text]],
     ) -> List[Dict[Text, Optional[Text]]]:
         final_entities = []
         for entity in raw_entities:

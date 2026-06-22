@@ -44,8 +44,7 @@ async def test_activate():
     form_name = "my form"
     action = FormAction(form_name, None)
     slot_name = "num_people"
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     slots:
       {slot_name}:
         type: float
@@ -59,8 +58,7 @@ async def test_activate():
     responses:
       utter_ask_num_people:
       - text: "How many people?"
-      """
-    )
+      """)
     domain = Domain.from_yaml(domain)
 
     events = await action.run(
@@ -81,8 +79,7 @@ async def test_activate_with_custom_slot_mapping():
     domain_required_slot_name = "num_people"
     slot_set_by_remote_custom_extraction_method = "some_slot"
     slot_value_set_by_remote_custom_extraction_method = "anything"
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     slots:
       {domain_required_slot_name}:
         type: float
@@ -102,8 +99,7 @@ async def test_activate_with_custom_slot_mapping():
       - text: "How many people?"
     actions:
       - validate_{form_name}
-      """
-    )
+      """)
     domain = Domain.from_yaml(domain)
 
     form_validation_events = [
@@ -141,8 +137,7 @@ async def test_activate_with_mapping_conditions_slot():
     form_name = "my form"
     action = FormAction(form_name, None)
     slot_name = "num_people"
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     slots:
       {slot_name}:
         type: float
@@ -158,8 +153,7 @@ async def test_activate_with_mapping_conditions_slot():
     responses:
       utter_ask_num_people:
       - text: "How many people?"
-      """
-    )
+      """)
     domain = Domain.from_yaml(domain)
 
     events = await action.run(
@@ -871,16 +865,14 @@ def test_name_of_utterance(utterance_name: Text):
 def test_temporary_tracker():
     extra_slot = "some_slot"
     sender_id = "test"
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         slots:
           {extra_slot}:
             type: any
             mappings:
             - type: from_text
-        """
-    )
+        """)
 
     previous_events = [ActionExecuted(ACTION_LISTEN_NAME)]
     old_tracker = DialogueStateTracker.from_events(
@@ -1556,9 +1548,7 @@ async def test_extract_other_slots_with_matched_mapping_conditions():
     form_name = "some_form"
     form = FormAction(form_name, None)
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intent:
             - greet
@@ -1587,9 +1577,7 @@ async def test_extract_other_slots_with_matched_mapping_conditions():
                required_slots:
                  - email
                  - name
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1628,9 +1616,7 @@ async def test_extract_other_slots_raises_no_matched_conditions():
     form_name = "some_form"
     form = FormAction(form_name, None)
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intent:
             - greet
@@ -1659,9 +1645,7 @@ async def test_extract_other_slots_raises_no_matched_conditions():
                required_slots:
                  - email
                  - name
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1699,8 +1683,7 @@ async def test_extract_other_slots_raises_no_matched_conditions():
 
 
 async def test_action_extract_slots_custom_mapping_with_condition():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -1719,8 +1702,7 @@ async def test_action_extract_slots_custom_mapping_with_condition():
 
         actions:
         - validate_some_form
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     events = [ActiveLoop("some_form"), UserUttered("Hi")]
     tracker = DialogueStateTracker.from_events(
@@ -1760,9 +1742,7 @@ async def test_action_extract_slots_custom_mapping_with_condition():
 
 
 async def test_form_slots_empty_with_restart():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intent:
             - greet
@@ -1782,9 +1762,7 @@ async def test_form_slots_empty_with_restart():
              some_form:
                required_slots:
                  - name
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1825,8 +1803,7 @@ async def test_extract_slots_with_mapping_conditions_during_form_activation():
 
     form_name = "test_form"
 
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
     entities:
     - {entity_name}
     slots:
@@ -1841,8 +1818,7 @@ async def test_extract_slots_with_mapping_conditions_during_form_activation():
       {form_name}:
         {REQUIRED_SLOTS_KEY}:
             - {slot_name}
-    """
-    )
+    """)
 
     events = [
         ActionExecuted("action_listen"),
@@ -1893,8 +1869,7 @@ async def test_form_validation_happens_once(caplog: LogCaptureFixture):
     action_server = EndpointConfig(ACTION_SERVER_URL)
     action = FormAction(form_name, action_server)
     slot_name = "num_people"
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     slots:
       {slot_name}:
         type: float
@@ -1910,8 +1885,7 @@ async def test_form_validation_happens_once(caplog: LogCaptureFixture):
       - text: "How many people?"
     actions:
       - validate_{form_name}
-    """
-    )
+    """)
     domain = Domain.from_yaml(domain)
     form_validation_events = [
         {
@@ -1965,8 +1939,7 @@ async def test_form_validation_happens_at_form_activation(caplog: LogCaptureFixt
     required_slot = "send_sms"
     global_slot = "membership"
 
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     intents:
     - start_form
     entities:
@@ -2004,8 +1977,7 @@ async def test_form_validation_happens_at_form_activation(caplog: LogCaptureFixt
       - text: "Would you like to receive an SMS?"
     actions:
       - validate_{form}
-    """
-    )
+    """)
     domain = Domain.from_yaml(domain)
 
     tracker = DialogueStateTracker.from_events(
@@ -2073,8 +2045,7 @@ async def test_form_validation_happens_at_form_activation_with_empty_required_sl
     dynamic_slot = "customer_name"
     bot_utterance = "What is your name?"
 
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
     intents:
     - start_form
 
@@ -2093,8 +2064,7 @@ async def test_form_validation_happens_at_form_activation_with_empty_required_sl
       - text: "{bot_utterance}"
     actions:
       - validate_{form}
-    """
-    )
+    """)
     domain = Domain.from_yaml(domain)
 
     tracker = DialogueStateTracker.from_events(

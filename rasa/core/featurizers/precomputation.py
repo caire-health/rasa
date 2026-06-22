@@ -57,7 +57,7 @@ class MessageContainerForCoreFeaturization:
       See: `rasa.core.featurizers.precomputation.CoreFeaturizationCollector`.
     """
 
-    KEY_ATTRIBUTES = [ACTION_NAME, ACTION_TEXT, TEXT, INTENT]  # noqa: RUF012
+    KEY_ATTRIBUTES = [ACTION_NAME, ACTION_TEXT, TEXT, INTENT]
 
     def __init__(self) -> None:
         """Creates an empty container for precomputations."""
@@ -137,7 +137,7 @@ class MessageContainerForCoreFeaturization:
                 f"{self.KEY_ATTRIBUTES} but received {len(attributes)} attributes "
                 f"({attributes})."
             )
-        key_attribute = list(key_attributes)[0]  # noqa: RUF015
+        key_attribute = list(key_attributes)[0]
         key_value = str(message_with_one_key_attribute.data[key_attribute])
         # extract the message
         existing_message = self._table[key_attribute].get(key_value)

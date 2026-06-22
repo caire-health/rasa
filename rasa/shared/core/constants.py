@@ -3,7 +3,6 @@ from enum import Enum
 
 import rasa.shared.constants as constants
 
-
 DEFAULT_CATEGORICAL_SLOT_VALUE = "__other__"
 
 USER_INTENT_RESTART = "restart"

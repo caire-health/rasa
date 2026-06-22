@@ -7,7 +7,6 @@ from rasa.shared.core.events import (
     BotUttered,
 )
 
-
 TEST_DEFAULT_DIALOGUE = Dialogue(
     name="default",
     events=[

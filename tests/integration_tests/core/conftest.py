@@ -6,7 +6,6 @@ import sqlalchemy as sa
 
 from rasa.core.lock_store import RedisLockStore
 
-
 REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
 REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 POSTGRES_HOST = os.getenv("POSTGRES_HOST", "localhost")
