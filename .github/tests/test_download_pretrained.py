@@ -23,7 +23,7 @@ def test_download_pretrained_lmf_exists_with_model_name():
     config = yaml.load(CONFIG_FPATH)
 
     steps = config.get("pipeline", [])
-    step = list(  # noqa: RUF015
+    step = list(
         filter(lambda x: x["name"] == download_pretrained.COMP_NAME, steps)
     )[0]
     step["model_name"] = "roberta"
@@ -43,7 +43,7 @@ def test_download_pretrained_unknown_model_name():
     config = yaml.load(CONFIG_FPATH)
 
     steps = config.get("pipeline", [])
-    step = list(  # noqa: RUF015
+    step = list(
         filter(lambda x: x["name"] == download_pretrained.COMP_NAME, steps)
     )[0]
     step["model_name"] = "unknown"
@@ -60,7 +60,7 @@ def test_download_pretrained_multiple_model_names():
     config = yaml.load(CONFIG_FPATH)
 
     steps = config.get("pipeline", [])
-    step = list(  # noqa: RUF015
+    step = list(
         filter(lambda x: x["name"] == download_pretrained.COMP_NAME, steps)
     )[0]
     step_new = deepcopy(step)
@@ -80,7 +80,7 @@ def test_download_pretrained_with_model_name_and_nondefault_weight():
     config = yaml.load(CONFIG_FPATH)
 
     steps = config.get("pipeline", [])
-    step = list(  # noqa: RUF015
+    step = list(
         filter(lambda x: x["name"] == download_pretrained.COMP_NAME, steps)
     )[0]
     step["model_name"] = "bert"
@@ -99,7 +99,7 @@ def test_download_pretrained_lmf_doesnt_exists():
     config = yaml.load(CONFIG_FPATH)
 
     steps = config.get("pipeline", [])
-    step = list(  # noqa: RUF015
+    step = list(
         filter(lambda x: x["name"] == download_pretrained.COMP_NAME, steps)
     )[0]
     steps.remove(step)
