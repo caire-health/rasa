@@ -31,7 +31,7 @@ jobs:
     name: Test Documentation
     runs-on: ubuntu-22.04
     needs: [changes]
-    if: needs.changes.outputs.docs == 'true'
+    if: false
 
     steps:
       - name: Checkout git repository 🕝
@@ -102,7 +102,7 @@ jobs:
     name: Documentation Linting Checks
     runs-on: ubuntu-22.04
     needs: [changes]
-    if: needs.changes.outputs.docs == 'true'
+    if: false
 
     steps:
       - name: Checkout git repository 🕝

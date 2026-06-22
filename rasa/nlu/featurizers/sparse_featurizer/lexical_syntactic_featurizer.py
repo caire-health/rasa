@@ -78,7 +78,7 @@ class LexicalSyntacticFeaturizer(SparseFeaturizer, GraphComponent):
     # prefixes, short words will be represented/encoded repeatedly.
     _FUNCTION_DICT: Dict[
         Text, Callable[[Token], Union[Text, bool, None]]
-    ] = {  # noqa: RUF012
+    ] = {
         "low": lambda token: token.text.islower(),
         "title": lambda token: token.text.istitle(),
         "prefix5": lambda token: token.text[:5],

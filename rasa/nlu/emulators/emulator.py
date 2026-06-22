@@ -20,12 +20,12 @@ class Emulator:
         """
         _data = {
             "text": data["text"][0]
-            if type(data["text"]) == list  # noqa: E721
+            if type(data["text"]) == list
             else data["text"]
         }
 
         if data.get("model"):
-            if type(data["model"]) == list:  # noqa: E721
+            if type(data["model"]) == list:
                 _data["model"] = data["model"][0]
             else:
                 _data["model"] = data["model"]

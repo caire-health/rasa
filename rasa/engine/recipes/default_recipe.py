@@ -99,7 +99,7 @@ class DefaultV1Recipe(Recipe):
         MODEL_LOADER = 6
 
     name = "default.v1"
-    _registered_components: Dict[Text, RegisteredComponent] = {}  # noqa: RUF012
+    _registered_components: Dict[Text, RegisteredComponent] = {}
 
     def __init__(self) -> None:
         """Creates recipe."""

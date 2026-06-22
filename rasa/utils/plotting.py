@@ -41,7 +41,7 @@ def _fix_matplotlib_backend() -> None:
     elif backend is None:  # pragma: no cover
         try:
             # If the `tkinter` package is available, we can use the `TkAgg` backend
-            import tkinter  # noqa: F401
+            import tkinter
 
             logger.debug("Setting matplotlib backend to 'TkAgg'")
             matplotlib.use("TkAgg")
