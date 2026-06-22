@@ -446,8 +446,7 @@ def test_validate_config_file(config_file: Path):
 
 
 def test_validate_config_file_with_extra_keys(tmp_path: Path):
-    content = textwrap.dedent(
-        """
+    content = textwrap.dedent("""
         recipe: default.v1
         language: en
         pipeline:
@@ -455,8 +454,7 @@ def test_validate_config_file_with_extra_keys(tmp_path: Path):
 
         importers:
         - RasaFileImporter
-        """
-    )
+        """)
     config_file = tmp_path / "config.yml"
     config_file.write_text(content)
 
@@ -467,51 +465,39 @@ def test_validate_config_file_with_extra_keys(tmp_path: Path):
     "config",
     [
         # Pre 2.x pipeline templates are invalid
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             pipeline: supervised_embeddings
-            """
-        ),
+            """),
         # Each list item needs the `name` property
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             pipeline:
             - DIETClassier
             policies:
-            """
-        ),
+            """),
         # Name property is missing
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             pipeline:
             policies:
             - some_attribute: "lala"
-            """
-        ),
+            """),
         # Name property is not a string
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             pipeline:
             policies:
             - name: 1234
-            """
-        ),
+            """),
         # Invalid training data version
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             version: 2.0
             policies:
             pipeline:
-            """
-        ),
+            """),
         # Language has wrong type
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             language: []
             policies:
             pipeline:
-            """
-        ),
+            """),
     ],
 )
 def test_invalid_config_files(config: Text, tmp_path: Path):
@@ -526,12 +512,10 @@ def test_invalid_config_files(config: Text, tmp_path: Path):
     [
         ("rest:", {"rest": None}),
         (
-            textwrap.dedent(
-                """
+            textwrap.dedent("""
                 tracker_store:
                     password: test
-                """
-            ),
+                """),
             {"tracker_store": {"password": "test"}},
         ),
     ],
@@ -547,12 +531,10 @@ def test_read_config_file(tmp_path: Path, content: Text, expected: Dict):
     "content",
     [
         "text",
-        textwrap.dedent(
-            """
+        textwrap.dedent("""
             - item1
             - item2
-            """
-        ),
+            """),
     ],
 )
 def test_read_invalid_config_file(tmp_path: Path, content: Text):

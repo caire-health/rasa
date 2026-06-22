@@ -175,13 +175,11 @@ async def test_sql_broker_logs_to_sql_db():
 async def test_file_broker_from_config(tmp_path: Path):
     # backslashes need to be encoded (windows...) otherwise we run into unicode issues
     path = str(tmp_path / "rasa_test_event.log").replace("\\", "\\\\")
-    endpoint_config = textwrap.dedent(
-        f"""
+    endpoint_config = textwrap.dedent(f"""
         event_broker:
           path: "{path}"
           type: "file"
-    """
-    )
+    """)
     rasa.shared.utils.io.write_text_file(endpoint_config, tmp_path / "endpoint.yml")
 
     cfg = read_endpoint_config(str(tmp_path / "endpoint.yml"), "event_broker")

@@ -70,7 +70,7 @@ def test_create_train_data_no_history(domain: Domain, stories_path: Text):
     training_trackers = training.load_data(stories_path, domain, augmentation_factor=0)
 
     assert len(training_trackers) == 4
-    (decoded, _) = featurizer.training_states_and_labels(training_trackers, domain)
+    decoded, _ = featurizer.training_states_and_labels(training_trackers, domain)
 
     # decoded needs to be sorted
     hashed = []
@@ -97,7 +97,7 @@ def test_create_train_data_with_history(domain: Domain, stories_path: Text):
     featurizer = MaxHistoryTrackerFeaturizer(max_history=4)
     training_trackers = training.load_data(stories_path, domain, augmentation_factor=0)
     assert len(training_trackers) == 4
-    (decoded, _) = featurizer.training_states_and_labels(training_trackers, domain)
+    decoded, _ = featurizer.training_states_and_labels(training_trackers, domain)
 
     # decoded needs to be sorted
     hashed = []
@@ -143,7 +143,7 @@ def test_create_train_data_unfeaturized_entities():
     training_trackers = training.load_data(stories_file, domain, augmentation_factor=0)
 
     assert len(training_trackers) == 2
-    (decoded, _) = featurizer.training_states_and_labels(training_trackers, domain)
+    decoded, _ = featurizer.training_states_and_labels(training_trackers, domain)
 
     # decoded needs to be sorted
     hashed = []
@@ -181,16 +181,14 @@ def test_domain_from_template(domain: Domain):
 
 
 def test_avoid_action_repetition(domain: Domain):
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         actions:
         - utter_greet
         responses:
             utter_greet:
             - text: "hi"
-        """
-    )
+        """)
 
     assert len(domain.action_names_or_texts) == len(DEFAULT_ACTION_NAMES) + 1
 
@@ -294,8 +292,7 @@ def test_domain_fails_on_invalid_type_for_known_slot_key(
 
 
 def test_domain_to_dict():
-    test_yaml = textwrap.dedent(
-        f"""
+    test_yaml = textwrap.dedent(f"""
     actions:
     - action_save_world
     config:
@@ -321,8 +318,7 @@ def test_domain_to_dict():
         - high
         - low
         mappings:
-        - type: from_text"""
-    )
+        - type: from_text""")
 
     domain_as_dict = Domain.from_yaml(test_yaml).as_dict()
 
@@ -500,8 +496,7 @@ session_config:
 
 
 def test_merge_with_empty_domain():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         config:
           store_entities_as_slots: false
@@ -522,8 +517,7 @@ def test_merge_with_empty_domain():
           - text: bye!
           utter_greet:
           - text: hey you!
-        """
-    )
+        """)
     empty_domain = Domain.empty()
     merged = empty_domain.merge(domain, override=True)
     assert merged.as_dict() == domain.as_dict()
@@ -531,8 +525,7 @@ def test_merge_with_empty_domain():
 
 @pytest.mark.parametrize("other", [Domain.empty(), None])
 def test_merge_with_empty_other_domain(other: Optional[Domain]):
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         config:
           store_entities_as_slots: false
@@ -553,8 +546,7 @@ def test_merge_with_empty_other_domain(other: Optional[Domain]):
           - text: bye!
           utter_greet:
           - text: hey you!
-        """
-    )
+        """)
 
     merged = domain.merge(other, override=True)
 
@@ -1052,25 +1044,21 @@ def test_load_on_invalid_domain_duplicate_actions():
 
 def test_schema_error_with_forms_as_lists():
     with pytest.raises(YamlException):
-        Domain.from_yaml(
-            """
+        Domain.from_yaml("""
         version: '3.0'
         forms: []
-        """
-        )
+        """)
 
 
 def test_schema_error_with_forms_and_slots_but_without_required_slots_key():
     with pytest.raises(YamlException):
-        Domain.from_yaml(
-            """
+        Domain.from_yaml("""
         version: '3.0'
         forms:
           my_form:
             cool_slot:
             - type: from_text
-        """
-        )
+        """)
 
 
 def test_load_on_invalid_domain_duplicate_responses():
@@ -1186,13 +1174,11 @@ def test_not_add_knowledge_base_slots():
 
 
 def test_add_knowledge_base_slots():
-    test_domain = Domain.from_yaml(
-        f"""
+    test_domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         actions:
         - {DEFAULT_KNOWLEDGE_BASE_ACTION}
-        """
-    )
+        """)
 
     slot_names = [s.name for s in test_domain.slots]
 
@@ -1503,8 +1489,7 @@ def test_form_invalid_mappings(domain_as_dict: Dict[Text, Any]):
 
 def test_form_invalid_required_slots_raises():
     with pytest.raises(YamlValidationException):
-        Domain.from_yaml(
-            f"""
+        Domain.from_yaml(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - some_entity
@@ -1514,8 +1499,7 @@ def test_form_invalid_required_slots_raises():
                   some_slot:
                   - type: from_entity
                     entity: some_entity
-        """
-        )
+        """)
 
 
 @pytest.mark.parametrize(
@@ -1572,28 +1556,22 @@ def test_slot_invalid_mappings(domain_as_dict: Dict[Text, Any]):
     "domain_yaml",
     [
         # Wrong type for slots
-        (
-            f"""
+        (f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         slots:
           []
-        """
-        ),
+        """),
         # Wrong type for slot names
-        (
-            f"""
+        (f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         slots:
           some_slot: 5
-        """
-        ),
-        (
-            f"""
+        """),
+        (f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         slots:
           some_slot: []
-        """
-        ),
+        """),
     ],
 )
 def test_invalid_slots_raises_yaml_exception(domain_yaml: Text):
@@ -1807,26 +1785,22 @@ def test_domain_count_conditional_response_variations():
 
 
 def test_domain_with_no_form_slots():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         forms:
          contract_form:
           required_slots: []
-        """
-    )
+        """)
     assert domain.required_slots_for_form("contract_form") == []
 
 
 def test_domain_with_empty_required_slots():
     with pytest.raises(YamlException):
-        Domain.from_yaml(
-            f"""
+        Domain.from_yaml(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             forms:
               contract_form:
-            """
-        )
+            """)
 
 
 def test_domain_invalid_yml_in_folder():
@@ -1893,20 +1867,17 @@ def test_domain_fingerprint_consistency_across_runs():
 
 
 def test_domain_fingerprint_uniqueness():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
          version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
          intents:
          - greet
          - goodbye
          actions:
          - action_test
-         """
-    )
+         """)
     f1 = domain.fingerprint()
 
-    domain_with_extra_intent = Domain.from_yaml(
-        f"""
+    domain_with_extra_intent = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -1914,13 +1885,11 @@ def test_domain_fingerprint_uniqueness():
         - test
         actions:
         - action_test
-        """
-    )
+        """)
     f2 = domain_with_extra_intent.fingerprint()
     assert f1 != f2
 
-    domain_with_extra_action = Domain.from_yaml(
-        f"""
+    domain_with_extra_action = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -1928,13 +1897,11 @@ def test_domain_fingerprint_uniqueness():
         actions:
         - action_test
         - action_double_test
-        """
-    )
+        """)
     f3 = domain_with_extra_action.fingerprint()
     assert f1 != f3
 
-    domain_with_extra_responses = Domain.from_yaml(
-        f"""
+    domain_with_extra_responses = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -1944,16 +1911,13 @@ def test_domain_fingerprint_uniqueness():
            - text: "Hi!"
         actions:
         - action_test
-        """
-    )
+        """)
     f4 = domain_with_extra_responses.fingerprint()
     assert f1 != f4
 
 
 def test_domain_slots_for_entities_with_mapping_conditions_no_slot_set():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - city
@@ -1970,17 +1934,13 @@ def test_domain_slots_for_entities_with_mapping_conditions_no_slot_set():
               booking_form:
                 required_slots:
                   - location
-            """
-        )
-    )
+            """))
     events = domain.slots_for_entities([{"entity": "city", "value": "Berlin"}])
     assert len(events) == 0
 
 
 def test_domain_slots_for_entities_with_mapping_conditions_no_active_loop():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - city
@@ -1997,17 +1957,13 @@ def test_domain_slots_for_entities_with_mapping_conditions_no_active_loop():
               booking_form:
                 required_slots:
                   - location
-            """
-        )
-    )
+            """))
     events = domain.slots_for_entities([{"entity": "city", "value": "Berlin"}])
     assert events == [SlotSet("location", "Berlin")]
 
 
 def test_domain_slots_for_entities_sets_valid_slot():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - city
@@ -2018,17 +1974,13 @@ def test_domain_slots_for_entities_sets_valid_slot():
                 mappings:
                 - type: from_entity
                   entity: city
-            """
-        )
-    )
+            """))
     events = domain.slots_for_entities([{"entity": "city", "value": "Berlin"}])
     assert events == [SlotSet("location", "Berlin")]
 
 
 def test_domain_slots_for_entities_sets_valid_list_slot():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - topping
@@ -2039,9 +1991,7 @@ def test_domain_slots_for_entities_sets_valid_list_slot():
                 mappings:
                 - type: from_entity
                   entity: topping
-            """
-        )
-    )
+            """))
     events = domain.slots_for_entities(
         [
             {"entity": "topping", "value": "parmesan"},
@@ -2052,8 +2002,7 @@ def test_domain_slots_for_entities_sets_valid_list_slot():
 
 
 def test_domain_slots_for_entities_with_entity_mapping_to_multiple_slots():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         entities:
         - city
@@ -2070,8 +2019,7 @@ def test_domain_slots_for_entities_with_entity_mapping_to_multiple_slots():
             - type: from_entity
               entity: city
               role: to
-        """
-    )
+        """)
     events = domain.slots_for_entities(
         [
             {"entity": "city", "value": "London", "role": "from"},
@@ -2275,20 +2223,16 @@ def test_domain_loads_actions_which_explicitly_need_domain(
 
 
 def test_merge_yaml_domains_loads_actions_which_explicitly_need_domain():
-    test_yaml_1 = textwrap.dedent(
-        """
+    test_yaml_1 = textwrap.dedent("""
         actions:
           - action_hello
           - action_bye
-          - action_send_domain: {send_domain: True}"""
-    )
+          - action_send_domain: {send_domain: True}""")
 
-    test_yaml_2 = textwrap.dedent(
-        """
+    test_yaml_2 = textwrap.dedent("""
         actions:
           - action_find_restaurants:
-                send_domain: True"""
-    )
+                send_domain: True""")
 
     domain_1 = Domain.from_yaml(test_yaml_1)
     domain_2 = Domain.from_yaml(test_yaml_2)

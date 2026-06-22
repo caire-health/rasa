@@ -21,7 +21,6 @@ from rasa.shared.importers.importer import TrainingDataImporter
 import rasa.shared.utils.cli
 import rasa.utils.common
 
-
 logger = logging.getLogger(__name__)
 
 

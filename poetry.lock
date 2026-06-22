@@ -3923,7 +3923,7 @@ description = "Tools for labeling human languages with IETF language tags"
 optional = true
 python-versions = ">=3.9"
 groups = ["main"]
-markers = "(extra == \"spacy\" or extra == \"full\") and (sys_platform != \"darwin\" or platform_machine != \"arm64\")"
+markers = "(extra == \"spacy\" or extra == \"full\") and (sys_platform != \"darwin\" or platform_machine != \"arm64\" or extra == \"spacy\")"
 files = [
     {file = "langcodes-3.5.1-py3-none-any.whl", hash = "sha256:b6a9c25c603804e2d169165091d0cdb23934610524a21d226e4f463e8e958a72"},
     {file = "langcodes-3.5.1.tar.gz", hash = "sha256:40bff315e01b01d11c2ae3928dd4f5cbd74dd38f9bd912c12b9a3606c143f731"},
@@ -10561,10 +10561,10 @@ full = ["jieba", "sentencepiece", "spacy", "spacy", "transformers"]
 gh-release-notes = ["github3.py"]
 jieba = ["jieba"]
 metal = ["tensorflow-metal"]
-spacy = ["spacy", "spacy"]
+spacy = ["langcodes", "spacy", "spacy"]
 transformers = ["sentencepiece", "transformers"]
 
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10, <3.11"
-content-hash = "3f2e289541d5e274e45c35bebc9bf9bed4a63c9a9b7b7217d352adbd64f19b37"
+content-hash = "eaf63dbf4520a1f29154678546c084f436784f04f4e8b0125ed579be81982fff"

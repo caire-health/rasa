@@ -68,8 +68,7 @@ def test_slot_mapping_intent_is_desired(domain: Domain):
 
 
 def test_slot_mappings_ignored_intents_during_active_loop():
-    domain = Domain.from_yaml(
-        """
+    domain = Domain.from_yaml("""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     intents:
     - greet
@@ -87,8 +86,7 @@ def test_slot_mappings_ignored_intents_during_active_loop():
         - chitchat
         required_slots:
         - cuisine
-    """
-    )
+    """)
     tracker = DialogueStateTracker("sender_id", slots=domain.slots)
     event1 = ActiveLoop("restaurant_form")
     event2 = UserUttered(
@@ -105,21 +103,18 @@ def test_slot_mappings_ignored_intents_during_active_loop():
 
 def test_missing_slot_mappings_raises():
     with pytest.raises(YamlValidationException):
-        Domain.from_yaml(
-            f"""
+        Domain.from_yaml(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             slots:
               some_slot:
                 type: text
                 influence_conversation: False
-            """
-        )
+            """)
 
 
 def test_slot_mappings_invalid_type_raises():
     with pytest.raises(YamlValidationException):
-        Domain.from_yaml(
-            f"""
+        Domain.from_yaml(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - from_entity
@@ -130,14 +125,12 @@ def test_slot_mappings_invalid_type_raises():
                 mappings:
                   type: from_entity
                   entity: some_entity
-            """
-        )
+            """)
 
 
 def test_slot_mappings_check_mapping_validity_from_intent():
     slot_name = "mood"
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -158,8 +151,7 @@ def test_slot_mappings_check_mapping_validity_from_intent():
              - type: from_intent
                intent: mood_unhappy
                value: sad
-        """
-    )
+        """)
     mappings_for_slot = domain.as_dict().get("slots").get(slot_name).get("mappings")
     assert SlotMapping.check_mapping_validity(
         slot_name=slot_name,
@@ -183,8 +175,7 @@ def test_slot_mappings_check_mapping_validity_valid_intent_list(
     intent: Text, expected: bool
 ):
     slot_name = "mood"
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -203,8 +194,7 @@ def test_slot_mappings_check_mapping_validity_valid_intent_list(
             test_form:
                 required_slots:
                 - test_slot
-        """
-    )
+        """)
     mappings_for_slot = domain.as_dict().get("slots").get(slot_name).get("mappings")
     assert (
         SlotMapping.check_mapping_validity(
@@ -219,8 +209,7 @@ def test_slot_mappings_check_mapping_validity_valid_intent_list(
 
 def test_slot_mappings_check_mapping_validity_invalid_intent_list():
     slot_name = "mood"
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
@@ -242,8 +231,7 @@ def test_slot_mappings_check_mapping_validity_invalid_intent_list():
             test_form:
                 required_slots:
                 - test_slot
-        """
-    )
+        """)
     mappings_for_slot = domain.as_dict().get("slots").get(slot_name).get("mappings")
     assert not SlotMapping.check_mapping_validity(
         slot_name=slot_name,

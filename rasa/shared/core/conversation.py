@@ -2,7 +2,6 @@ from typing import Dict, List, Text, Any, TYPE_CHECKING
 
 import rasa.shared.core.events
 
-
 if TYPE_CHECKING:
     from rasa.shared.core.events import Event
 

@@ -11,7 +11,6 @@ from rasa.engine.graph import GraphSchema
 
 from typing import Dict, Text, Any, Tuple
 
-
 logger = logging.getLogger(__name__)
 
 

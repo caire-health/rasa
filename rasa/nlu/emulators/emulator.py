@@ -19,9 +19,7 @@ class Emulator:
             The transformed input data.
         """
         _data = {
-            "text": data["text"][0]
-            if type(data["text"]) == list
-            else data["text"]
+            "text": data["text"][0] if type(data["text"]) == list else data["text"]
         }
 
         if data.get("model"):

@@ -70,7 +70,7 @@ def modify_default_recipe_graph_train_nodes(
 
 @hookspec  # type: ignore[misc]
 def modify_default_recipe_graph_predict_nodes(
-    predict_nodes: Dict[Text, "SchemaNode"]
+    predict_nodes: Dict[Text, "SchemaNode"],
 ) -> None:
     """Hook specification to modify the default recipe graph for prediction.
 

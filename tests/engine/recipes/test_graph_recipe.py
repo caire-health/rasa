@@ -12,7 +12,6 @@ from rasa.shared.constants import ASSISTANT_ID_KEY
 from rasa.shared.data import TrainingType
 import rasa.engine.validation
 
-
 CONFIG_FOLDER = Path("data/test_config")
 # The graph config is equivalent to the default config in graph schema format.
 GRAPH_CONFIG = CONFIG_FOLDER / "graph_config.yml"
@@ -95,8 +94,7 @@ def test_generate_graphs(
 
 
 def test_language_returning():
-    config = rasa.shared.utils.io.read_yaml(
-        """
+    config = rasa.shared.utils.io.read_yaml("""
     language: "xy"
     recipe: graph.v1
     core_target: doesnt_validate_or_run
@@ -106,8 +104,7 @@ def test_language_returning():
       nodes: {}
     predict_schema:
       nodes: {}
-    """
-    )
+    """)
 
     recipe = Recipe.recipe_for_name(GraphV1Recipe.name)
     model_config = recipe.graph_config_for_recipe(config, {})

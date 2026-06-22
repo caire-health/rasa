@@ -339,7 +339,7 @@ class CountVectorsFeaturizer(SparseFeaturizer, GraphComponent):
 
     @staticmethod
     def _convert_attribute_tokens_to_texts(
-        attribute_tokens: Dict[Text, List[List[Text]]]
+        attribute_tokens: Dict[Text, List[List[Text]]],
     ) -> Dict[Text, List[Text]]:
         attribute_texts = {}
 
@@ -681,7 +681,7 @@ class CountVectorsFeaturizer(SparseFeaturizer, GraphComponent):
 
     @staticmethod
     def _is_any_model_trained(
-        attribute_vocabularies: Dict[Text, Optional[Dict[Text, int]]]
+        attribute_vocabularies: Dict[Text, Optional[Dict[Text, int]]],
     ) -> bool:
         """Check if any model got trained."""
         return any(value is not None for value in attribute_vocabularies.values())
@@ -753,17 +753,19 @@ class CountVectorsFeaturizer(SparseFeaturizer, GraphComponent):
             attribute_vocabulary = vocabulary[attribute] if vocabulary else None
 
             attribute_vectorizer = CountVectorizer(
-                token_pattern=r"(?u)\b\w+\b"
-                if parameters["analyzer"] == "word"
-                else None,
+                token_pattern=(
+                    r"(?u)\b\w+\b" if parameters["analyzer"] == "word" else None
+                ),
                 strip_accents=parameters["strip_accents"],
                 lowercase=parameters["lowercase"],
                 stop_words=parameters["stop_words"],
                 ngram_range=(parameters["min_ngram"], parameters["max_ngram"]),
                 max_df=parameters["max_df"],
-                min_df=parameters["min_df"]
-                if attribute == rasa.shared.nlu.constants.TEXT
-                else 1,
+                min_df=(
+                    parameters["min_df"]
+                    if attribute == rasa.shared.nlu.constants.TEXT
+                    else 1
+                ),
                 max_features=parameters["max_features"],
                 analyzer=parameters["analyzer"],
                 vocabulary=attribute_vocabulary,

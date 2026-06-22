@@ -13,7 +13,6 @@ import rasa.shared.utils.io
 import rasa.utils.io
 from rasa.core.constants import DEFAULT_REQUEST_TIMEOUT
 
-
 logger = logging.getLogger(__name__)
 
 

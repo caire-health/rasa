@@ -226,15 +226,13 @@ class TestTEDPolicy(PolicyTestCollection):
         execution_context: ExecutionContext,
     ):
         stories = tmp_path / "stories.yml"
-        stories.write_text(
-            f"""
+        stories.write_text(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             stories:
             - story: test path
               steps:
               - action: utter_greet
-            """
-        )
+            """)
         policy = self.create_policy(
             featurizer=featurizer,
             model_storage=model_storage,

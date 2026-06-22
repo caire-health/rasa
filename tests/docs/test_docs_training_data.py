@@ -11,7 +11,6 @@ from rasa.shared.core.training_data.story_reader.yaml_story_reader import (
 from rasa.shared.nlu.training_data.formats.rasa_yaml import NLU_SCHEMA_FILE
 from rasa.shared.constants import DOMAIN_SCHEMA_FILE
 
-
 DOCS_BASE_DIR = Path("docs/")
 MDX_DOCS_FILES = list((DOCS_BASE_DIR / "docs").glob("**/*.mdx"))
 

@@ -101,9 +101,9 @@ class CRFEntityExtractor(GraphComponent, EntityExtractorMixin):
         CRFEntityExtractorOptions.SUFFIX1: lambda crf_token: crf_token.text[-1:],
         CRFEntityExtractorOptions.BIAS: lambda _: "bias",
         CRFEntityExtractorOptions.POS: lambda crf_token: crf_token.pos_tag,
-        CRFEntityExtractorOptions.POS2: lambda crf_token: crf_token.pos_tag[:2]
-        if crf_token.pos_tag is not None
-        else None,
+        CRFEntityExtractorOptions.POS2: lambda crf_token: (
+            crf_token.pos_tag[:2] if crf_token.pos_tag is not None else None
+        ),
         CRFEntityExtractorOptions.UPPER: lambda crf_token: crf_token.text.isupper(),
         CRFEntityExtractorOptions.DIGIT: lambda crf_token: crf_token.text.isdigit(),
         CRFEntityExtractorOptions.PATTERN: lambda crf_token: crf_token.pattern,
@@ -507,9 +507,9 @@ class CRFEntityExtractor(GraphComponent, EntityExtractorMixin):
                         # pattern or not
                         regex_patterns = self.function_dict[feature](token)
                         for pattern_name, matched in regex_patterns.items():
-                            token_features[
-                                f"{prefix}:{feature}:{pattern_name}"
-                            ] = matched
+                            token_features[f"{prefix}:{feature}:{pattern_name}"] = (
+                                matched
+                            )
                     else:
                         value = self.function_dict[feature](token)
                         token_features[f"{prefix}:{feature}"] = value

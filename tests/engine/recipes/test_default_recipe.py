@@ -30,7 +30,6 @@ from rasa.shared.data import TrainingType
 import rasa.engine.validation
 from rasa.shared.importers.rasa import RasaFileImporter
 
-
 CONFIG_FOLDER = Path("data/test_config")
 
 SOME_CONFIG = CONFIG_FOLDER / "stack_config.yml"
@@ -222,15 +221,13 @@ def test_nlu_config_doesnt_get_overridden(
 
 
 def test_language_returning():
-    config = rasa.shared.utils.io.read_yaml(
-        """
+    config = rasa.shared.utils.io.read_yaml("""
     language: "xy"
     version: '2.0'
 
     policies:
     - name: RulePolicy
-    """
-    )
+    """)
 
     recipe = Recipe.recipe_for_name(DefaultV1Recipe.name)
     model_config = recipe.graph_config_for_recipe(config, {})
@@ -239,14 +236,12 @@ def test_language_returning():
 
 
 def test_tracker_generator_parameter_interpolation():
-    config = rasa.shared.utils.io.read_yaml(
-        """
+    config = rasa.shared.utils.io.read_yaml("""
     version: '2.0'
 
     policies:
     - name: RulePolicy
-    """
-    )
+    """)
 
     augmentation = 0
     debug_plots = True
@@ -265,14 +260,12 @@ def test_tracker_generator_parameter_interpolation():
 
 
 def test_nlu_training_data_persistence():
-    config = rasa.shared.utils.io.read_yaml(
-        """
+    config = rasa.shared.utils.io.read_yaml("""
     version: '2.0'
 
     pipeline:
     - name: KeywordIntentClassifier
-    """
-    )
+    """)
 
     recipe = Recipe.recipe_for_name(DefaultV1Recipe.name)
     model_config = recipe.graph_config_for_recipe(
@@ -412,17 +405,14 @@ def test_register_component_using_tracker():
     class MyClassGraphComponent(GraphComponent):
         def process(
             self, messages: List[Message], tracker: DialogueStateTracker
-        ) -> List[Message]:
-            ...
+        ) -> List[Message]: ...
 
-    config = rasa.shared.utils.io.read_yaml(
-        """
+    config = rasa.shared.utils.io.read_yaml("""
         language: "xy"
         version: '2.0'
         pipeline:
         - name: MyClassGraphComponent
-        """
-    )
+        """)
 
     recipe = Recipe.recipe_for_name(DefaultV1Recipe.name)
     model_config = recipe.graph_config_for_recipe(config, {})

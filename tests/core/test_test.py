@@ -61,9 +61,11 @@ def _probabilities_with_action_unlikely_intent_for(
             return PolicyPrediction.for_action_name(
                 domain,
                 ACTION_UNLIKELY_INTENT_NAME,
-                action_metadata=metadata_for_intent.get(intent_name)
-                if metadata_for_intent
-                else None,
+                action_metadata=(
+                    metadata_for_intent.get(intent_name)
+                    if metadata_for_intent
+                    else None
+                ),
             )
 
         return _original(self, tracker, domain, **kwargs)
@@ -73,7 +75,10 @@ def _probabilities_with_action_unlikely_intent_for(
 
 def _custom_prediction_states_for_rules(
     ignore_action_unlikely_intent: bool = False,
-) -> Callable[[RulePolicy, DialogueStateTracker, Domain, bool], List[State],]:
+) -> Callable[
+    [RulePolicy, DialogueStateTracker, Domain, bool],
+    List[State],
+]:
     """Creates prediction states for `RulePolicy`.
 
     `RulePolicy` does not ignore `action_unlikely_intent` in reality.
@@ -203,16 +208,14 @@ async def _train_rule_based_agent(
     # prediction states to ignore `action_unlikely_intent`s if needed.
 
     async def inner(file_name: Path, ignore_action_unlikely_intent: bool) -> Agent:
-        config = textwrap.dedent(
-            f"""
+        config = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         assistant_id: placeholder_default
         pipeline: []
         policies:
         - name: RulePolicy
           restrict_rules: false
-        """
-        )
+        """)
         config_path = tmp_path / "config.yml"
         rasa.shared.utils.io.write_text_file(config, config_path)
 
@@ -250,8 +253,7 @@ async def test_action_unlikely_intent_warning(
     )
 
     file_name = tmp_path / "test_action_unlikely_intent_1.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: unlikely path
@@ -263,8 +265,7 @@ async def test_action_unlikely_intent_warning(
               - action: utter_did_that_help
               - intent: affirm
               - action: utter_happy
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being
@@ -299,8 +300,7 @@ async def test_action_unlikely_intent_correctly_predicted(
     )
 
     file_name = tmp_path / "test_action_unlikely_intent_2.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: unlikely path (with action_unlikely_intent)
@@ -313,8 +313,7 @@ async def test_action_unlikely_intent_correctly_predicted(
               - action: utter_did_that_help
               - intent: affirm
               - action: utter_happy
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being
@@ -344,8 +343,7 @@ async def test_wrong_action_after_action_unlikely_intent(
     )
 
     test_file_name = tmp_path / "test.yml"
-    test_file_name.write_text(
-        f"""
+    test_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -358,12 +356,10 @@ async def test_wrong_action_after_action_unlikely_intent(
                   amazing
                 intent: mood_great
               - action: utter_happy
-        """
-    )
+        """)
 
     train_file_name = tmp_path / "train.yml"
-    train_file_name.write_text(
-        f"""
+    train_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -376,8 +372,7 @@ async def test_wrong_action_after_action_unlikely_intent(
                   amazing
                 intent: mood_great
               - action: utter_goodbye
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being
@@ -413,8 +408,7 @@ async def test_action_unlikely_intent_not_found(
     _train_rule_based_agent: Callable[[Path, bool], Coroutine],
 ):
     test_file_name = tmp_path / "test_action_unlikely_intent_complete.yml"
-    test_file_name.write_text(
-        f"""
+    test_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -428,12 +422,10 @@ async def test_action_unlikely_intent_not_found(
                   amazing
                 intent: mood_great
               - action: utter_happy
-        """
-    )
+        """)
 
     train_file_name = tmp_path / "train_without_action_unlikely_intent.yml"
-    train_file_name.write_text(
-        f"""
+    train_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -446,8 +438,7 @@ async def test_action_unlikely_intent_not_found(
                   amazing
                 intent: mood_great
               - action: utter_happy
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being
@@ -480,8 +471,7 @@ async def test_action_unlikely_intent_warning_and_story_error(
     )
 
     test_file_name = tmp_path / "test.yml"
-    test_file_name.write_text(
-        f"""
+    test_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -494,12 +484,10 @@ async def test_action_unlikely_intent_warning_and_story_error(
                   amazing
                 intent: mood_great
               - action: utter_happy
-        """
-    )
+        """)
 
     train_file_name = tmp_path / "train.yml"
-    train_file_name.write_text(
-        f"""
+    train_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: happy path
@@ -512,8 +500,7 @@ async def test_action_unlikely_intent_warning_and_story_error(
                   amazing
                 intent: mood_great
               - action: utter_goodbye
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being
@@ -547,8 +534,7 @@ async def test_fail_on_prediction_errors(
     )
 
     file_name = tmp_path / "test_action_unlikely_intent_2.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
           - story: unlikely path (with action_unlikely_intent)
@@ -561,8 +547,7 @@ async def test_fail_on_prediction_errors(
               - action: utter_did_that_help
               - intent: affirm
               - action: utter_happy
-        """
-    )
+        """)
 
     # We train on the above story so that RulePolicy can memorize
     # it and we don't have to worry about other actions being

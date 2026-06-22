@@ -1051,9 +1051,7 @@ async def test_action_default_ask_rephrase(
 def test_get_form_action(slot: Text):
     form_action_name = "my_business_logic"
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     slots:
       my_slot:
         type: text
@@ -1065,9 +1063,7 @@ def test_get_form_action(slot: Text):
       {form_action_name}:
         {REQUIRED_SLOTS_KEY}:
           {slot}
-    """
-        )
-    )
+    """))
 
     actual = action.action_for_name_or_text(form_action_name, domain, None)
     assert isinstance(actual, FormAction)
@@ -1075,18 +1071,14 @@ def test_get_form_action(slot: Text):
 
 def test_overridden_form_action():
     form_action_name = "my_business_logic"
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     actions:
     - my_action
     - {form_action_name}
     forms:
         {form_action_name}:
           {REQUIRED_SLOTS_KEY}: []
-    """
-        )
-    )
+    """))
 
     actual = action.action_for_name_or_text(form_action_name, domain, None)
     assert isinstance(actual, RemoteAction)
@@ -1094,14 +1086,10 @@ def test_overridden_form_action():
 
 def test_get_form_action_if_not_in_forms():
     form_action_name = "my_business_logic"
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            """
+    domain = Domain.from_yaml(textwrap.dedent("""
     actions:
     - my_action
-    """
-        )
-    )
+    """))
 
     with pytest.raises(ActionNotFoundException):
         assert not action.action_for_name_or_text(form_action_name, domain, None)
@@ -1111,17 +1099,13 @@ def test_get_form_action_if_not_in_forms():
     "end_to_end_utterance", ["Hi", f"{UTTER_PREFIX} is a dangerous start"]
 )
 def test_get_end_to_end_utterance_action(end_to_end_utterance: Text):
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     actions:
     - my_action
     {KEY_E2E_ACTIONS}:
     - {end_to_end_utterance}
     - Bye Bye
-"""
-        )
-    )
+"""))
 
     actual = action.action_for_name_or_text(end_to_end_utterance, domain, None)
 
@@ -1132,17 +1116,13 @@ def test_get_end_to_end_utterance_action(end_to_end_utterance: Text):
 async def test_run_end_to_end_utterance_action():
     end_to_end_utterance = "Hi"
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     actions:
     - my_action
     {KEY_E2E_ACTIONS}:
     - {end_to_end_utterance}
     - Bye Bye
-"""
-        )
-    )
+"""))
 
     e2e_action = action.action_for_name_or_text("Hi", domain, None)
     events = await e2e_action.run(
@@ -1226,9 +1206,7 @@ async def test_run_end_to_end_utterance_action():
 async def test_action_extract_slots_predefined_mappings(
     user: Event, slot_name: Text, slot_value: Any, new_user: Event, updated_value: Any
 ):
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intents:
             - inform
@@ -1267,9 +1245,7 @@ async def test_action_extract_slots_predefined_mappings(
                 influence_conversation: false
                 mappings:
                 - type: from_entity
-                  entity: name"""
-        )
-    )
+                  entity: name"""))
 
     action_extract_slots = ActionExtractSlots(action_endpoint=None)
     tracker = DialogueStateTracker.from_events("sender", evts=[user])
@@ -1309,9 +1285,7 @@ async def test_action_extract_slots_predefined_mappings(
 
 
 async def test_action_extract_slots_with_from_trigger_mappings():
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intents:
             - greet
@@ -1335,9 +1309,7 @@ async def test_action_extract_slots_with_from_trigger_mappings():
             forms:
               registration_form:
                 required_slots:
-                  - email"""
-        )
-    )
+                  - email"""))
 
     action_extract_slots = ActionExtractSlots(action_endpoint=None)
     user_event = UserUttered(text="I'd like to register", intent={"name": "register"})
@@ -1430,9 +1402,7 @@ async def test_action_extract_slots_with_list_slot(
     form_name = "order_form"
     slot_name = "toppings"
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
     entities:
@@ -1450,9 +1420,7 @@ async def test_action_extract_slots_with_list_slot(
       {form_name}:
         {REQUIRED_SLOTS_KEY}:
           - {slot_name}
-    """
-        )
-    )
+    """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1529,9 +1497,7 @@ async def test_action_extract_slots_mapping_does_not_apply(slot_mapping: Dict):
 async def test_action_extract_slots_with_matched_mapping_condition():
     form_name = "some_form"
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intent:
             - greet
@@ -1553,9 +1519,7 @@ async def test_action_extract_slots_with_matched_mapping_condition():
              other_form:
                required_slots:
                  - name
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1582,9 +1546,7 @@ async def test_action_extract_slots_with_matched_mapping_condition():
 async def test_action_extract_slots_no_matched_mapping_conditions():
     form_name = "some_form"
 
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intent:
             - greet
@@ -1613,9 +1575,7 @@ async def test_action_extract_slots_no_matched_mapping_conditions():
                required_slots:
                  - email
                  - name
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -1825,9 +1785,7 @@ async def test_extract_other_list_slot_from_entity(
 ):
     form_name = "some_form"
     slot_name = "toppings"
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
     entities:
@@ -1850,9 +1808,7 @@ async def test_extract_other_list_slot_from_entity(
       {form_name}:
         {REQUIRED_SLOTS_KEY}:
           - {slot_name}
-    """
-        )
-    )
+    """))
 
     tracker = DialogueStateTracker.from_events(
         "default",
@@ -2042,8 +1998,7 @@ async def test_action_extract_slots_execute_validation_action(
     validate_return_events: List[Dict[Text, Any]],
     expected_events: List[Event],
 ):
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2083,8 +2038,7 @@ async def test_action_extract_slots_execute_validation_action(
 
         actions:
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
 
@@ -2106,8 +2060,7 @@ async def test_action_extract_slots_execute_validation_action(
 
 
 async def test_action_extract_slots_custom_action_and_predefined_slot_validation():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2133,8 +2086,7 @@ async def test_action_extract_slots_custom_action_and_predefined_slot_validation
         actions:
         - action_validate_slot_mappings
         - action_test
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered(
         intent={"name": "inform"}, entities=[{"entity": "city", "value": "london"}]
@@ -2173,8 +2125,7 @@ async def test_action_extract_slots_custom_action_and_predefined_slot_validation
 
 
 async def test_action_extract_slots_with_duplicate_custom_actions():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2199,8 +2150,7 @@ async def test_action_extract_slots_with_duplicate_custom_actions():
 
         actions:
         - action_test
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2245,8 +2195,7 @@ async def test_action_extract_slots_with_duplicate_custom_actions():
 
 
 async def test_action_extract_slots_disallowed_events(caplog: LogCaptureFixture):
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2259,8 +2208,7 @@ async def test_action_extract_slots_disallowed_events(caplog: LogCaptureFixture)
 
         actions:
         - action_test
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2313,8 +2261,7 @@ async def test_action_extract_slots_disallowed_events(caplog: LogCaptureFixture)
 async def test_action_extract_slots_warns_custom_action_exceptions(
     caplog: LogCaptureFixture, exception: Exception
 ):
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2327,8 +2274,7 @@ async def test_action_extract_slots_warns_custom_action_exceptions(
 
         actions:
         - action_test
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2359,8 +2305,7 @@ async def test_action_extract_slots_warns_custom_action_exceptions(
 
 
 async def test_action_extract_slots_with_empty_conditions():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         entities:
@@ -2374,8 +2319,7 @@ async def test_action_extract_slots_with_empty_conditions():
             - type: from_entity
               entity: city
               conditions: []
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi", entities=[{"entity": "city", "value": "Berlin"}])
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2393,8 +2337,7 @@ async def test_action_extract_slots_with_empty_conditions():
 
 
 async def test_action_extract_slots_with_not_existing_entity():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         entities:
@@ -2407,8 +2350,7 @@ async def test_action_extract_slots_with_not_existing_entity():
             mappings:
             - type: from_entity
               entity: city2
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi", entities=[{"entity": "city", "value": "Berlin"}])
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2431,8 +2373,7 @@ async def test_action_extract_slots_with_not_existing_entity():
 
 
 async def test_action_extract_slots_with_not_existing_intent():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2446,8 +2387,7 @@ async def test_action_extract_slots_with_not_existing_intent():
             - type: from_intent
               intent: affirm
               value: some_value
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi", entities=[{"entity": "city", "value": "Berlin"}])
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2470,8 +2410,7 @@ async def test_action_extract_slots_with_not_existing_intent():
 
 
 async def test_action_extract_slots_with_none_value_predefined_mapping():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         entities:
@@ -2493,8 +2432,7 @@ async def test_action_extract_slots_with_none_value_predefined_mapping():
 
         actions:
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi", entities=[{"entity": "some_entity", "value": None}])
     tracker = DialogueStateTracker.from_events(sender_id="test_id", evts=[event])
@@ -2511,8 +2449,7 @@ async def test_action_extract_slots_with_none_value_predefined_mapping():
 
 
 async def test_action_extract_slots_with_none_value_custom_mapping():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2524,8 +2461,7 @@ async def test_action_extract_slots_with_none_value_custom_mapping():
 
         actions:
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(
@@ -2554,8 +2490,7 @@ async def test_action_extract_slots_with_none_value_custom_mapping():
 
 
 async def test_action_extract_slots_returns_bot_uttered():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2567,8 +2502,7 @@ async def test_action_extract_slots_returns_bot_uttered():
 
         actions:
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(
@@ -2602,8 +2536,7 @@ async def test_action_extract_slots_returns_bot_uttered():
 async def test_action_extract_slots_does_not_raise_disallowed_warning_for_slot_events(
     caplog: LogCaptureFixture,
 ):
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2622,8 +2555,7 @@ async def test_action_extract_slots_does_not_raise_disallowed_warning_for_slot_e
         actions:
         - custom_extract_action
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(
@@ -2674,8 +2606,7 @@ async def test_action_extract_slots_does_not_raise_disallowed_warning_for_slot_e
 
 
 async def test_action_extract_slots_non_required_form_slot_with_from_entity_mapping():
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2721,8 +2652,7 @@ async def test_action_extract_slots_non_required_form_slot_with_from_entity_mapp
             required_slots:
             - form1_slot1
             - form1_slot2
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     initial_events = [
         UserUttered("Start form."),
@@ -2762,8 +2692,7 @@ async def test_action_extract_slots_emits_necessary_slot_set_events(
     entity_name = "entity"
     intent_name = "intent_with_entity"
 
-    domain = textwrap.dedent(
-        f"""
+    domain = textwrap.dedent(f"""
           intents:
             - {intent_name}
           entities:
@@ -2774,8 +2703,7 @@ async def test_action_extract_slots_emits_necessary_slot_set_events(
               mappings:
               - type: from_entity
                 entity: {entity_name}
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain)
 
@@ -2820,8 +2748,7 @@ async def test_action_extract_slots_priority_of_slot_mappings():
     entity_name = "location"
     entity_value = "Berlin"
 
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2844,8 +2771,7 @@ async def test_action_extract_slots_priority_of_slot_mappings():
         responses:
             utter_ask_location:
                 - text: "where are you located?"
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     initial_events = [
         UserUttered(
@@ -2871,8 +2797,7 @@ async def test_action_extract_slots_priority_of_slot_mappings():
 async def test_action_extract_slots_allows_slotset_for_same_value(
     caplog: LogCaptureFixture,
 ):
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         slots:
@@ -2886,8 +2811,7 @@ async def test_action_extract_slots_allows_slotset_for_same_value(
         actions:
         - custom_extract_action
         - action_validate_slot_mappings
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     event = UserUttered("Hi")
     tracker = DialogueStateTracker.from_events(
@@ -2931,8 +2855,7 @@ async def test_action_extract_slots_active_loop_none_in_mapping_condition():
     entity_value = "Julia"
     slot = "user_name"
 
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
         intents:
@@ -2949,8 +2872,7 @@ async def test_action_extract_slots_active_loop_none_in_mapping_condition():
               entity: {entity}
               conditions:
               - active_loop: null
-        """
-    )
+        """)
     domain = Domain.from_yaml(domain_yaml)
     initial_events = [
         UserUttered(
@@ -2977,8 +2899,7 @@ async def test_action_extract_slots_active_loop_none_does_not_set_slot_in_form()
     entity_value = "Julia"
     slot = "user_name"
 
-    domain_yaml = textwrap.dedent(
-        f"""
+    domain_yaml = textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
 
             intents:
@@ -2999,8 +2920,7 @@ async def test_action_extract_slots_active_loop_none_does_not_set_slot_in_form()
             forms:
               my_form:
                 required_slots: []
-            """
-    )
+            """)
     domain = Domain.from_yaml(domain_yaml)
     initial_events = [
         ActiveLoop("my_form"),

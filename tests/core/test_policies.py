@@ -575,8 +575,7 @@ class TestMemoizationPolicy(PolicyTestCollection):
         GREET_INTENT_NAME = "greet"
         UTTER_GREET_ACTION = "utter_greet"
         UTTER_BYE_ACTION = "utter_goodbye"
-        domain = Domain.from_yaml(
-            f"""
+        domain = Domain.from_yaml(f"""
             intents:
             - {GREET_INTENT_NAME}
             actions:
@@ -599,8 +598,7 @@ class TestMemoizationPolicy(PolicyTestCollection):
                     type: bool
                     mappings:
                     - type: from_text
-            """
-        )
+            """)
         events = [
             ActionExecuted(ACTION_LISTEN_NAME),
             UserUttered(intent={"name": GREET_INTENT_NAME}),
@@ -660,8 +658,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
         GREET_INTENT_NAME = "greet"
         UTTER_GREET_ACTION = "utter_greet"
         UTTER_BYE_ACTION = "utter_goodbye"
-        domain = Domain.from_yaml(
-            f"""
+        domain = Domain.from_yaml(f"""
                 intents:
                 - {GREET_INTENT_NAME}
                 actions:
@@ -681,8 +678,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
                         type: bool
                         mappings:
                         - type: from_text
-                """
-        )
+                """)
         training_story = TrackerWithCachedStates.from_events(
             "training story",
             [
@@ -756,8 +752,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
         UTTER_ACTION_4 = "utter_4"
         UTTER_ACTION_5 = "utter_5"
         UTTER_BYE_ACTION = "utter_goodbye"
-        domain = Domain.from_yaml(
-            f"""
+        domain = Domain.from_yaml(f"""
                 intents:
                 - {GREET_INTENT_NAME}
                 actions:
@@ -768,8 +763,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
                 - {UTTER_ACTION_4}
                 - {UTTER_ACTION_5}
                 - {UTTER_BYE_ACTION}
-                """
-        )
+                """)
         training_story = TrackerWithCachedStates.from_events(
             "training story",
             [
@@ -838,8 +832,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
         UTTER_ACTION_4 = "utter_4"
         UTTER_ACTION_5 = "utter_5"
         UTTER_BYE_ACTION = "utter_goodbye"
-        domain = Domain.from_yaml(
-            f"""
+        domain = Domain.from_yaml(f"""
                 intents:
                 - {GREET_INTENT_NAME}
                 - {GOODBYE_INTENT_NAME}
@@ -851,8 +844,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
                 - {UTTER_ACTION_4}
                 - {UTTER_ACTION_5}
                 - {UTTER_BYE_ACTION}
-                """
-        )
+                """)
         training_story = TrackerWithCachedStates.from_events(
             "training story",
             [
@@ -948,8 +940,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
         UTTER_ACTION_2 = "utter_2"
         UTTER_ACTION_3 = "utter_3"
         UTTER_ACTION_4 = "utter_4"
-        domain = Domain.from_yaml(
-            f"""
+        domain = Domain.from_yaml(f"""
             intents:
             - {GREET_INTENT_NAME}
             - {GOODBYE_INTENT_NAME}
@@ -959,8 +950,7 @@ class TestAugmentedMemoizationPolicy(TestMemoizationPolicy):
             - {UTTER_ACTION_2}
             - {UTTER_ACTION_3}
             - {UTTER_ACTION_4}
-            """
-        )
+            """)
         training_story = TrackerWithCachedStates.from_events(
             "training story",
             [

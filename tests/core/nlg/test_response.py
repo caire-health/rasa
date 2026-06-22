@@ -368,16 +368,14 @@ async def test_nlg_conditional_response_variations_with_diff_slot_types(
 
 
 async def test_nlg_non_matching_channel():
-    domain = Domain.from_yaml(
-        """
+    domain = Domain.from_yaml("""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     responses:
         utter_hi:
         - text: "Hello"
         - text: "Hello Slack"
           channel: "slack"
-    """
-    )
+    """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     tracker = DialogueStateTracker(sender_id="test", slots=[])
     r = await t.generate("utter_hi", tracker, "signal")
@@ -385,8 +383,7 @@ async def test_nlg_non_matching_channel():
 
 
 async def test_nlg_conditional_response_variations_with_none_slot():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
             utter_action:
@@ -395,8 +392,7 @@ async def test_nlg_conditional_response_variations_with_none_slot():
               - type: slot
                 name: account
                 value: "A"
-        """
-    )
+        """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     slot = AnySlot(
         name="account", mappings=[{}], initial_value=None, influence_conversation=False
@@ -407,8 +403,7 @@ async def test_nlg_conditional_response_variations_with_none_slot():
 
 
 async def test_nlg_conditional_response_variations_with_slot_not_a_constraint():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             responses:
                 utter_action:
@@ -417,8 +412,7 @@ async def test_nlg_conditional_response_variations_with_slot_not_a_constraint():
                   - type: slot
                     name: account
                     value: "A"
-            """
-    )
+            """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     slot = TextSlot(
         name="account", mappings=[{}], initial_value="B", influence_conversation=False
@@ -429,8 +423,7 @@ async def test_nlg_conditional_response_variations_with_slot_not_a_constraint():
 
 
 async def test_nlg_conditional_response_variations_with_null_slot():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
                 version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
                 responses:
                     utter_action:
@@ -439,8 +432,7 @@ async def test_nlg_conditional_response_variations_with_null_slot():
                       - type: slot
                         name: account
                         value: null
-                """
-    )
+                """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     slot = AnySlot(
         name="account", mappings=[{}], initial_value=None, influence_conversation=False
@@ -455,8 +447,7 @@ async def test_nlg_conditional_response_variations_with_null_slot():
 
 
 async def test_nlg_conditional_response_variations_channel_no_condition_met():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
            utter_action:
@@ -467,8 +458,7 @@ async def test_nlg_conditional_response_variations_channel_no_condition_met():
                   value: A
                channel: os
              - text: "default"
-        """
-    )
+        """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     tracker = DialogueStateTracker(sender_id="test", slots=[])
     r = await t.generate("utter_action", tracker, "os")
@@ -476,8 +466,7 @@ async def test_nlg_conditional_response_variations_channel_no_condition_met():
 
 
 async def test_nlg_conditional_response_variation_condition_met_channel_mismatch():
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
            utter_action:
@@ -489,8 +478,7 @@ async def test_nlg_conditional_response_variation_condition_met_channel_mismatch
                channel: os
              - text: "app default"
                channel: app
-        """
-    )
+        """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     slot = TextSlot(
         "test", mappings=[{}], initial_value="A", influence_conversation=False
@@ -542,8 +530,7 @@ async def test_nlg_conditional_response_variation_condition_met_channel_mismatch
     ],
 )
 async def test_nlg_conditional_edgecases(slots, channel, expected_response):
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
            utter_action:
@@ -574,8 +561,7 @@ async def test_nlg_conditional_edgecases(slots, channel, expected_response):
                   value: B
 
              - text: "default"
-        """
-    )
+        """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     tracker = DialogueStateTracker(sender_id="test", slots=slots)
     r = await t.generate("utter_action", tracker, channel)
@@ -585,8 +571,7 @@ async def test_nlg_conditional_edgecases(slots, channel, expected_response):
 async def test_nlg_conditional_response_variations_condition_logging(
     caplog: LogCaptureFixture,
 ):
-    domain = Domain.from_yaml(
-        f"""
+    domain = Domain.from_yaml(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         responses:
            utter_action:
@@ -599,8 +584,7 @@ async def test_nlg_conditional_response_variations_condition_logging(
                   name: test_B
                   value: B
              - text: "default"
-        """
-    )
+        """)
     t = TemplatedNaturalLanguageGenerator(domain.responses)
     slot_A = TextSlot(
         name="test_A", mappings=[{}], initial_value="A", influence_conversation=False

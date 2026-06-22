@@ -11,7 +11,6 @@ from structlog.typing import EventDict, WrappedLogger
 from rasa.shared.constants import ENV_LOG_LEVEL, DEFAULT_LOG_LEVEL
 from rasa.plugin import plugin_manager
 
-
 FORCE_JSON_LOGGING = os.environ.get("FORCE_JSON_LOGGING")
 
 

@@ -62,7 +62,6 @@ from rasa.shared.nlu.constants import (
     FULL_RETRIEVAL_INTENT_NAME_KEY,
 )
 
-
 if TYPE_CHECKING:
     from typing_extensions import TypedDict
 

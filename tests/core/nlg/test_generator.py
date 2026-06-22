@@ -89,8 +89,7 @@ def test_response_variation_filter_get_response_id_multiple_conditions() -> None
     )
     output_channel = "default"
 
-    domain_yaml = textwrap.dedent(
-        """
+    domain_yaml = textwrap.dedent("""
         version: "3.1"
 
         intents:
@@ -125,8 +124,7 @@ def test_response_variation_filter_get_response_id_multiple_conditions() -> None
               - type: slot
                 name: logged_in
                 value: true
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain_yaml)
     response_variation_filter = ResponseVariationFilter(domain.responses)
@@ -163,8 +161,7 @@ def test_response_variation_filter_get_response_id_chained_conditions() -> None:
     )
     output_channel = "default"
 
-    domain_yaml = textwrap.dedent(
-        """
+    domain_yaml = textwrap.dedent("""
         version: "3.1"
 
         intents:
@@ -195,8 +192,7 @@ def test_response_variation_filter_get_response_id_chained_conditions() -> None:
               - type: slot
                 name: membership
                 value: gold
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain_yaml)
     response_variation_filter = ResponseVariationFilter(domain.responses)
@@ -224,8 +220,7 @@ def test_response_variation_filter_get_response_id_with_channels() -> None:
         sender_id="crv_channel", evts=[UserUttered("Hello")], slots=[membership_slot]
     )
 
-    domain_yaml = textwrap.dedent(
-        """
+    domain_yaml = textwrap.dedent("""
         version: "3.1"
 
         intents:
@@ -262,8 +257,7 @@ def test_response_variation_filter_get_response_id_with_channels() -> None:
                 name: membership
                 value: gold
               channel: web
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain_yaml)
     response_variation_filter = ResponseVariationFilter(domain.responses)
@@ -318,8 +312,7 @@ def test_response_variation_filter_get_response_id_edge_cases(
         sender_id="edge_cases", evts=[UserUttered("Hello")], slots=[membership_slot]
     )
 
-    domain_yaml = textwrap.dedent(
-        """
+    domain_yaml = textwrap.dedent("""
         version: "3.1"
 
         intents:
@@ -370,8 +363,7 @@ def test_response_variation_filter_get_response_id_edge_cases(
               - type: slot
                 name: membership
                 value: gold
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain_yaml)
     response_variation_filter = ResponseVariationFilter(domain.responses)
@@ -399,8 +391,7 @@ def test_response_variation_filter_raises_exception_duplicate_ids() -> None:
         sender_id="duplicate_ids", evts=[UserUttered("Hello")], slots=[membership_slot]
     )
 
-    domain_yaml = textwrap.dedent(
-        """
+    domain_yaml = textwrap.dedent("""
         version: "3.1"
 
         intents:
@@ -427,8 +418,7 @@ def test_response_variation_filter_raises_exception_duplicate_ids() -> None:
 
             - text: ""
               id: "ID_1"
-        """
-    )
+        """)
 
     domain = Domain.from_yaml(domain_yaml)
     response_variation_filter = ResponseVariationFilter(domain.responses)

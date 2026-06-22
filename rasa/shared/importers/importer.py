@@ -443,7 +443,7 @@ class ResponsesSyncImporter(TrainingDataImporter):
 
     @staticmethod
     def _get_nlu_data_with_responses(
-        responses: Dict[Text, List[Dict[Text, Any]]]
+        responses: Dict[Text, List[Dict[Text, Any]]],
     ) -> TrainingData:
         """Construct training data object with only the responses supplied.
 

@@ -28,8 +28,7 @@ def validator_under_test() -> Validator:
 def test_verify_nlu_with_e2e_story(tmp_path: Path, nlu_data_path: Path):
     story_file_name = tmp_path / "stories.yml"
     with open(story_file_name, "w") as file:
-        file.write(
-            """
+        file.write("""
             stories:
             - story: path 1
               steps:
@@ -51,8 +50,7 @@ def test_verify_nlu_with_e2e_story(tmp_path: Path, nlu_data_path: Path):
               - action: utter_cheer_up
               - action: utter_did_that_help
               - action: utter_iamabot
-            """
-        )
+            """)
     importer = RasaFileImporter(
         config_file="data/test_moodbot/config.yml",
         domain_path="data/test_moodbot/domain.yml",
@@ -137,8 +135,7 @@ def test_verify_bad_story_structure():
 
 def test_verify_bad_e2e_story_structure_when_text_identical(tmp_path: Path):
     story_file_name = tmp_path / "stories.yml"
-    story_file_name.write_text(
-        f"""
+    story_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: path 1
@@ -151,8 +148,7 @@ def test_verify_bad_e2e_story_structure_when_text_identical(tmp_path: Path):
           - user: |
               amazing!
           - action: utter_cheer_up
-        """
-    )
+        """)
     # The two stories with identical user texts
     importer = RasaFileImporter(
         config_file="data/test_config/config_defaults.yml",
@@ -167,8 +163,7 @@ def test_verify_bad_e2e_story_structure_when_text_identical(tmp_path: Path):
 def test_verify_correct_e2e_story_structure(tmp_path: Path):
     story_file_name = tmp_path / "stories.yml"
     with open(story_file_name, "w") as file:
-        file.write(
-            """
+        file.write("""
             stories:
             - story: path 1
               steps:
@@ -185,8 +180,7 @@ def test_verify_correct_e2e_story_structure(tmp_path: Path):
               - user: |
                   That's it for today. Chat again tomorrow!
               - action: utter_goodbye
-            """
-        )
+            """)
     importer = RasaFileImporter(
         config_file="data/test_config/config_defaults.yml",
         domain_path="data/test_domains/default.yml",
@@ -200,8 +194,7 @@ def test_verify_correct_e2e_story_structure(tmp_path: Path):
 def test_verify_correct_e2e_story_structure_with_intents(tmp_path: Path):
     story_file_name = tmp_path / "stories.yml"
     with open(story_file_name, "w") as file:
-        file.write(
-            """
+        file.write("""
             stories:
             - story: path 1
               steps:
@@ -211,8 +204,7 @@ def test_verify_correct_e2e_story_structure_with_intents(tmp_path: Path):
               steps:
               - intent: goodbye
               - action: utter_goodbye
-            """
-        )
+            """)
     importer = RasaFileImporter(
         config_file="data/test_config/config_defaults.yml",
         domain_path="data/test_domains/default.yml",
@@ -356,16 +348,14 @@ def test_verify_there_is_not_example_repetition_in_intents():
 
 def test_verify_actions_in_stories_not_in_domain(tmp_path: Path, domain_path: Text):
     story_file_name = tmp_path / "stories.yml"
-    story_file_name.write_text(
-        f"""
+    story_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         stories:
         - story: story path 1
           steps:
           - intent: greet
           - action: action_test_1
-        """
-    )
+        """)
 
     importer = RasaFileImporter(
         domain_path=domain_path, training_data_paths=[story_file_name]
@@ -383,16 +373,14 @@ def test_verify_actions_in_stories_not_in_domain(tmp_path: Path, domain_path: Te
 
 def test_verify_actions_in_rules_not_in_domain(tmp_path: Path, domain_path: Text):
     rules_file_name = tmp_path / "rules.yml"
-    rules_file_name.write_text(
-        f"""
+    rules_file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         rules:
         - rule: rule path 1
           steps:
           - intent: goodbye
           - action: action_test_2
-        """
-    )
+        """)
     importer = RasaFileImporter(
         domain_path=domain_path, training_data_paths=[rules_file_name]
     )
@@ -409,8 +397,7 @@ def test_verify_actions_in_rules_not_in_domain(tmp_path: Path, domain_path: Text
 
 def test_verify_form_slots_invalid_domain(tmp_path: Path):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         forms:
           name_form:
@@ -426,8 +413,7 @@ def test_verify_form_slots_invalid_domain(tmp_path: Path):
                 type: text
                 mappings:
                 - type: from_text
-        """
-    )
+        """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     with pytest.warns(UserWarning) as w:
@@ -469,26 +455,22 @@ def test_valid_stories_rules_actions_in_domain(
     file_name: Text, data_type: Text, tmp_path: Path
 ):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
         actions:
         - action_greet
-        """
-    )
+        """)
     file_name = tmp_path / f"{file_name}.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         {file_name}:
         - {data_type}: test path
           steps:
           - intent: greet
           - action: action_greet
-        """
-    )
+        """)
     importer = RasaFileImporter(domain_path=domain, training_data_paths=[file_name])
     validator = Validator.from_importer(importer)
     assert validator.verify_actions_in_stories_rules()
@@ -501,24 +483,20 @@ def test_valid_stories_rules_default_actions(
     file_name: Text, data_type: Text, tmp_path: Path
 ):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - greet
-        """
-    )
+        """)
     file_name = tmp_path / f"{file_name}.yml"
-    file_name.write_text(
-        f"""
+    file_name.write_text(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             {file_name}:
             - {data_type}: test path
               steps:
               - intent: greet
               - action: action_restart
-            """
-    )
+            """)
     importer = RasaFileImporter(domain_path=domain, training_data_paths=[file_name])
     validator = Validator.from_importer(importer)
     assert validator.verify_actions_in_stories_rules()
@@ -526,8 +504,7 @@ def test_valid_stories_rules_default_actions(
 
 def test_valid_form_slots_in_domain(tmp_path: Path):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         forms:
           name_form:
@@ -543,8 +520,7 @@ def test_valid_form_slots_in_domain(tmp_path: Path):
                 type: text
                 mappings:
                 - type: from_text
-        """
-    )
+        """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     assert validator.verify_form_slots()
@@ -553,8 +529,7 @@ def test_valid_form_slots_in_domain(tmp_path: Path):
 def test_verify_slot_mappings_mapping_active_loop_not_in_forms(tmp_path: Path):
     domain = tmp_path / "domain.yml"
     slot_name = "some_slot"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         entities:
         - some_entity
@@ -571,8 +546,7 @@ def test_verify_slot_mappings_mapping_active_loop_not_in_forms(tmp_path: Path):
           some_form:
             required_slots:
               - {slot_name}
-        """
-    )
+        """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     with pytest.warns(
@@ -586,8 +560,7 @@ def test_verify_slot_mappings_mapping_active_loop_not_in_forms(tmp_path: Path):
 
 def test_verify_slot_mappings_slot_with_mapping_conditions_not_in_form(tmp_path: Path):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - activate_booking
@@ -613,8 +586,7 @@ def test_verify_slot_mappings_slot_with_mapping_conditions_not_in_form(tmp_path:
           booking_form:
             required_slots:
             - started_booking_form
-            """
-    )
+            """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     with pytest.warns(
@@ -627,8 +599,7 @@ def test_verify_slot_mappings_slot_with_mapping_conditions_not_in_form(tmp_path:
 
 def test_verify_slot_mappings_valid(tmp_path: Path):
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - activate_booking
@@ -655,8 +626,7 @@ def test_verify_slot_mappings_valid(tmp_path: Path):
             required_slots:
             - started_booking_form
             - location
-            """
-    )
+            """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     assert validator.verify_slot_mappings()
@@ -670,9 +640,7 @@ def test_default_action_as_active_loop_in_rules(
 ) -> None:
     config = tmp_path / "config.yml"
 
-    config.write_text(
-        textwrap.dedent(
-            """
+    config.write_text(textwrap.dedent("""
             recipe: default.v1
             language: en
             pipeline:
@@ -701,14 +669,10 @@ def test_default_action_as_active_loop_in_rules(
                  core_fallback_threshold: 0.3
                  core_fallback_action_name: "action_default_fallback"
                  enable_fallback_prediction: true
-            """
-        )
-    )
+            """))
 
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        textwrap.dedent(
-            f"""
+    domain.write_text(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intents:
               - greet
@@ -735,12 +699,9 @@ def test_default_action_as_active_loop_in_rules(
             session_config:
               session_expiration_time: 60
               carry_over_slots_to_new_session: true
-            """
-        )
-    )
+            """))
     file = tmp_path / f"{file_name}.yml"
-    file.write_text(
-        f"""
+    file.write_text(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             {file_name}:
             - {data_type}: test
@@ -748,8 +709,7 @@ def test_default_action_as_active_loop_in_rules(
               - intent: nlu_fallback
               - action: action_two_stage_fallback
               - active_loop: action_two_stage_fallback
-           """
-    )
+           """)
     importer = RasaFileImporter(
         config_file=str(config), domain_path=str(domain), training_data_paths=str(file)
     )
@@ -762,8 +722,7 @@ def test_verify_from_trigger_intent_slot_mapping_not_in_forms_does_not_warn(
 ):
     domain = tmp_path / "domain.yml"
     slot_name = "started_booking_form"
-    domain.write_text(
-        f"""
+    domain.write_text(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         intents:
         - activate_booking
@@ -786,8 +745,7 @@ def test_verify_from_trigger_intent_slot_mapping_not_in_forms_does_not_warn(
           booking_form:
             required_slots:
             - location
-            """
-    )
+            """)
     importer = RasaFileImporter(domain_path=domain)
     validator = Validator.from_importer(importer)
     with warnings.catch_warnings():
@@ -800,27 +758,23 @@ def test_verify_utterances_does_not_error_when_no_utterance_template_provided(
 ):
     story_file_name = tmp_path / "stories.yml"
     with open(story_file_name, "w") as file:
-        file.write(
-            f"""
+        file.write(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             stories:
             - story: path 1
               steps:
               - intent: greet
               - action: utter_greet
-            """
-        )
+            """)
     domain_file_name = tmp_path / "domain.yml"
     with open(domain_file_name, "w") as file:
-        file.write(
-            f"""
+        file.write(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             intents:
               - greet
             actions:
               - utter_greet
-            """
-        )
+            """)
     importer = RasaFileImporter(
         config_file="data/test_moodbot/config.yml",
         domain_path=domain_file_name,

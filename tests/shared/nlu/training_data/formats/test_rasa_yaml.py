@@ -237,8 +237,7 @@ def test_training_data_as_yaml_dict():
     parser = RasaYAMLReader()
     writer = RasaYAMLWriter()
 
-    training_data = parser.reads(
-        """
+    training_data = parser.reads("""
 nlu:
 - intent: some_intent
   examples: |
@@ -246,8 +245,7 @@ nlu:
 responses:
   utter_something:
     - text: hello world
-    """
-    )
+    """)
     structure = writer.training_data_to_dict(training_data)
 
     assert isinstance(structure, OrderedDict)
@@ -374,13 +372,11 @@ def test_minimal_yaml_nlu_file(tmp_path: pathlib.Path):
 
 
 def test_nlg_reads_text():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
         utter_chitchat/ask_weather:
         - text: Where do you want to check the weather?
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
     result = reader.reads(responses_yml)
@@ -393,14 +389,12 @@ def test_nlg_reads_text():
 
 
 def test_nlg_reads_any_multimedia():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
         utter_chitchat/ask_weather:
         - text: Where do you want to check the weather?
           image: https://example.com/weather.jpg
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
     result = reader.reads(responses_yml)
@@ -416,11 +410,9 @@ def test_nlg_reads_any_multimedia():
 
 
 def test_nlg_fails_to_read_empty():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
 
@@ -429,12 +421,10 @@ def test_nlg_fails_to_read_empty():
 
 
 def test_nlg_fails_on_empty_response():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
         utter_chitchat/ask_weather:
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
 
@@ -443,8 +433,7 @@ def test_nlg_fails_on_empty_response():
 
 
 def test_nlg_multimedia_load_dump_roundtrip():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
         utter_chitchat/ask_weather:
         - text: Where do you want to check the weather?
@@ -452,8 +441,7 @@ def test_nlg_multimedia_load_dump_roundtrip():
 
         utter_chitchat/ask_name:
         - text: My name is Sara.
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
     result = reader.reads(responses_yml)
@@ -483,8 +471,7 @@ def test_read_mixed_training_data_file():
 
 
 def test_responses_text_multiline_is_preserved():
-    responses_yml = textwrap.dedent(
-        """
+    responses_yml = textwrap.dedent("""
       responses:
         utter_confirm:
         - text: |-
@@ -495,8 +482,7 @@ def test_responses_text_multiline_is_preserved():
         utter_cancel:
         - text: First line
         - text: Second line
-    """
-    )
+    """)
 
     reader = RasaYAMLReader()
     result = reader.reads(responses_yml)

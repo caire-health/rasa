@@ -411,7 +411,7 @@ async def test_process_gives_diagnostic_data(
 
 @pytest.mark.parametrize(
     "classifier_params",
-    [({LOSS_TYPE: "margin", RANDOM_SEED: 42, EPOCHS: 1, RUN_EAGERLY: True})],
+    [{LOSS_TYPE: "margin", RANDOM_SEED: 42, EPOCHS: 1, RUN_EAGERLY: True}],
 )
 async def test_margin_loss_is_not_normalized(
     classifier_params: Dict[Text, int],

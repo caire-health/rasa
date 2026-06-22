@@ -3,7 +3,6 @@ import sys
 sys.path.append(".github/scripts")
 from mr_generate_summary import combine_result  # noqa: E402
 
-
 RESULT1 = {
     "financial-demo": {
         "BERT + DIET(bow) + ResponseSelector(bow)": [

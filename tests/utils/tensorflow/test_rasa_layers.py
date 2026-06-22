@@ -37,7 +37,6 @@ from rasa.utils.tensorflow.constants import (
 from rasa.utils.tensorflow.exceptions import TFLayerConfigException
 from rasa.utils.tensorflow.model_data import FeatureSignature
 
-
 attribute_name = TEXT
 units_1 = 2
 units_2 = 3
@@ -524,7 +523,9 @@ def test_raises_exception_when_missing_features(
         layer_class(**layer_args, attribute=attribute_name, config=model_config_basic)
 
 
-def test_concat_sparse_dense_raises_exception_when_inconsistent_sparse_features() -> None:  # noqa: E501
+def test_concat_sparse_dense_raises_exception_when_inconsistent_sparse_features() -> (
+    None
+):  # noqa: E501
     with pytest.raises(TFLayerConfigException):
         ConcatenateSparseDenseFeatures(
             attribute=attribute_name,
@@ -823,7 +824,7 @@ def test_sequence_layer_correct_output(
         mask_seq_sent_expected,
         token_ids_expected,
     ) = expected_outputs_train
-    (_, seq_sent_features, mask_seq_sent, token_ids, mlm_boolean_mask, _) = layer(
+    _, seq_sent_features, mask_seq_sent, token_ids, mlm_boolean_mask, _ = layer(
         inputs, training=True
     )
     assert (seq_sent_features.numpy() == seq_sent_features_expected).all()
@@ -838,7 +839,7 @@ def test_sequence_layer_correct_output(
         assert not mlm_boolean_mask.numpy()[0][realistic_sequence_lengths.numpy()][0]
 
     # Test-time check
-    (seq_sent_features_expected, mask_seq_sent_expected, _) = expected_outputs_train
+    seq_sent_features_expected, mask_seq_sent_expected, _ = expected_outputs_train
     (
         transformer_outputs,
         seq_sent_features,

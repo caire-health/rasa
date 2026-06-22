@@ -1441,9 +1441,7 @@ def test_policy_prediction_reflected_in_tracker_state():
 async def test_fill_slots_for_policy_entities():
     policy_entity, policy_entity_value = "policy_entity", "end-to-end"
     nlu_entity, nlu_entity_value = "nlu_entity", "nlu rocks"
-    domain = Domain.from_yaml(
-        textwrap.dedent(
-            f"""
+    domain = Domain.from_yaml(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             entities:
             - {nlu_entity}
@@ -1459,9 +1457,7 @@ async def test_fill_slots_for_policy_entities():
                     mappings:
                     - type: from_entity
                       entity: {policy_entity}
-            """
-        )
-    )
+            """))
 
     tracker = DialogueStateTracker.from_events(
         "some sender",

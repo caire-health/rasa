@@ -27,7 +27,6 @@ from rasa.shared.data import TrainingType
 from rasa.shared.nlu.training_data.training_data import TrainingData
 import rasa.model
 
-
 logger = logging.getLogger(__name__)
 
 

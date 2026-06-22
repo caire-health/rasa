@@ -42,7 +42,6 @@ from rasa.core.constants import (
 from rasa.shared.core.constants import USER, SLOTS, PREVIOUS_ACTION, ACTIVE_LOOP
 import rasa.shared.utils.common
 
-
 if TYPE_CHECKING:
     from rasa.shared.nlu.training_data.features import Features
 

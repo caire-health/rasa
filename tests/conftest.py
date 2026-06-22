@@ -61,7 +61,6 @@ from rasa.shared.exceptions import RasaException
 import rasa.utils.common
 import rasa.utils.io
 
-
 # we reuse a bit of pytest's own testing machinery, this should eventually come
 # from a separately installable pytest-cli plugin.
 pytest_plugins = ["pytester"]
@@ -172,8 +171,7 @@ def domain_path() -> Text:
 def simple_config_path(tmp_path_factory: TempPathFactory) -> Text:
     project_path = tmp_path_factory.mktemp(uuid.uuid4().hex)
 
-    config = textwrap.dedent(
-        f"""
+    config = textwrap.dedent(f"""
         version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
         assistant_id: placeholder_default
         pipeline:
@@ -184,8 +182,7 @@ def simple_config_path(tmp_path_factory: TempPathFactory) -> Text:
         - name: AugmentedMemoizationPolicy
           max_history: 3
         - name: RulePolicy
-        """
-    )
+        """)
     config_path = project_path / "config.yml"
     rasa.shared.utils.io.write_text_file(config, config_path)
 

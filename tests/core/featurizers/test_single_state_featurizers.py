@@ -37,7 +37,6 @@ from rasa.shared.core.constants import (
 )
 from rasa.utils.tensorflow.constants import SENTENCE, SEQUENCE
 
-
 #
 # internals
 #

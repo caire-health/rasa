@@ -56,7 +56,7 @@ def count_temp_rasa_files(directory: Text) -> int:
                 [
                     # Ignore the following files/directories:
                     entry == "__pycache__",  # Python bytecode
-                    entry.endswith(".py")  # Temp .py files created by TF
+                    entry.endswith(".py"),  # Temp .py files created by TF
                     # Anything else is considered to be created by Rasa
                 ]
             )
@@ -918,8 +918,7 @@ def test_models_not_retrained_if_only_new_action(
 def test_invalid_graph_schema(
     tmp_path: Path, domain_path: Text, stories_path: Text, nlu_data_path: Text
 ):
-    config = textwrap.dedent(
-        """
+    config = textwrap.dedent("""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     recipe: "default.v1"
     assistant_id: placeholder_default
@@ -927,8 +926,7 @@ def test_invalid_graph_schema(
     pipeline:
     - name: WhitespaceTokenizer
     - name: TEDPolicy
-    """
-    )
+    """)
 
     new_config_path = tmp_path / "config.yml"
     rasa.shared.utils.io.write_yaml(
@@ -960,8 +958,7 @@ def test_fingerprint_changes_if_module_changes(
     source_code = source_code.replace("RulePolicy", new_class_name)
     custom_module_path.write_text(source_code)
 
-    config = textwrap.dedent(
-        f"""
+    config = textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     recipe: "default.v1"
     assistant_id: placeholder_default
@@ -969,8 +966,7 @@ def test_fingerprint_changes_if_module_changes(
     policies:
     - name: RulePolicy
     - name: {module_name}.{new_class_name}
-    """
-    )
+    """)
     monkeypatch.syspath_prepend(tmp_path)
 
     new_config_path = tmp_path / "config.yml"

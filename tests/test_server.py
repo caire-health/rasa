@@ -2288,8 +2288,7 @@ async def test_retrieve_story_with_query_param_all_sessions_true(
 
     story_content = response.body.decode("utf-8")
 
-    expected_first_story = textwrap.dedent(
-        f"""
+    expected_first_story = textwrap.dedent(f"""
     - story: {sender_id}, story 1
       steps:
       - intent: greet
@@ -2299,18 +2298,15 @@ async def test_retrieve_story_with_query_param_all_sessions_true(
       - intent: restart
         user: |-
           /restart
-      - action: action_restart"""
-    )
+      - action: action_restart""")
     assert expected_first_story in story_content
 
-    expected_second_story = textwrap.dedent(
-        f"""
+    expected_second_story = textwrap.dedent(f"""
     - story: {sender_id}, story 2
       steps:
       - intent: greet
         user: |-
-          hi again"""
-    )
+          hi again""")
     assert expected_second_story in story_content
 
 
@@ -2328,14 +2324,12 @@ async def test_retrieve_story_with_query_param_all_sessions_false(
     assert response.status == 200
 
     story_content = response.body.decode("utf-8")
-    expected_story = textwrap.dedent(
-        f"""
+    expected_story = textwrap.dedent(f"""
     - story: {sender_id}
       steps:
       - intent: greet
         user: |-
-          hi again"""
-    )
+          hi again""")
     assert expected_story in story_content
 
 

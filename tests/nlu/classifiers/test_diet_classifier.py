@@ -472,7 +472,7 @@ async def test_softmax_normalization(
 
 
 async def test_margin_loss_is_not_normalized(
-    create_train_load_and_process_diet: Callable[..., Message]
+    create_train_load_and_process_diet: Callable[..., Message],
 ):
     _, parsed_message = create_train_load_and_process_diet(
         {
@@ -499,7 +499,7 @@ async def test_margin_loss_is_not_normalized(
 
 @pytest.mark.timeout(120, func_only=True)
 async def test_set_random_seed(
-    create_train_load_and_process_diet: Callable[..., Message]
+    create_train_load_and_process_diet: Callable[..., Message],
 ):
     """test if train result is the same for two runs of tf embedding"""
 
@@ -619,7 +619,7 @@ async def test_train_model_not_checkpointing(
 
 
 async def test_train_fails_with_zero_eval_num_epochs(
-    create_diet: Callable[..., DIETClassifier]
+    create_diet: Callable[..., DIETClassifier],
 ):
     with pytest.raises(InvalidConfigException):
         with pytest.warns(UserWarning) as warning:

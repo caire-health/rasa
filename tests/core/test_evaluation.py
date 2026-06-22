@@ -182,8 +182,7 @@ async def test_end_to_evaluation_trips_circuit_breaker(
     trained_async: Callable,
     tmp_path: Path,
 ):
-    config = textwrap.dedent(
-        f"""
+    config = textwrap.dedent(f"""
     version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
     assistant_id: placeholder_default
     policies:
@@ -191,8 +190,7 @@ async def test_end_to_evaluation_trips_circuit_breaker(
       max_history: 11
 
     pipeline: []
-    """
-    )
+    """)
     config_path = tmp_path / "config.yml"
     rasa.shared.utils.io.write_text_file(config, config_path)
 

@@ -841,7 +841,7 @@ def test_load_multi_file_training_data(domain: Domain):
     )
     trackers = sorted(trackers, key=lambda t: t.sender_id)
 
-    (tr_as_sts, tr_as_acts) = featurizer.training_states_and_labels(trackers, domain)
+    tr_as_sts, tr_as_acts = featurizer.training_states_and_labels(trackers, domain)
     hashed = []
     for sts, acts in zip(tr_as_sts, tr_as_acts):
         hashed.append(json.dumps(sts + acts, sort_keys=True))
@@ -857,7 +857,7 @@ def test_load_multi_file_training_data(domain: Domain):
     )
     trackers_mul = sorted(trackers_mul, key=lambda t: t.sender_id)
 
-    (tr_as_sts_mul, tr_as_acts_mul) = featurizer.training_states_and_labels(
+    tr_as_sts_mul, tr_as_acts_mul = featurizer.training_states_and_labels(
         trackers_mul, domain
     )
     hashed_mul = []

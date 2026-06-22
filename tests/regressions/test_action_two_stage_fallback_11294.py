@@ -14,9 +14,7 @@ async def test_action_two_stage_fallback_does_not_return_key_error(
 ):
     config = tmp_path / "config.yml"
 
-    config.write_text(
-        textwrap.dedent(
-            """
+    config.write_text(textwrap.dedent("""
             recipe: default.v1
             assistant_id: placeholder_default
 
@@ -41,14 +39,10 @@ async def test_action_two_stage_fallback_does_not_return_key_error(
                - name: TEDPolicy
                  epochs: 20
                  constrain_similarities: true
-            """
-        )
-    )
+            """))
 
     nlu_file = tmp_path / "nlu.yml"
-    nlu_file.write_text(
-        textwrap.dedent(
-            f"""
+    nlu_file.write_text(textwrap.dedent(f"""
             version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
             nlu:
                 - intent: greet
@@ -90,15 +84,11 @@ async def test_action_two_stage_fallback_does_not_return_key_error(
                     - have a nice day
                     - see you around
                     - bye bye
-            """
-        )
-    )
+            """))
 
     utter_default_text = "I'm sorry, I can't help you. Bypass to agent"
     domain = tmp_path / "domain.yml"
-    domain.write_text(
-        textwrap.dedent(
-            f"""
+    domain.write_text(textwrap.dedent(f"""
                 version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
                 intents:
                   - greet
@@ -122,12 +112,9 @@ async def test_action_two_stage_fallback_does_not_return_key_error(
 
                   utter_default:
                   - text: {utter_default_text}
-                """
-        )
-    )
+                """))
     rules_file = tmp_path / "rules.yml"
-    rules_file.write_text(
-        f"""
+    rules_file.write_text(f"""
                 version: "{LATEST_TRAINING_DATA_FORMAT_VERSION}"
                 rules:
                 - rule: test
@@ -135,8 +122,7 @@ async def test_action_two_stage_fallback_does_not_return_key_error(
                   - intent: nlu_fallback
                   - action: action_two_stage_fallback
                   - active_loop: action_two_stage_fallback
-               """
-    )
+               """)
     model = await trained_async(
         domain=domain,
         config=config,
