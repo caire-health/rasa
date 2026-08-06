@@ -121,8 +121,8 @@ sanic-jwt = "^1.8"
 sanic-routing = "^0.7"
 websockets = "^10.4"
 cloudpickle = "^3"
-aiohttp = ">=3.14.1"
-gitpython = ">=3.1.47"
+aiohttp = ">=3.14.3"        # CVE-2026-69244: fixed in 3.14.3
+gitpython = ">=3.1.57"     # Multiple CVEs (GHSA-rwj8-pgh3-r573/GHSA-3rp5-jjmw-4wv2 etc): fixed above 3.1.56
 fonttools = ">=4.60.2"
 h11 = ">=0.16.0"
 questionary = "^2.0"
@@ -159,6 +159,9 @@ dnspython = "^2.6"
 wheel = "^0.46"
 certifi = "^2025"
 cryptography = ">=45.0.0"  # CVE floor: 3 CVEs fixed above 44.0.3; ^44.0 removed to allow 45.x+
+# NOTE: GHSA-537c-gmf6-5ccf (fixed >=48.0.1) and CVE-2026-69247 (fixed >=50.0.0) cannot be patched:
+#   cryptography>=48 requires typing-extensions>=4.13.2, blocked by tensorflow==2.12.1 (<4.6.0)
+#   Vanta deferral required — see CRE-5152 and SECURITY-CVE-risk-acceptance.md
 lockfile = "^0.12"
 jax = "^0.4"
 jaxlib = "^0.4"
