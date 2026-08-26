@@ -2633,14 +2633,14 @@ reference = "internal repository mirroring psycopg binary for macos"
 
 [[package]]
 name = "gitpython"
-version = "3.1.57"
+version = "3.1.60"
 description = "GitPython is a Python library used to interact with Git repositories"
 optional = false
 python-versions = ">=3.7"
 groups = ["main"]
 files = [
-    {file = "gitpython-3.1.57-py3-none-any.whl", hash = "sha256:4ccf7d73c10f5c9e76043fbb2675ac5a1b3ff5b41e648f56bcbed5f63792ecaf"},
-    {file = "gitpython-3.1.57.tar.gz", hash = "sha256:c493ec57c0ef6b19743798b6a5af859c71814b524e7e6f97baa2f8e658961488"},
+    {file = "gitpython-3.1.60-py3-none-any.whl", hash = "sha256:39548bffb8fa0f3a548133348868bb4838e79d73283052207dc97781a569b6b4"},
+    {file = "gitpython-3.1.60.tar.gz", hash = "sha256:e936431879fa85581b4311fa63492ea52251909e2d655b6529c704c904ddcc24"},
 ]
 
 [package.dependencies]
@@ -10567,4 +10567,4 @@ transformers = ["sentencepiece", "transformers"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10, <3.11"
-content-hash = "c12859de14e150a741ab061a6eb436a75184ebb4f156155785883f2deac6c01b"
+content-hash = "499df679dd86ab87ae830a6faf98b8432fcf2cfcffda459dc83ef109af98a80d"

@@ -116,13 +116,13 @@ rasa-sdk = "^3.6"
 colorclass = "^2.2"
 terminaltables = "^3.1"
 sanic = "^21.12"
-sanic-cors = "^2.2"
+sanic-cors = "^2.2"  # CVE-2026-37737 (needs >2.2.0) CANNOT be fixed: 2.2.0 is latest on PyPI; Vanta deferral required
 sanic-jwt = "^1.8"
 sanic-routing = "^0.7"
 websockets = "^10.4"
 cloudpickle = "^3"
 aiohttp = ">=3.14.3"        # CVE-2026-69244: fixed in 3.14.3
-gitpython = ">=3.1.57"     # Multiple CVEs (GHSA-rwj8-pgh3-r573/GHSA-3rp5-jjmw-4wv2 etc): fixed above 3.1.56
+gitpython = ">=3.1.58"     # Multiple CVEs incl. <=3.1.57: fixed in 3.1.58+
 fonttools = ">=4.60.2"
 h11 = ">=0.16.0"
 questionary = "^2.0"
@@ -134,7 +134,7 @@ SQLAlchemy = "^1.4"
 sklearn-crfsuite = "^0.5"
 psycopg2-binary = "^2.9"
 python-dateutil = "^2.9"
-protobuf = ">=4.23"
+protobuf = ">=4.23,<5.0.0"  # CVE-2026-0994 (needs >=5.29.6) CANNOT be fixed: TF 2.12.1 caps protobuf <5.0.0; Vanta deferral required
 tensorflow_hub = "^0.16"
 setuptools = ">=80,<84"
 ujson = ">=5.13.0"
@@ -159,9 +159,14 @@ dnspython = "^2.6"
 wheel = "^0.46"
 certifi = "^2025"
 cryptography = ">=45.0.0"  # CVE floor: 3 CVEs fixed above 44.0.3; ^44.0 removed to allow 45.x+
-# NOTE: GHSA-537c-gmf6-5ccf (fixed >=48.0.1) and CVE-2026-69247 (fixed >=50.0.0) cannot be patched:
-#   cryptography>=48 requires typing-extensions>=4.13.2, blocked by tensorflow==2.12.1 (<4.6.0)
-#   Vanta deferral required — see CRE-5152 and SECURITY-CVE-risk-acceptance.md
+# NOTE: The following CVEs cannot be patched — all require typing-extensions>=4.6.0+,
+#   but tensorflow==2.12.1 hard-caps typing-extensions<4.6.0. Vanta deferral required.
+#   See CRE-5152 and SECURITY-CVE-risk-acceptance.md
+#   - cryptography: GHSA-537c-gmf6-5ccf (>=48.0.1), CVE-2026-69247 (>=50.0.0)
+#   - azure-core:   CVE-2026-21226 (>=1.38.0 requires typing-extensions>=4.6.0)
+#   - pytest:       CVE-2025-71176 (>=9.0.3 requires pytest-asyncio>=1.2.0 → typing-extensions>=4.12)
+#   - protobuf:     CVE-2026-0994  (>=5.29.6 blocked by TF 2.12.1 <5.0.0 cap)
+#   - sanic-cors:   CVE-2026-37737 (>2.2.0 — no patched release on PyPI)
 lockfile = "^0.12"
 jax = "^0.4"
 jaxlib = "^0.4"
@@ -306,7 +311,7 @@ docker = "^6.0.1"
 pytest-cov = "^4.0.0"
 pytest-asyncio = "^0.20.0"
 pytest-xdist = "^3.2.1"
-pytest = "^7.1.3"
+pytest = "^7.1.3"            # CVE-2025-71176 (needs >=9.0.3) CANNOT be fixed: pytest-asyncio >=1.2.0 requires typing-extensions >=4.12, blocked by TF 2.12.1 (<4.6.0); Vanta deferral required
 freezegun = "^1.0.0"
 responses = "^0.22.0"
 aioresponses = "^0.7.2"
