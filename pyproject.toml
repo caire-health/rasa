@@ -122,7 +122,7 @@ sanic-routing = "^0.7"
 websockets = "^10.4"
 cloudpickle = "^3"
 aiohttp = ">=3.14.3"        # CVE-2026-69244: fixed in 3.14.3
-gitpython = ">=3.1.58"     # Multiple CVEs incl. <=3.1.57: fixed in 3.1.58+
+gitpython = ">=3.1.62"     # GHSA-59cr-6r3x-644w: fixed in 3.1.62+
 fonttools = ">=4.60.2"
 h11 = ">=0.16.0"
 questionary = "^2.0"
@@ -298,7 +298,7 @@ version = ">=0.39, <0.43"
 optional = true
 
 [tool.poetry.dependencies.pymongo]
-version = "^4.9"
+version = ">=4.18.2"      # CVE-2026-96749, CVE-2026-96748, CVE-2026-96747, CVE-2026-88029
 extras = [ "tls", "srv",]
 
 [tool.poetry.dev-dependencies.pytest-sanic]
@@ -342,4 +342,6 @@ datadog-api-client = "^2.0.0"
 datadog = "^0.45.0"
 types-redis = "^4.3.20"
 httpx = ">=0.28"
-werkzeug = "^3.0"
+urllib3 = ">=2.8.0"        # CVE-2026-97687, CVE-2026-97689, CVE-2026-97688
+oauthlib = ">=4.0.0"       # CVE-2026-49265, CVE-2026-49264
+werkzeug = ">=3.1.9"       # CVE-2026-102598
