@@ -157,7 +157,7 @@ structlog = "^24.4"
 structlog-sentry = "^2.1"
 dnspython = "^2.6"
 wheel = "^0.46"
-certifi = "^2025"
+certifi = ">=2025"
 cryptography = ">=45.0.0"  # CVE floor: 3 CVEs fixed above 44.0.3; ^44.0 removed to allow 45.x+
 # NOTE: The following CVEs cannot be patched — all require typing-extensions>=4.6.0+,
 #   but tensorflow==2.12.1 hard-caps typing-extensions<4.6.0. Vanta deferral required.
