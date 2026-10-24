@@ -122,7 +122,7 @@ sanic-routing = "^0.7"
 websockets = "^10.4"
 cloudpickle = "^3"
 aiohttp = ">=3.14.3"        # CVE-2026-69244: fixed in 3.14.3
-gitpython = ">=3.1.62"     # GHSA-59cr-6r3x-644w: fixed in 3.1.62+
+gitpython = ">=3.2.1"        # GHSA-59cr-6r3x-644w + CVE-2026-114145: fixed in 3.2.1+
 fonttools = ">=4.60.2"
 h11 = ">=0.16.0"
 questionary = "^2.0"
@@ -136,7 +136,7 @@ psycopg2-binary = "^2.9"
 python-dateutil = "^2.9"
 protobuf = ">=4.23,<5.0.0"  # CVE-2026-0994 (needs >=5.29.6) CANNOT be fixed: TF 2.12.1 caps protobuf <5.0.0; Vanta deferral required
 tensorflow_hub = "^0.16"
-setuptools = ">=80,<85"
+setuptools = ">=84.1.0,<85"   # GHSA-xmj3-9gf7-h52w: fixed in 84.1.0+
 ujson = ">=5.13.0"
 regex = ">=2025.10.22"
 joblib = "^1.5"
@@ -157,7 +157,7 @@ structlog = "^24.4"
 structlog-sentry = "^2.1"
 dnspython = "^2.6"
 wheel = "^0.46"
-certifi = ">=2025"
+certifi = ">=2026.10.19"     # GHSA-6q48-6c7w-9gw2: fixed in 2026.10.19+
 cryptography = ">=45.0.0"  # CVE floor: 3 CVEs fixed above 44.0.3; ^44.0 removed to allow 45.x+
 # NOTE: The following CVEs cannot be patched — all require typing-extensions>=4.6.0+,
 #   but tensorflow==2.12.1 hard-caps typing-extensions<4.6.0. Vanta deferral required.
@@ -167,6 +167,9 @@ cryptography = ">=45.0.0"  # CVE floor: 3 CVEs fixed above 44.0.3; ^44.0 removed
 #   - pytest:       CVE-2025-71176 (>=9.0.3 requires pytest-asyncio>=1.2.0 → typing-extensions>=4.12)
 #   - protobuf:     CVE-2026-0994  (>=5.29.6 blocked by TF 2.12.1 <5.0.0 cap)
 #   - sanic-cors:   CVE-2026-37737 (>2.2.0 — no patched release on PyPI)
+#   - opentelemetry-api: CVE-2026-114603 (>=1.46.0 needed; locked at 1.15.0 by Jaeger/OTLP exporter stack pinned to 1.15.x)
+#   - Pillow:         41 CVEs (>=13.0.0 needed; Pillow 13.0.0 requires Python >=3.11, project caps at <3.11)
+#   - filelock:       3 CVEs (>=4.2.1 needed; filelock 4.1.0+ requires Python >=3.11, project caps at <3.11)
 lockfile = "^0.12"
 jax = "^0.4"
 jaxlib = "^0.4"
@@ -318,7 +321,7 @@ aioresponses = "^0.7.2"
 moto = "^5"
 fakeredis = "^2.11.2"
 mongomock = "^4.1.2"
-black = ">=26.3.1"
+black = ">=26.10.1"          # CVE-2026-114134: fixed in 26.10.1+
 google-cloud-storage = "^2.4.0"
 azure-storage-blob = "^12.17"
 coveralls = "^3.0.1"
