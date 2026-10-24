@@ -136,7 +136,7 @@ psycopg2-binary = "^2.9"
 python-dateutil = "^2.9"
 protobuf = ">=4.23,<5.0.0"  # CVE-2026-0994 (needs >=5.29.6) CANNOT be fixed: TF 2.12.1 caps protobuf <5.0.0; Vanta deferral required
 tensorflow_hub = "^0.16"
-setuptools = ">=80,<84"
+setuptools = ">=80,<85"
 ujson = ">=5.13.0"
 regex = ">=2025.10.22"
 joblib = "^1.5"
