@@ -1019,7 +1019,7 @@ class DefaultV1Recipe(Recipe):
 
         filename = "config_files/default_config.yml"
 
-        default_config_file = str(importlib.resources.files(__name__).joinpath(filename))
+        default_config_file = str(importlib.resources.files(__package__).joinpath(filename))
         default_config = rasa.shared.utils.io.read_config_file(default_config_file)
 
         config = copy.deepcopy(config)

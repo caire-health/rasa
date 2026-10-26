@@ -142,7 +142,7 @@ def create_initial_project(path: Text) -> None:
 def scaffold_path() -> Text:
     import importlib.resources
 
-    return str(importlib.resources.files(__name__).joinpath("initial_project"))
+    return str(importlib.resources.files(__package__).joinpath("initial_project"))
 
 
 def print_cancel() -> None:
