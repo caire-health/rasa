@@ -40,7 +40,7 @@ START_NODE_ID = 0
 END_NODE_ID = -1
 TMP_NODE_ID = -2
 
-VISUALIZATION_TEMPLATE_PATH = "/visualization.html"
+VISUALIZATION_TEMPLATE_PATH = "visualization.html"
 
 
 class UserMessageGenerator:
@@ -309,9 +309,9 @@ def _replace_edge_labels_with_nodes(
 
 
 def visualization_html_path() -> Text:
-    import pkg_resources
+    import importlib.resources
 
-    return pkg_resources.resource_filename(__name__, VISUALIZATION_TEMPLATE_PATH)
+    return str(importlib.resources.files(__package__).joinpath(VISUALIZATION_TEMPLATE_PATH))
 
 
 def persist_graph(graph: "networkx.Graph", output_file: Text) -> None:
